@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>555</width>
-    <height>312</height>
+    <width>547</width>
+    <height>220</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,9 +40,12 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <property name="spacing">
+      <number>0</number>
+     </property>
      <item>
-      <spacer name="horizontalSpacer_7">
+      <spacer name="horizontalSpacer_8">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -59,67 +62,58 @@
        <property name="minimumSize">
         <size>
          <width>250</width>
+         <height>35</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>500</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>0</width>
          <height>0</height>
         </size>
        </property>
        <property name="font">
         <font>
-         <family>arial</family>
-         <pointsize>13</pointsize>
+         <pointsize>10</pointsize>
          <weight>75</weight>
-         <italic>true</italic>
          <bold>true</bold>
         </font>
        </property>
-       <property name="toolTip">
-        <string extracomment="يرجى ادخال اسم المستخدم في الخانة المخصصة له"/>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
        </property>
-       <property name="whatsThis">
-        <string extracomment="يرجى ادخال اسم المستخدم في الخانة المخصصة"/>
+       <property name="autoFillBackground">
+        <bool>false</bool>
        </property>
        <property name="styleSheet">
         <string notr="true">QLineEdit
 {
 
- margin-bottom: 2px;   
-    padding: 7px 8px;
-        padding-top: 7px;
-        padding-bottom: 7px;
-    outline: medium none;
-        outline-width: medium;
-        outline-style: none;
-        outline-color: -moz-use-text-color;
-    color: #333;
+
+	color: rgb(68, 68, 68);
     background-color: #FFF;
-    background-repeat: no-repeat;
-    background-position: right center;
-    border: 1px solid #c5c5c5;
-        border-top-width: 1px;
-        border-bottom-width: 1px;
-        border-top-style: solid;
-        border-bottom-style: solid;
-        border-top-color: #c5c5c5;
-        border-bottom-color: #c5c5c5;      
-    border-radius: 3px;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-        border-bottom-left-radius: 3px;
+    border: 1px solid #2196F3;   
+	border-right:0px solid #FFFFFF;
     vertical-align: middle;
 }
 QLineEdit:hover
 {
-	 border: 1px solid #00bbff;
-	 border-top-color: #00bbff;
-        border-bottom-color: #00bbff;  
+	color: #000000;
 
+   border-top:1px solid #FFFFFF;	
+   border-left:1px solid #FFFFFF;	
+   border-right:1px solid #FFFFFF;	
+   border-bottom:2px solid #2196F3;  
+   border-right:0px solid #FFFFFF;
 }</string>
        </property>
-       <property name="text">
-        <string>admin</string>
-       </property>
        <property name="maxLength">
-        <number>50</number>
+        <number>30</number>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -130,7 +124,48 @@ QLineEdit:hover
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer_6">
+      <widget class="QLabel" name="label_2">
+       <property name="minimumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>35</width>
+         <height>35</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+background-color: #2196F3;
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="Icons.qrc">:/Icons/ic_perm_identity_white_2x.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+       <property name="indent">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_10">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -145,9 +180,12 @@ QLineEdit:hover
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <property name="spacing">
+      <number>0</number>
+     </property>
      <item>
-      <spacer name="horizontalSpacer_4">
+      <spacer name="horizontalSpacer_9">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -164,61 +202,58 @@ QLineEdit:hover
        <property name="minimumSize">
         <size>
          <width>250</width>
+         <height>35</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>500</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>0</width>
          <height>0</height>
         </size>
        </property>
        <property name="font">
         <font>
-         <family>arial</family>
-         <pointsize>13</pointsize>
+         <pointsize>10</pointsize>
          <weight>75</weight>
-         <italic>true</italic>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
        </property>
        <property name="styleSheet">
         <string notr="true">QLineEdit
 {
 
- margin-bottom: 2px;   
-    padding: 7px 8px;
-        padding-top: 7px;
-        padding-bottom: 7px;
-    outline: medium none;
-        outline-width: medium;
-        outline-style: none;
-        outline-color: -moz-use-text-color;
-    color: #333;
+
+	color: rgb(68, 68, 68);
     background-color: #FFF;
-    background-repeat: no-repeat;
-    background-position: right center;
-    border: 1px solid #c5c5c5;
-        border-top-width: 1px;
-        border-bottom-width: 1px;
-        border-top-style: solid;
-        border-bottom-style: solid;
-        border-top-color: #c5c5c5;
-        border-bottom-color: #c5c5c5;      
-    border-radius: 3px;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-        border-bottom-left-radius: 3px;
+    border: 1px solid #2196F3;   
+	border-right:0px solid #FFFFFF;
     vertical-align: middle;
 }
 QLineEdit:hover
 {
-	 border: 1px solid #00bbff;
-	 border-top-color: #00bbff;
-        border-bottom-color: #00bbff;  
+	color: #000000;
 
+   border-top:1px solid #FFFFFF;	
+   border-left:1px solid #FFFFFF;	
+   border-right:1px solid #FFFFFF;	
+   border-bottom:2px solid #2196F3;  
+   border-right:0px solid #FFFFFF;
 }</string>
        </property>
-       <property name="text">
-        <string>admin</string>
-       </property>
        <property name="maxLength">
-        <number>50</number>
+        <number>30</number>
        </property>
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
@@ -232,7 +267,48 @@ QLineEdit:hover
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer_5">
+      <widget class="QLabel" name="label_3">
+       <property name="minimumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>35</width>
+         <height>35</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+background-color: #2196F3;
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="Icons.qrc">:/Icons/ic_vpn_key_white_2x.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+       <property name="indent">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_11">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -263,6 +339,15 @@ QLineEdit:hover
      </item>
      <item>
       <widget class="QPushButton" name="BT_login">
+       <property name="font">
+        <font>
+         <family>Ubuntu</family>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+         <kerning>false</kerning>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton
 {
@@ -274,26 +359,22 @@ QLineEdit:hover
     font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
-    background-color: #E36C43;
+    background-color: rgb(0, 163, 239);
    
     border-radius: 3px;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
         border-bottom-right-radius: 3px;
         border-bottom-left-radius: 3px;
-    border: 1px solid #E36C43;
-        border-top-width: 1px;
-        border-bottom-width: 1px;
-        border-top-style: solid;
-        border-bottom-style: solid;
-        border-top-color: #E36C43;
-        border-bottom-color: #E36C43;
+    border: 1px solid rgb(0, 163, 239);
+       
     vertical-align: middle;
 }
 
 QPushButton:hover
 {
-background-color: #DD4814;
+background-color: rgb(11, 109, 255);
+    border: 1px solid  rgb(11, 109, 255);
 color: #ffffff;
 
 }
@@ -301,6 +382,16 @@ color: #ffffff;
        </property>
        <property name="text">
         <string>دخول</string>
+       </property>
+       <property name="icon">
+        <iconset resource="Icons.qrc">
+         <normaloff>:/Icons/ic_done_white_24dp.png</normaloff>:/Icons/ic_done_white_24dp.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>25</width>
+         <height>25</height>
+        </size>
        </property>
        <property name="shortcut">
         <string>Return</string>
@@ -314,7 +405,7 @@ color: #ffffff;
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>40</width>
+         <width>20</width>
          <height>20</height>
         </size>
        </property>
@@ -322,6 +413,15 @@ color: #ffffff;
      </item>
      <item>
       <widget class="QPushButton" name="BT_cancel">
+       <property name="font">
+        <font>
+         <family>Ubuntu</family>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+         <kerning>false</kerning>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton
 {
@@ -333,33 +433,40 @@ color: #ffffff;
     font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
-    background-color: #E36C43;
+    background-color:#455A64;
    
     border-radius: 3px;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
         border-bottom-right-radius: 3px;
         border-bottom-left-radius: 3px;
-    border: 1px solid #E36C43;
-        border-top-width: 1px;
-        border-bottom-width: 1px;
-        border-top-style: solid;
-        border-bottom-style: solid;
-        border-top-color: #E36C43;
-        border-bottom-color: #E36C43;
+    border: 1px solid #455A64;
+       
     vertical-align: middle;
 }
 
 QPushButton:hover
 {
-background-color: #DD4814;
+background-color:#37474F;
+    border: 1px solid #37474F;
 color: #ffffff;
 
 }
+
 </string>
        </property>
        <property name="text">
         <string>الغاء</string>
+       </property>
+       <property name="icon">
+        <iconset resource="Icons.qrc">
+         <normaloff>:/Icons/ic_clear_white_2x.png</normaloff>:/Icons/ic_clear_white_2x.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>25</width>
+         <height>25</height>
+        </size>
        </property>
        <property name="shortcut">
         <string>Esc</string>
@@ -390,6 +497,8 @@ color: #ffffff;
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="Icons.qrc"/>
+ </resources>
  <connections/>
 </ui>
