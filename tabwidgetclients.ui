@@ -901,7 +901,7 @@ QDateEdit:hover
                 <set>Qt::AlignCenter</set>
                </property>
                <property name="currentSection">
-                <enum>QDateTimeEdit::DaySection</enum>
+                <enum>QDateTimeEdit::YearSection</enum>
                </property>
                <property name="displayFormat">
                 <string>yyyy-MM-dd</string>
@@ -1100,7 +1100,7 @@ QDateEdit:hover
                 <set>Qt::AlignCenter</set>
                </property>
                <property name="currentSection">
-                <enum>QDateTimeEdit::DaySection</enum>
+                <enum>QDateTimeEdit::YearSection</enum>
                </property>
                <property name="displayFormat">
                 <string>yyyy-MM-dd</string>
@@ -1232,7 +1232,7 @@ QDateEdit:hover
               </property>
               <item>
                <property name="text">
-                <string>لم يدفع بعد</string>
+                <string>تم دفع جزئي</string>
                </property>
               </item>
               <item>
@@ -1242,7 +1242,7 @@ QDateEdit:hover
               </item>
               <item>
                <property name="text">
-                <string>اخرى </string>
+                <string>أخرى </string>
                </property>
               </item>
              </widget>
@@ -1361,6 +1361,9 @@ QSpinBox:hover
                </property>
                <property name="maximum">
                 <number>100000</number>
+               </property>
+               <property name="value">
+                <number>200</number>
                </property>
               </widget>
              </widget>
