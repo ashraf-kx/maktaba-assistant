@@ -64,6 +64,7 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
     listHeader<<tr("remarke");
     listHeader<<tr("payement state");
     listHeader<<tr("price");
+    listHeader<<tr("price Paid");
 
     modelClient->setHeaderData(0, Qt::Horizontal, tr("N#"));
     modelClient->setHeaderData(1, Qt::Horizontal, listHeader.at(0));
@@ -73,6 +74,7 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
     modelClient->setHeaderData(5, Qt::Horizontal, listHeader.at(4));
     modelClient->setHeaderData(6, Qt::Horizontal, listHeader.at(5));
     modelClient->setHeaderData(7, Qt::Horizontal, listHeader.at(6));
+    modelClient->setHeaderData(8, Qt::Horizontal, listHeader.at(7));
 
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -95,8 +97,8 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
     ui->DE_delivery->setDate(QDate::currentDate().addDays(1));
 
     ui->tableView->setColumnHidden(4,true);
-    ui->tableView->setColumnHidden(8,true);
     ui->tableView->setColumnHidden(9,true);
+    ui->tableView->setColumnHidden(10,true);
 
     startMapper();
     ui->SB_idClientx->setVisible(false);

@@ -56,4 +56,3 @@ RESOURCES += \
     lang.qrc
 
 TRANSLATIONS = biblioYass_ar.ts
-CODECFORSRC  = UTF-8

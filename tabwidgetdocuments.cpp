@@ -23,6 +23,8 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     QStringList listHeader;
     listHeader<<tr("Title Doc");
     listHeader<<tr("Type Doc");
+    listHeader<<tr("font Family");
+    listHeader<<tr("font Size Doc");
     listHeader<<tr("Is Printed");
     listHeader<<tr("Language Doc");
     listHeader<<tr("Total Pages");
@@ -30,17 +32,20 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     listHeader<<tr("Delivery Date");
 
     modelDocs->setHeaderData(0, Qt::Horizontal, tr("N#"));
-    modelDocs->setHeaderData(1, Qt::Horizontal, listHeader.at(0));
-    modelDocs->setHeaderData(2, Qt::Horizontal, listHeader.at(1));
-    modelDocs->setHeaderData(3, Qt::Horizontal, listHeader.at(2));
-    modelDocs->setHeaderData(4, Qt::Horizontal, listHeader.at(3));
-    modelDocs->setHeaderData(5, Qt::Horizontal, listHeader.at(4));
-    modelDocs->setHeaderData(6, Qt::Horizontal, listHeader.at(5));
-    modelDocs->setHeaderData(7, Qt::Horizontal, listHeader.at(6));
+    modelDocs->setHeaderData(3, Qt::Horizontal, listHeader.at(0));
+    modelDocs->setHeaderData(4, Qt::Horizontal, listHeader.at(1));
+    modelDocs->setHeaderData(5, Qt::Horizontal, listHeader.at(2));
+    modelDocs->setHeaderData(6, Qt::Horizontal, listHeader.at(3));
+    modelDocs->setHeaderData(8, Qt::Horizontal, listHeader.at(4));
+    modelDocs->setHeaderData(9, Qt::Horizontal, listHeader.at(5));
+    modelDocs->setHeaderData(10, Qt::Horizontal, listHeader.at(6));
+    modelDocs->setHeaderData(11, Qt::Horizontal, listHeader.at(7));
+    modelDocs->setHeaderData(13, Qt::Horizontal, listHeader.at(8));
 
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->tableView->resizeColumnsToContents();
+    ui->tableView->resizeColumnToContents(3);
+    ui->tableView->resizeColumnToContents(5);
     ui->tableView->setSortingEnabled(true);
     ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
 
@@ -56,8 +61,8 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
 
     ui->tableView->setColumnHidden(1,true);
     ui->tableView->setColumnHidden(2,true);
-    ui->tableView->setColumnHidden(5,true);
-    ui->tableView->setColumnHidden(6,true);
+    ui->tableView->setColumnHidden(5,false);
+    ui->tableView->setColumnHidden(6,false);
     ui->tableView->setColumnHidden(7,true);
     ui->tableView->setColumnHidden(12,true);
     ui->tableView->setColumnHidden(14,true);
