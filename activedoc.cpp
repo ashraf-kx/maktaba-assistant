@@ -19,7 +19,7 @@ ActiveDoc::ActiveDoc(QWidget *parent) :
     idDoc    = 0;
     idWorker = 0;
 
-    this->DBH = QSqlDatabase::addDatabase("QSQLITE","cnxnDeleteAss"+QString::number(QTime::currentTime().msec()));
+    this->DBH = QSqlDatabase::addDatabase("QSQLITE","cnxnDelete"+QString::number(QDateTime::currentMSecsSinceEpoch()));
     this->DBH.setDatabaseName(QDir::homePath()+"/AppData/Roaming/bits/"+"BYASS.db");
     this->DBH.setPassword("bitProjects");
     this->DBH.setUserName("neverAsk@4Pass");
@@ -89,5 +89,6 @@ void ActiveDoc::saveToArchive()
 
 ActiveDoc::~ActiveDoc()
 {
+    this->DBH.~QSqlDatabase();
     delete ui;
 }
