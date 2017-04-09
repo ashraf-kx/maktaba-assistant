@@ -1,7 +1,7 @@
 #ifndef ARCHIVEDDOC_H
 #define ARCHIVEDDOC_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include <QDate>
 #include <QDebug>
 #include <QSqlDatabase>

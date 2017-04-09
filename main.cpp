@@ -1,5 +1,5 @@
-#include <QtGui/QApplication>
-#include <QSystemTrayIcon>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QSystemTrayIcon>
 #include <QDir>
 #include "mainwindow.h"
 #include <QTranslator>
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
     a.setWindowIcon(QIcon(QPixmap(":Icons/icon-evergreen-alt.png")));
 
-    QDir mDir(QDir::homePath()+"/AppData/Roaming/bits");// = new QDir();
+    QDir mDir(QDir::homePath()+"/AppData/Roaming/bits");
     if(!mDir.exists())
         mDir.mkdir(QDir::homePath()+"/AppData/Roaming/bits");
 
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    QApplication::setQuitOnLastWindowClosed(false);
+    QApplication::setQuitOnLastWindowClosed(true);
 
     w.show();
     

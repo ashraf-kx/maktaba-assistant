@@ -1,11 +1,11 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include <QSqlQueryModel>
 #include <QSqlQuery>
 #include <QSqlTableModel>
-#include <QPushButton>
+#include <QtWidgets/QPushButton>
 #include "toast.h"
 
 #include "simplecrypt.h"

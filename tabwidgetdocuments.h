@@ -1,18 +1,18 @@
 #ifndef TABWIDGETDOCUMENTS_H
 #define TABWIDGETDOCUMENTS_H
 
-#include <QTabWidget>
+#include <QtWidgets/QTabWidget>
 
 #include <QSqlQueryModel>
 #include <QSqlQuery>
 #include <QSqlTableModel>
 #include <QSqlRelationalTableModel>
 #include <QSortFilterProxyModel>
-#include <QDataWidgetMapper>
+#include <QtWidgets/QDataWidgetMapper>
 
 #include <QDebug>
 #include <QDate>
-#include <QGraphicsDropShadowEffect>
+#include <QtWidgets/QGraphicsDropShadowEffect>
 
 #include "archiveddoc.h"
 #include "activedoc.h"

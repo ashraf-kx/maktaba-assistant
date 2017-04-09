@@ -1,7 +1,7 @@
 #ifndef ACTIVEDOC_H
 #define ACTIVEDOC_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include <QDate>
 #include <QDebug>
 #include <QSqlDatabase>

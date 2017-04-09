@@ -1,7 +1,7 @@
 #ifndef TABWIDGETSETTINGS_H
 #define TABWIDGETSETTINGS_H
 
-#include <QTabWidget>
+#include <QtWidgets/QTabWidget>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDebug>

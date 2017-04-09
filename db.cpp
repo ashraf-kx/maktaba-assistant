@@ -1,7 +1,7 @@
 #include "db.h"
 #include "simplecrypt.h"
 #include <QDateTime>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 
 
 DB::DB(QObject *parent) :

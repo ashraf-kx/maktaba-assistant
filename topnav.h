@@ -1,8 +1,8 @@
 #ifndef TOPNAV_H
 #define TOPNAV_H
 
-#include <QWidget>
-#include <QPushButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QPushButton>
 
 namespace Ui {
 class topNav;

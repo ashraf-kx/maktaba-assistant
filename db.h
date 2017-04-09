@@ -2,7 +2,7 @@
 #define DB_H
 
 #include <QObject>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDebug>

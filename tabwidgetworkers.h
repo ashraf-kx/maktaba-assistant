@@ -1,13 +1,13 @@
 #ifndef TABWIDGETWORKERS_H
 #define TABWIDGETWORKERS_H
 
-#include <QTabWidget>
+#include <QtWidgets/QTabWidget>
 #include <QSqlQueryModel>
 #include <QSqlQuery>
 #include <QSqlTableModel>
 #include <QSqlRelationalTableModel>
 #include <QSortFilterProxyModel>
-#include <QDataWidgetMapper>
+#include <QtWidgets/QDataWidgetMapper>
 #include <QDateTime>
 #include "dialog.h"
 #include "toast.h"

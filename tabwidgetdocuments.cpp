@@ -205,15 +205,20 @@ void TabWidgetDocuments::doAssociate()
 
     //! look for indexDoc & indexWorker {[NOW}].
     QSqlQuery *query0 = new QSqlQuery(this->DBH);
-    query0->exec("SELECT id FROM workers WHERE fullName='"+mNameWorker+"'");
-    qDebug()<<query0->lastQuery()<<endl;
+    query0->prepare("SELECT id FROM workers WHERE fullName=:fullName ");
+    query0->bindValue(":fullName",mNameWorker);
+    query0->exec();
+    //qDebug()<<query0->lastQuery()<<endl;
     while(query0->next())
     {
         indexWorker = query0->value(0).toInt();
     }
 
-    query0->exec("SELECT id FROM documents WHERE titleDoc='"+mTitleDoc+"'");
-    qDebug()<<query0->lastQuery()<<endl;
+    query0->prepare("SELECT id FROM documents WHERE titleDoc=:titleDoc");
+    query0->bindValue(":titleDoc",mTitleDoc);
+    query0->exec();
+
+    //qDebug()<<query0->lastQuery()<<endl;
     while(query0->next())
     {
         indexDoc = query0->value(0).toInt();

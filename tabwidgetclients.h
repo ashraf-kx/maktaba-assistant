@@ -1,17 +1,17 @@
 #ifndef TABWIDGETCLIENTS_H
 #define TABWIDGETCLIENTS_H
 
-#include <QTabWidget>
+#include <QtWidgets/QTabWidget>
 
 #include <QSqlQueryModel>
 #include <QSqlQuery>
 #include <QSqlTableModel>
 #include <QSqlRelationalTableModel>
 #include <QSortFilterProxyModel>
-#include <QDataWidgetMapper>
+#include <QtWidgets/QDataWidgetMapper>
 
-#include <QComboBox>
-#include <QSpinBox>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QSpinBox>
 #include <QPrinter>
 #include <QPainter>
 #include <QPrintDialog>

@@ -1,7 +1,7 @@
 #ifndef TOAST_H
 #define TOAST_H
 
-#include <QFrame>
+#include <QtWidgets/QFrame>
 #include <QTimer>
 
 namespace Ui {

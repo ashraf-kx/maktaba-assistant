@@ -1,9 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <QSystemTrayIcon>
-#include <QMenu>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QSystemTrayIcon>
+#include <QtWidgets/QMenu>
 #include "tabwidgetclients.h"
 #include "tabwidgetworkers.h"
 #include "tabwidgetdocuments.h"
