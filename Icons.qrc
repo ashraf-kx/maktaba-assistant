@@ -53,7 +53,8 @@
         <file>Icons/ic_font_download_white_2x.png</file>
         <file>Icons/ic_format_size_white_2x.png</file>
         <file>Icons/ic_style_white_2x.png</file>
-        <file>Icons/ic_domain_white_2x.png</file>
         <file>Icons/ic_format_size_white_18pt_3x.png</file>
+        <file>Icons/ic_domain_2x.png</file>
+        <file>Icons/ic_domain_white_2x.png</file>
     </qresource>
 </RCC>
