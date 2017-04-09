@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1059</width>
-    <height>683</height>
+    <width>1062</width>
+    <height>741</height>
    </rect>
   </property>
   <property name="font">
@@ -744,7 +744,7 @@ QTextEdit:hover
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:600; font-style:italic;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
               </widget>
              </item>
@@ -871,6 +871,9 @@ background-color: #2196F3;
                  <bold>true</bold>
                 </font>
                </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="layoutDirection">
                 <enum>Qt::LeftToRight</enum>
                </property>
@@ -946,8 +949,30 @@ QDateEdit:hover
                  <height>16777215</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                 <kerning>false</kerning>
+                </font>
+               </property>
+               <property name="locale">
+                <locale language="Arabic" country="Algeria"/>
+               </property>
+               <property name="firstDayOfWeek">
+                <enum>Qt::Saturday</enum>
+               </property>
                <property name="gridVisible">
                 <bool>true</bool>
+               </property>
+               <property name="horizontalHeaderFormat">
+                <enum>QCalendarWidget::SingleLetterDayNames</enum>
+               </property>
+               <property name="verticalHeaderFormat">
+                <enum>QCalendarWidget::NoVerticalHeader</enum>
+               </property>
+               <property name="dateEditEnabled">
+                <bool>false</bool>
                </property>
               </widget>
              </item>
@@ -1070,6 +1095,9 @@ background-color: #2196F3;
                  <bold>true</bold>
                 </font>
                </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="layoutDirection">
                 <enum>Qt::LeftToRight</enum>
                </property>
@@ -1145,8 +1173,36 @@ QDateEdit:hover
                  <height>16777215</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                 <kerning>false</kerning>
+                </font>
+               </property>
+               <property name="autoFillBackground">
+                <bool>true</bool>
+               </property>
+               <property name="locale">
+                <locale language="Arabic" country="Algeria"/>
+               </property>
+               <property name="firstDayOfWeek">
+                <enum>Qt::Saturday</enum>
+               </property>
                <property name="gridVisible">
                 <bool>true</bool>
+               </property>
+               <property name="horizontalHeaderFormat">
+                <enum>QCalendarWidget::SingleLetterDayNames</enum>
+               </property>
+               <property name="verticalHeaderFormat">
+                <enum>QCalendarWidget::NoVerticalHeader</enum>
+               </property>
+               <property name="navigationBarVisible">
+                <bool>true</bool>
+               </property>
+               <property name="dateEditEnabled">
+                <bool>false</bool>
                </property>
               </widget>
              </item>
@@ -1638,6 +1694,9 @@ background-color: #2196F3;
                  <bold>true</bold>
                 </font>
                </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="layoutDirection">
                 <enum>Qt::LeftToRight</enum>
                </property>
@@ -1816,6 +1875,9 @@ background-color: #2196F3;
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="layoutDirection">
                 <enum>Qt::LeftToRight</enum>
@@ -2137,11 +2199,24 @@ background-color: #2196F3;
                  <pointsize>8</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
-                 <kerning>false</kerning>
+                 <stylestrategy>PreferDefault</stylestrategy>
+                 <kerning>true</kerning>
                 </font>
                </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="contextMenuPolicy">
+                <enum>Qt::CustomContextMenu</enum>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+               </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
                <property name="styleSheet">
-                <string notr="true">QFontComboBox
+                <string notr="true">QComboBox
 {
 
 
@@ -2151,7 +2226,7 @@ background-color: #2196F3;
 	border-right:0px solid #FFFFFF;
     vertical-align: middle;
 }
-QFontComboBox:hover
+QComboBox:hover
 {
 	color: #000000;
 
@@ -2162,8 +2237,36 @@ QFontComboBox:hover
    border-right:0px solid #FFFFFF;
 }</string>
                </property>
+               <property name="locale">
+                <locale language="Arabic" country="Algeria"/>
+               </property>
                <property name="editable">
                 <bool>false</bool>
+               </property>
+               <property name="sizeAdjustPolicy">
+                <enum>QComboBox::AdjustToContents</enum>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>16</width>
+                 <height>16</height>
+                </size>
+               </property>
+               <property name="frame">
+                <bool>false</bool>
+               </property>
+               <property name="writingSystem">
+                <enum>QFontDatabase::Any</enum>
+               </property>
+               <property name="fontFilters">
+                <set>QFontComboBox::AllFonts</set>
+               </property>
+               <property name="currentFont">
+                <font>
+                 <family>Arial Black</family>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
                </property>
               </widget>
              </item>
@@ -2280,6 +2383,9 @@ background-color: #2196F3;
                  <bold>true</bold>
                  <kerning>false</kerning>
                 </font>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true">QComboBox
