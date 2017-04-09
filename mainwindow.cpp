@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
     quitAction->setIconVisibleInMenu(true);
     quitAction->setIcon(QIcon(":Icons/ic_power_settings_new_2x.png"));
 
-    connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
+    connect(quitAction, SIGNAL(triggered()), this, SLOT(close()));
 
     trayMenu = new QMenu(this);
     trayMenu->addAction(configAction);

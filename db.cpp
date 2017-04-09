@@ -29,7 +29,7 @@ DB::DB(QObject *parent) :
                            "fontFamily VARCHAR(50),"
                            "fontSize INTEGER,"
                            "printingColor INTEGER,"
-                           "isPrinted INTEGER,"
+                           "isPrinted VARCHAR(20),"
                            "languageDoc VARCHAR(30),"
                            "totalPages INTEGER,"
                            "pagesDone INTEGER,"

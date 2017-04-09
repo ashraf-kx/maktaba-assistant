@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>TabWidgetSettings</class>
  <widget class="QTabWidget" name="TabWidgetSettings">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -9,6 +12,14 @@
     <width>911</width>
     <height>510</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>9</pointsize>
+    <weight>75</weight>
+    <bold>true</bold>
+    <kerning>false</kerning>
+   </font>
   </property>
   <property name="windowTitle">
    <string>TabWidget</string>
@@ -19,8 +30,14 @@
   <property name="currentIndex">
    <number>0</number>
   </property>
+  <property name="elideMode">
+   <enum>Qt::ElideNone</enum>
+  </property>
+  <property name="usesScrollButtons">
+   <bool>false</bool>
+  </property>
   <property name="tabsClosable">
-   <bool>true</bool>
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="tab">
    <attribute name="title">
@@ -30,13 +47,13 @@
     <item row="0" column="2">
      <widget class="QGroupBox" name="groupBox_2">
       <property name="title">
-       <string>تحديث معلومات المستخدم : </string>
+       <string>تحديث معلومات المستخدم </string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="checkable">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
@@ -787,7 +804,10 @@ color: #ffffff;
        <set>Qt::AlignCenter</set>
       </property>
       <property name="checkable">
-       <bool>true</bool>
+       <bool>false</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>

@@ -155,7 +155,7 @@ TabWidgetClients::clientData TabWidgetClients::getDatafromForm()
     mClientData.depositeDay = ui->DE_deposite->date().toString("yyyy-MM-dd");
     mClientData.deliveryDay = ui->DE_delivery->date().toString("yyyy-MM-dd");
     mClientData.remarke    = ui->TE_remarke->toPlainText();
-    mClientData.payement_state = ui->CB_payementState->currentIndex();
+    mClientData.payement_state = ui->CB_payementState->currentText();
     mClientData.phoneNumber = ui->LE_phoneNumber->text();
     mClientData.FirstEmail  = ui->LE_primaryEmail->text();
     mClientData.isDeliveredByMail = "yes" ;
@@ -244,7 +244,7 @@ bool TabWidgetClients::addClient(TabWidgetClients::clientData mClientData)
     query->bindValue(":fontSize", mClientData.fontSize);
     query->bindValue(":typeDoc", mClientData.typeDoc);
     query->bindValue(":printingColor", mClientData.printingColor);
-    query->bindValue(":isPrinted", "no");
+    query->bindValue(":isPrinted", tr("unprinted"));
     query->bindValue(":languageDoc", mClientData.languageDoc);
     query->bindValue(":totalPages", mClientData.totalPages);
     query->bindValue(":depositeDay", mClientData.depositeDay);

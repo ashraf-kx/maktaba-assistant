@@ -116,6 +116,9 @@ color: rgb(0, 163, 239);
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <property name="spacing">
         <number>10</number>
@@ -844,14 +847,14 @@ border:0px solid white;
       </property>
       <property name="styleSheet">
        <string notr="true">QGroupeBox{
-border:1px solid white;
+border:0px solid white;
 background-color: rgb(255, 255, 255);
 color: rgb(0, 163, 239);
 
 }</string>
       </property>
       <property name="title">
-       <string/>
+       <string>تعديل معلومات الموظفين</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

@@ -17,6 +17,9 @@
     <bold>true</bold>
    </font>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::TabFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>TabWidget</string>
   </property>
@@ -45,6 +48,12 @@ border:0px solid white;
   </property>
   <property name="elideMode">
    <enum>Qt::ElideNone</enum>
+  </property>
+  <property name="documentMode">
+   <bool>true</bool>
+  </property>
+  <property name="tabBarAutoHide">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="T_addClient">
    <attribute name="icon">
@@ -90,7 +99,7 @@ background-color:#fafafa;
        <set>Qt::AlignCenter</set>
       </property>
       <property name="flat">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <item>
@@ -1291,7 +1300,7 @@ QDateEdit:hover
               </property>
               <item>
                <property name="text">
-                <string>تم دفع جزئي</string>
+                <string>تم الدفع جزئيا</string>
                </property>
               </item>
               <item>
@@ -2728,7 +2737,10 @@ border-top:1px solid #FF165A;
        <set>Qt::AlignCenter</set>
       </property>
       <property name="flat">
-       <bool>true</bool>
+       <bool>false</bool>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <property name="spacing">
@@ -3184,17 +3196,17 @@ QLineEdit:hover
              </property>
              <item>
               <property name="text">
-               <string>لم يدفع بعد</string>
+               <string>تم الدفع جزئيا</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>تم الدفع</string>
+               <string>تم الدفع كليا</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>اخرى </string>
+               <string>أخرى </string>
               </property>
              </item>
             </widget>

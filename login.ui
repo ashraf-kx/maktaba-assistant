@@ -79,6 +79,7 @@
        </property>
        <property name="font">
         <font>
+         <family>Arial</family>
          <pointsize>10</pointsize>
          <weight>75</weight>
          <bold>true</bold>
@@ -349,7 +350,16 @@ background-color: #2196F3;
         <font>
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+         <kerning>false</kerning>
         </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton
@@ -399,6 +409,9 @@ color: #ffffff;
        <property name="shortcut">
         <string>Return</string>
        </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -421,6 +434,12 @@ color: #ffffff;
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
         </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton

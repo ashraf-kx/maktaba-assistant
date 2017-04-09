@@ -3,6 +3,7 @@
 #include <QDir>
 #include <QDebug>
 #include <QMessageBox>
+#include <QGraphicsDropShadowEffect>
 
 Login::Login(QWidget *parent) :
     QWidget(parent),
@@ -11,6 +12,19 @@ Login::Login(QWidget *parent) :
     ui->setupUi(this);
 
     loginMode = false;
+
+    QGraphicsDropShadowEffect *sh = new QGraphicsDropShadowEffect();
+    sh->setBlurRadius(8);
+    sh->setOffset(2);
+    sh->setColor(QColor(63, 63, 63, 180));
+    ui->BT_login->setGraphicsEffect(sh);
+
+    QGraphicsDropShadowEffect *sh1 = new QGraphicsDropShadowEffect();
+    sh1->setBlurRadius(8);
+    sh1->setOffset(2);
+    sh1->setColor(QColor(63, 63, 63, 180));
+    ui->BT_cancel->setGraphicsEffect(sh1);
+
 
     this->DBH = QSqlDatabase::addDatabase("QSQLITE","cnxnLogin");
     this->DBH.setDatabaseName(QDir::homePath()+"/AppData/Roaming/bits/"+"BYASS.db");

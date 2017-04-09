@@ -7,6 +7,8 @@ topNav::topNav(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    changeStyleClient();
+
     connect(ui->BT_Clients,SIGNAL(clicked()),this,SLOT(changeStyleClient()));
     connect(ui->BT_Workers,SIGNAL(clicked()),this,SLOT(changeStyleWorker()));
     connect(ui->BT_Books,SIGNAL(clicked()),this,SLOT(changeStyleBooks()));
