@@ -293,108 +293,108 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="907"/>
-        <location filename="tabwidgetclients.ui" line="1106"/>
+        <location filename="tabwidgetclients.ui" line="910"/>
+        <location filename="tabwidgetclients.ui" line="1134"/>
         <source>yyyy-MM-dd</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1198"/>
+        <location filename="tabwidgetclients.ui" line="1254"/>
         <source>السعر</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1235"/>
+        <location filename="tabwidgetclients.ui" line="1294"/>
         <source>تم دفع جزئي</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1240"/>
+        <location filename="tabwidgetclients.ui" line="1299"/>
         <source>تم الدفع كليا</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1245"/>
+        <location filename="tabwidgetclients.ui" line="1304"/>
         <source>أخرى </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1273"/>
+        <location filename="tabwidgetclients.ui" line="1332"/>
         <source>حالة الدفع</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1394"/>
+        <location filename="tabwidgetclients.ui" line="1453"/>
         <source>الدفعة المسبقة =&gt; </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1554"/>
+        <location filename="tabwidgetclients.ui" line="1613"/>
         <source>النوع</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1671"/>
+        <location filename="tabwidgetclients.ui" line="1733"/>
         <source>كتاب</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1676"/>
+        <location filename="tabwidgetclients.ui" line="1738"/>
         <source>مذكرة</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1681"/>
+        <location filename="tabwidgetclients.ui" line="1743"/>
         <source>بحث</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1686"/>
+        <location filename="tabwidgetclients.ui" line="1748"/>
         <source>وثيقة</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1691"/>
+        <location filename="tabwidgetclients.ui" line="1753"/>
         <source>مجلة</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1696"/>
+        <location filename="tabwidgetclients.ui" line="1758"/>
         <source>اخرى</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1733"/>
+        <location filename="tabwidgetclients.ui" line="1795"/>
         <source>لغة المذكــرة / الوثيقة / الكتاب</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1850"/>
+        <location filename="tabwidgetclients.ui" line="1915"/>
         <source>عربية</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1855"/>
+        <location filename="tabwidgetclients.ui" line="1920"/>
         <source>فرنسية</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1860"/>
+        <location filename="tabwidgetclients.ui" line="1925"/>
         <source>إنجليزية</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1865"/>
+        <location filename="tabwidgetclients.ui" line="1930"/>
         <source>لغة أخرى</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1902"/>
+        <location filename="tabwidgetclients.ui" line="1967"/>
         <source>عدد الصفحات </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="3264"/>
+        <location filename="tabwidgetclients.ui" line="3376"/>
         <source>Return, Enter</source>
         <translation type="unfinished"></translation>
     </message>
@@ -404,7 +404,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="986"/>
+        <location filename="tabwidgetclients.ui" line="1011"/>
         <source>تاريخ التسليم </source>
         <translation type="unfinished"></translation>
     </message>
@@ -419,209 +419,214 @@
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:10pt; font-weight:600; font-style:italic;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <oldsource>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:10pt; font-weight:600; font-style:italic;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1308"/>
-        <location filename="tabwidgetclients.ui" line="1429"/>
+        <location filename="tabwidgetclients.ui" line="1367"/>
+        <location filename="tabwidgetclients.ui" line="1488"/>
         <source>دج</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="1512"/>
+        <location filename="tabwidgetclients.ui" line="1571"/>
         <source>المبلغ الاجمالي للدفع =&gt; </source>
         <oldsource>السعر الاجمالي للدفع =&gt; </oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2060"/>
+        <location filename="tabwidgetclients.ui" line="2125"/>
         <source>نوع الخط</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2202"/>
+        <location filename="tabwidgetclients.ui" line="2308"/>
         <source>حجم الخط</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2314"/>
+        <location filename="tabwidgetclients.ui" line="2423"/>
         <source>8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2319"/>
+        <location filename="tabwidgetclients.ui" line="2428"/>
         <source>9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2324"/>
+        <location filename="tabwidgetclients.ui" line="2433"/>
         <source>10</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2329"/>
+        <location filename="tabwidgetclients.ui" line="2438"/>
         <source>11</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2334"/>
+        <location filename="tabwidgetclients.ui" line="2443"/>
         <source>12</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2339"/>
+        <location filename="tabwidgetclients.ui" line="2448"/>
         <source>13</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2344"/>
+        <location filename="tabwidgetclients.ui" line="2453"/>
         <source>14</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2349"/>
+        <location filename="tabwidgetclients.ui" line="2458"/>
         <source>16</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2354"/>
+        <location filename="tabwidgetclients.ui" line="2463"/>
         <source>18</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2359"/>
+        <location filename="tabwidgetclients.ui" line="2468"/>
         <source>20</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2364"/>
+        <location filename="tabwidgetclients.ui" line="2473"/>
         <source>22</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2369"/>
+        <location filename="tabwidgetclients.ui" line="2478"/>
         <source>24</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2374"/>
+        <location filename="tabwidgetclients.ui" line="2483"/>
         <source>26</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2379"/>
+        <location filename="tabwidgetclients.ui" line="2488"/>
         <source>28</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2384"/>
+        <location filename="tabwidgetclients.ui" line="2493"/>
         <source>36</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2389"/>
+        <location filename="tabwidgetclients.ui" line="2498"/>
         <source>48</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2394"/>
+        <location filename="tabwidgetclients.ui" line="2503"/>
         <source>72</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="3071"/>
+        <location filename="tabwidgetclients.ui" line="3183"/>
         <source>لم يدفع بعد</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="3076"/>
+        <location filename="tabwidgetclients.ui" line="3188"/>
         <source>تم الدفع</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="3081"/>
+        <location filename="tabwidgetclients.ui" line="3193"/>
         <source>اخرى </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2481"/>
+        <location filename="tabwidgetclients.ui" line="2590"/>
         <source>إلغــاء</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2543"/>
-        <location filename="tabwidgetclients.ui" line="3251"/>
+        <location filename="tabwidgetclients.ui" line="2652"/>
+        <location filename="tabwidgetclients.ui" line="3363"/>
         <source>حفظ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2556"/>
+        <location filename="tabwidgetclients.ui" line="2665"/>
         <source>Return</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2586"/>
+        <location filename="tabwidgetclients.ui" line="2695"/>
         <source>تحديث معلومات الزبون</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2589"/>
+        <location filename="tabwidgetclients.ui" line="2698"/>
         <source>اكمال ملأ المعلومات الناقصة او تغييرها</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2616"/>
+        <location filename="tabwidgetclients.ui" line="2725"/>
         <source>تعديل معلومات الزبون</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2742"/>
+        <location filename="tabwidgetclients.ui" line="2851"/>
         <source>ادخال اسم الزبون المراد البحث عنه</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2886"/>
+        <location filename="tabwidgetclients.ui" line="2995"/>
         <source>اسم الزبون</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="2946"/>
+        <location filename="tabwidgetclients.ui" line="3055"/>
         <source>رقم هاتف الزبون</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="3009"/>
+        <location filename="tabwidgetclients.ui" line="3118"/>
         <source>البريد الالكتروني</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="3133"/>
+        <location filename="tabwidgetclients.ui" line="3245"/>
         <source>print Ticket</source>
         <translation>طباعة التذكرة</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="3199"/>
+        <location filename="tabwidgetclients.ui" line="3311"/>
         <source>حذف</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.ui" line="3212"/>
+        <location filename="tabwidgetclients.ui" line="3324"/>
         <source>Del</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="60"/>
+        <location filename="tabwidgetclients.cpp" line="61"/>
         <source>Client name</source>
         <translation>إسم الزبون</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="61"/>
+        <location filename="tabwidgetclients.cpp" line="62"/>
         <source>Phone number</source>
         <translation>رقم الهاتف</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="62"/>
+        <location filename="tabwidgetclients.cpp" line="63"/>
         <source>email</source>
         <translation>البريد الالكتروني</translation>
     </message>
@@ -630,68 +635,77 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">البريد الالكتروني 2</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="63"/>
+        <location filename="tabwidgetclients.cpp" line="64"/>
         <source>isDeliveredByMail</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="64"/>
+        <location filename="tabwidgetclients.cpp" line="65"/>
         <source>remarke</source>
         <translation>ملاحظات</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="65"/>
+        <location filename="tabwidgetclients.cpp" line="66"/>
         <source>payement state</source>
         <translation>حالة الدفع</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="66"/>
+        <location filename="tabwidgetclients.cpp" line="67"/>
         <source>price</source>
         <translation>المبلغ الإجمالي للدفع</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="67"/>
+        <location filename="tabwidgetclients.cpp" line="68"/>
         <source>price Paid</source>
         <translation>الدفعة المسبقة</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="69"/>
+        <location filename="tabwidgetclients.cpp" line="70"/>
         <source>N#</source>
         <translation>رقم</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="299"/>
+        <location filename="tabwidgetclients.cpp" line="305"/>
         <source>sure, save this informations ?</source>
         <translation>تريد حفظ هذه المعلومات ؟ </translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="313"/>
+        <location filename="tabwidgetclients.cpp" line="319"/>
         <source>atleast give the clientname and titleDoc</source>
         <translation>على الاقل ادخل إسم الزبون 
 و إسم المذكرة الخاصة به</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="336"/>
+        <location filename="tabwidgetclients.cpp" line="342"/>
         <source>sure, delete this client</source>
         <translation>متأكد تود حذف هذا الزبون</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="366"/>
+        <location filename="tabwidgetclients.cpp" line="372"/>
         <source>select Client you want to delete from the table</source>
         <translation>إختر الزبون المراد حذفه من الجدول</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="405"/>
-        <source>N°= </source>
-        <translation>رقم =° </translation>
+        <location filename="tabwidgetclients.cpp" line="411"/>
+        <source>N : </source>
+        <translation type="unfinished">  :  رقم</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="436"/>
+        <source>N°= </source>
+        <translation type="obsolete">رقم :  </translation>
+    </message>
+    <message>
+        <location filename="tabwidgetclients.cpp" line="452"/>
         <source>library yassine</source>
         <translation>مكتبة ياسين</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="458"/>
+        <location filename="tabwidgetclients.cpp" line="472"/>
+        <source>Error repeat printing ticket</source>
+        <translation>حجث خطأ, اعد محاولة الطباعة</translation>
+    </message>
+    <message>
+        <location filename="tabwidgetclients.cpp" line="478"/>
         <source>select Client you want to print his ticket</source>
         <translation>إختر الزبون المراد طباعة تذكرته</translation>
     </message>
@@ -700,22 +714,22 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">رقم   </translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="406"/>
+        <location filename="tabwidgetclients.cpp" line="412"/>
         <source>Full Name : </source>
         <translation>الاسم :  </translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="409"/>
+        <location filename="tabwidgetclients.cpp" line="415"/>
         <source>Deposite day : </source>
-        <translation>يوم الإيداع : </translation>
+        <translation type="unfinished">  :  يوم الإيداع </translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="410"/>
+        <location filename="tabwidgetclients.cpp" line="416"/>
         <source>Delivery day : </source>
-        <translation>يوم التسليم : </translation>
+        <translation type="unfinished">  :  يوم التسليم</translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="407"/>
+        <location filename="tabwidgetclients.cpp" line="413"/>
         <source>Title : </source>
         <translation>عنوان الوثيقة : </translation>
     </message>
@@ -724,7 +738,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">لغة الوثيقة &quot; </translation>
     </message>
     <message>
-        <location filename="tabwidgetclients.cpp" line="419"/>
+        <location filename="tabwidgetclients.cpp" line="435"/>
         <source>Print Your Ticket</source>
         <translation>طباعة التذكرة </translation>
     </message>
@@ -877,7 +891,7 @@ p, li { white-space: pre-wrap; }
         <translation>رقم</translation>
     </message>
     <message>
-        <location filename="tabwidgetdocuments.cpp" line="111"/>
+        <location filename="tabwidgetdocuments.cpp" line="113"/>
         <source>error typing a value of pages Done</source>
         <translation>خطأ في إدخال عدد الصفحات المنجزة</translation>
     </message>
@@ -1122,52 +1136,52 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="tabwidgetworkers.cpp" line="47"/>
+        <location filename="tabwidgetworkers.cpp" line="46"/>
         <source>Full name</source>
         <translation>إسم الموظف</translation>
     </message>
     <message>
-        <location filename="tabwidgetworkers.cpp" line="48"/>
+        <location filename="tabwidgetworkers.cpp" line="47"/>
         <source>Phone number</source>
         <translation>رقم الهاتف</translation>
     </message>
     <message>
-        <location filename="tabwidgetworkers.cpp" line="49"/>
+        <location filename="tabwidgetworkers.cpp" line="48"/>
         <source>Email</source>
         <translation>البريد الالكتروني</translation>
     </message>
     <message>
-        <location filename="tabwidgetworkers.cpp" line="50"/>
+        <location filename="tabwidgetworkers.cpp" line="49"/>
         <source>Remarke</source>
         <translation>ملاجظات</translation>
     </message>
     <message>
-        <location filename="tabwidgetworkers.cpp" line="51"/>
+        <location filename="tabwidgetworkers.cpp" line="50"/>
         <source>disponibility</source>
         <translation>متاح للعمل</translation>
     </message>
     <message>
-        <location filename="tabwidgetworkers.cpp" line="53"/>
+        <location filename="tabwidgetworkers.cpp" line="52"/>
         <source>N#</source>
         <translation>رقم</translation>
     </message>
     <message>
-        <location filename="tabwidgetworkers.cpp" line="174"/>
+        <location filename="tabwidgetworkers.cpp" line="175"/>
         <source>sure, save this worker</source>
         <translation>تأكيد حفظ هذا الموظف</translation>
     </message>
     <message>
-        <location filename="tabwidgetworkers.cpp" line="187"/>
+        <location filename="tabwidgetworkers.cpp" line="188"/>
         <source>atleast give the workerName</source>
         <translation>على الاقل أدخل إسم الموظف</translation>
     </message>
     <message>
-        <location filename="tabwidgetworkers.cpp" line="217"/>
+        <location filename="tabwidgetworkers.cpp" line="218"/>
         <source>sure, delete this worker</source>
         <translation>متأكد تود حذف هذا الموظف</translation>
     </message>
     <message>
-        <location filename="tabwidgetworkers.cpp" line="253"/>
+        <location filename="tabwidgetworkers.cpp" line="254"/>
         <source>select worker you want to delete from the table</source>
         <translation>إختر من الجدول العامل المراد حذفه</translation>
     </message>
@@ -1193,22 +1207,22 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="topnav.ui" line="101"/>
+        <location filename="topnav.ui" line="113"/>
         <source>مكتبة ياسين</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="topnav.ui" line="197"/>
+        <location filename="topnav.ui" line="212"/>
         <source>الكتب / الوثائق</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="topnav.ui" line="256"/>
+        <location filename="topnav.ui" line="274"/>
         <source>المـوظفين</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="topnav.ui" line="315"/>
+        <location filename="topnav.ui" line="336"/>
         <source>الزبائــن</source>
         <translation type="unfinished"></translation>
     </message>
