@@ -2,6 +2,7 @@
 #include "ui_tabwidgetclients.h"
 #include <QDebug>
 #include <QGraphicsDropShadowEffect>
+#include <QPagedPaintDevice>
 #include <QDir>
 #include "dialog.h"
 #include "toast.h"
@@ -407,7 +408,7 @@ void TabWidgetClients::printTicket()
 
     this->DBH.commit();
 
-    QString Ticket = tr("N°= ")+QString::number(idClient)+"\n"+
+    QString Ticket = tr("N : ")+QString::number(idClient)+"\n"+
             tr("Full Name : ")+CName+"\n"+
             tr("Title : ")+CDocN+"\n"+
             "\n"+
@@ -416,8 +417,19 @@ void TabWidgetClients::printTicket()
             "\n\n";
 
     QPrinter printer;
-    printer.setPageSize(QPrinter::A7);
+    printer.setFullPage(true);
     printer.setPaperSize(QPrinter::A7);
+    printer.setPageSize(QPrinter::A7);
+    printer.setOrientation(QPrinter::Landscape);
+    printer.setOutputFileName(QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch())+"Ticket_"+QString::number(idClient)+".oxps");
+
+
+    QPagedPaintDevice::Margins margs;
+    margs.top = 1.0;
+    margs.left = 2.0;
+    margs.right = 2.0;
+    margs.bottom=1.0;
+    printer.setMargins(margs);
 
         QPrintDialog *dialog = new QPrintDialog(&printer);
 
@@ -425,37 +437,41 @@ void TabWidgetClients::printTicket()
 
         if (dialog->exec() == QDialog::Accepted)
         {
-            QPainter painter;
-            painter.begin(&printer);
+            QPainter *painter = new QPainter();
+            if(painter->begin(&printer))
+            {
+            painter->drawPixmap(12,12,60,60,QPixmap(":Icons/ic_local_library_black_48dp.png"));
+            painter->setPen(Qt::black);
+            painter->setFont(QFont("Arial", 12));
+            painter->drawPixmap(345,210,22,22,QPixmap(":Icons/ic_domain_2x.png"));
+            painter->drawText(-63, 210, 385, 35,  Qt::AlignRight , AdressLocal);
+            painter->drawPixmap(345,235,22,22,QPixmap(":Icons/ic_call_2x.png"));
+            painter->drawText(-63, 235, 385, 35,  Qt::AlignRight , phoneN);
 
-            painter.drawPixmap(12,12,60,60,QPixmap(":Icons/ic_local_library_black_48dp.png"));
-            painter.setPen(Qt::black);
-            painter.setFont(QFont("Arial", 12));
-            painter.drawPixmap(350,230,22,22,QPixmap(":Icons/ic_home_2x.png"));
-            painter.drawText(-60, 230, 390, 35,  Qt::AlignRight , AdressLocal);
-            painter.drawPixmap(350,255,22,22,QPixmap(":Icons/ic_call_2x.png"));
-            painter.drawText(-60, 255, 390, 35,  Qt::AlignRight , phoneN);
+            painter->setPen(Qt::black);
+            painter->setFont(QFont("Arial", 17));
+            painter->drawText(150, 9, 385, 270,  Qt::AlignTop , tr("library yassine"));
 
-            painter.setPen(Qt::black);
-            painter.setFont(QFont("Arial", 17));
-            painter.drawText(150, 9, 390, 270,  Qt::AlignTop , tr("library yassine"));
+            painter->drawLine(80,45,380,45);
+            painter->drawLine(80,46,380,46);
 
-            painter.drawLine(80,45,390,45);
-            painter.drawLine(80,46,390,46);
-
-            painter.drawLine(10,215,390,215);
-            painter.drawLine(10,216,390,216);
+            painter->drawLine(10,200,380,200);
+            painter->drawLine(10,201,380,201);
 
 
-            painter.setPen(Qt::black);
-            painter.setFont(QFont("Arial", 14));
+            painter->setPen(Qt::black);
+            painter->setFont(QFont("Arial", 14));
 
-            painter.drawRoundRect(2,2,397,280);
-            painter.drawRoundRect(3,3,396,279);
+            painter->drawRoundRect(0,0,385,265);
+            painter->drawRoundRect(1,1,384,264);
 
-            painter.drawText(-60, 48, 390, 270, Qt::AlignRight|Qt::AlignTop , Ticket);
+            painter->drawText(-60, 48, 385, 265, Qt::AlignRight|Qt::AlignTop , Ticket);
 
-            painter.end();
+            painter->end();
+            }else{
+                Toast *mToast = new Toast(this);
+                mToast->setMessage(tr("Error repeat printing ticket"));
+            }
 
         }
     }else{
