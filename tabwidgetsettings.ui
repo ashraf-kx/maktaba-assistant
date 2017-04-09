@@ -867,10 +867,10 @@ QLineEdit:hover
             <string/>
            </property>
            <property name="maxLength">
-            <number>30</number>
+            <number>10</number>
            </property>
            <property name="echoMode">
-            <enum>QLineEdit::Password</enum>
+            <enum>QLineEdit::Normal</enum>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -911,7 +911,7 @@ background-color: #2196F3;
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="Icons.qrc">:/Icons/ic_vpn_key_white_2x.png</pixmap>
+            <pixmap resource="Icons.qrc">:/Icons/ic_phone_android_white_2x.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -1173,10 +1173,10 @@ QLineEdit:hover
             <string/>
            </property>
            <property name="maxLength">
-            <number>30</number>
+            <number>100</number>
            </property>
            <property name="echoMode">
-            <enum>QLineEdit::Password</enum>
+            <enum>QLineEdit::Normal</enum>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -1217,7 +1217,7 @@ background-color: #2196F3;
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="Icons.qrc">:/Icons/ic_vpn_key_white_2x.png</pixmap>
+            <pixmap resource="Icons.qrc">:/Icons/ic_domain_white_2x.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>

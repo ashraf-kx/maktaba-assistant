@@ -470,6 +470,10 @@ QLineEdit:hover
            <property name="font">
             <font>
              <family>Arial</family>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+             <kerning>false</kerning>
             </font>
            </property>
            <property name="layoutDirection">
