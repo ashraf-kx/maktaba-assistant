@@ -112,6 +112,9 @@ QLineEdit:hover
    border-right:0px solid #FFFFFF;
 }</string>
        </property>
+       <property name="text">
+        <string>admin</string>
+       </property>
        <property name="maxLength">
         <number>30</number>
        </property>
@@ -252,6 +255,9 @@ QLineEdit:hover
    border-right:0px solid #FFFFFF;
 }</string>
        </property>
+       <property name="text">
+        <string>admin</string>
+       </property>
        <property name="maxLength">
         <number>30</number>
        </property>
@@ -343,9 +349,6 @@ background-color: #2196F3;
         <font>
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <kerning>false</kerning>
         </font>
        </property>
        <property name="styleSheet">
@@ -417,9 +420,6 @@ color: #ffffff;
         <font>
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <kerning>false</kerning>
         </font>
        </property>
        <property name="styleSheet">

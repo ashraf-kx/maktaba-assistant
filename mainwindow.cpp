@@ -90,6 +90,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    delete mTabWidgetSettings;
     delete ui;
 }
 

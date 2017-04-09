@@ -8,7 +8,7 @@ TabWidgetSettings::TabWidgetSettings(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    this->DBH = QSqlDatabase::addDatabase("QSQLITE","cnxnKEYS");
+    this->DBH = QSqlDatabase::addDatabase("QSQLITE","cnxnKEYS"+QString::number(QDateTime::currentMSecsSinceEpoch()));
     this->DBH.setDatabaseName(QDir::homePath()+"/AppData/Roaming/bits/"+"BYASS.db");
     this->DBH.setPassword("bitProjects");
     this->DBH.setUserName("neverAsk@4Pass");
@@ -44,10 +44,10 @@ void TabWidgetSettings::updateAdminName()
             query = new QSqlQuery(this->DBH);
             query->prepare("UPDATE admin SET username='"+crypto.encryptToString(ui->LE_nameAdmin->text())+"' WHERE app_name='yassin' ");
             query->exec();
-            query->finish();
+
 
             this->DBH.commit();
-            this->DBH.close();
+
             ui->LE_nameAdmin->clear();
             mToast = new Toast(this);
             mToast->setMessage(tr("update username DONE"));
@@ -77,10 +77,10 @@ void TabWidgetSettings::updatePassword()
 
                 query->prepare("UPDATE admin SET password='"+crypto.encryptToString(ui->LE_newPass->text())+"' WHERE app_name='yassin' ");
                 query->exec();
-                query->finish();
+
 
                 this->DBH.commit();
-                this->DBH.close();
+
 
                 ui->LE_newPass->clear();
                 ui->LE_repNewPass->clear();
@@ -116,10 +116,9 @@ void TabWidgetSettings::updateAdminAddress()
             query = new QSqlQuery(this->DBH);
             query->prepare("UPDATE admin SET localAdress='"+ui->LE_addressAdmin->text()+"' WHERE app_name='yassin' ");
             query->exec();
-            query->finish();
 
             this->DBH.commit();
-            this->DBH.close();
+
             ui->LE_addressAdmin->clear();
             mToast = new Toast(this);
             mToast->setMessage(tr("update Address DONE"));
@@ -145,10 +144,11 @@ void TabWidgetSettings::updateAdminPhone()
             query = new QSqlQuery(this->DBH);
             query->prepare("UPDATE admin SET phoneNumber='"+ui->LE_phoneAdmin->text()+"' WHERE app_name='yassin' ");
             query->exec();
-            query->finish();
+
+
 
             this->DBH.commit();
-            this->DBH.close();
+
             ui->LE_phoneAdmin->clear();
             mToast = new Toast(this);
             mToast->setMessage(tr("update phone number DONE"));
@@ -164,5 +164,6 @@ void TabWidgetSettings::updateAdminPhone()
 
 TabWidgetSettings::~TabWidgetSettings()
 {
+    this->DBH.~QSqlDatabase();
     delete ui;
 }
