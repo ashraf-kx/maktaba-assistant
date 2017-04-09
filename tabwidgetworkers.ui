@@ -1383,7 +1383,7 @@ QTableView:hover
 }</string>
            </property>
            <property name="locale">
-            <locale language="Arabic" country="SaudiArabia"/>
+            <locale language="English" country="UnitedStates"/>
            </property>
           </widget>
          </item>

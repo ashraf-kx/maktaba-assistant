@@ -44,8 +44,7 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
 
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->tableView->resizeColumnToContents(3);
-    ui->tableView->resizeColumnToContents(5);
+
     ui->tableView->setSortingEnabled(true);
     ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
 
@@ -57,6 +56,9 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     proxyModelDocs->setFilterKeyColumn(1);
 
     ui->tableView->setModel(proxyModelDocs);
+    ui->tableView->horizontalHeader()->stretchLastSection();
+    ui->tableView->verticalHeader()->stretchLastSection();
+    ui->tableView->resizeColumnsToContents();
     ui->tableView->show();
 
     ui->tableView->setColumnHidden(1,true);

@@ -249,8 +249,8 @@ border:0px solid white;</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>682</width>
-         <height>418</height>
+         <width>681</width>
+         <height>416</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -513,7 +513,7 @@ QTableView:hover
 }</string>
            </property>
            <property name="locale">
-            <locale language="Arabic" country="SaudiArabia"/>
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="frameShadow">
             <enum>QFrame::Sunken</enum>
@@ -580,7 +580,7 @@ QTableView:hover
               </font>
              </property>
              <property name="currentSection">
-              <enum>QDateTimeEdit::DaySection</enum>
+              <enum>QDateTimeEdit::YearSection</enum>
              </property>
              <property name="displayFormat">
               <string>yyyy-MM-dd</string>
@@ -843,8 +843,8 @@ border:0px solid white;</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>682</width>
-         <height>485</height>
+         <width>681</width>
+         <height>483</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">

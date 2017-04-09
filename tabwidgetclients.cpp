@@ -78,7 +78,7 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
 
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->tableView->resizeColumnsToContents();
+
     ui->tableView->setSortingEnabled(true);
     ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
 
@@ -91,6 +91,11 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
 
 
     ui->tableView->setModel(proxyModelClient);
+
+    ui->tableView->horizontalHeader()->stretchLastSection();
+    ui->tableView->verticalHeader()->stretchLastSection();
+    ui->tableView->resizeColumnsToContents();
+
     ui->tableView->show();
 
     ui->DE_deposite->setDate(QDate::currentDate());

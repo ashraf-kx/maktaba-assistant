@@ -1280,6 +1280,9 @@ QDateEdit:hover
                 <bold>true</bold>
                </font>
               </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
               </property>
@@ -2905,7 +2908,7 @@ QTableView:hover
 }</string>
            </property>
            <property name="locale">
-            <locale language="Arabic" country="SaudiArabia"/>
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="frameShadow">
             <enum>QFrame::Sunken</enum>
@@ -3165,6 +3168,9 @@ QLineEdit:hover
                <weight>75</weight>
                <bold>true</bold>
               </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="layoutDirection">
               <enum>Qt::LeftToRight</enum>
