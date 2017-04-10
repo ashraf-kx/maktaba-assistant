@@ -68,6 +68,8 @@ public slots:
     void updateMinDeliveryDay(const QDate &date);
     void updateClient();
 
+    void restPrice();
+    void restPricex();
 signals:
     void dataClientsChanged();
 

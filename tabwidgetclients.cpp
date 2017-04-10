@@ -132,6 +132,12 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
 
     connect(ui->DE_deposite,SIGNAL(dateChanged(const QDate &)),
             this,SLOT(updateMinDeliveryDay(const QDate &)));
+
+    connect(ui->SB_priceAdv,SIGNAL(valueChanged(int)),this,SLOT(restPrice()));
+    connect(ui->SB_price,SIGNAL(valueChanged(int)),this,SLOT(restPrice()));
+
+    connect(ui->SB_priceAdvx,SIGNAL(valueChanged(int)),this,SLOT(restPricex()));
+    connect(ui->SB_pricex,SIGNAL(valueChanged(int)),this,SLOT(restPricex()));
 }
 
 void TabWidgetClients::updateClient()
@@ -139,6 +145,34 @@ void TabWidgetClients::updateClient()
     proxyModelClient->submit();
     clearFormUpdate();
     emit dataClientsChanged();
+}
+
+void TabWidgetClients::restPrice()
+{
+    if(ui->SB_priceAdv->value() <= ui->SB_price->value())
+    {
+        ui->Lb_displayRestDZ->setText(tr("DZD")+"  "+
+                                      QString::number(ui->SB_price->value()-ui->SB_priceAdv->value()));
+        if(ui->SB_price->value()-ui->SB_priceAdv->value() == 0)
+            ui->CB_payementState->setCurrentIndex(1);
+        else
+            ui->CB_payementState->setCurrentIndex(0);
+    }
+    else ui->Lb_displayRestDZ->setText(tr("DZD")+"  *  ");
+}
+
+void TabWidgetClients::restPricex()
+{
+    if(ui->SB_priceAdvx->value() <= ui->SB_pricex->value())
+    {
+        ui->Lb_priceRestDZx->setText(tr("DZD")+"  "+
+                                      QString::number(ui->SB_pricex->value()-ui->SB_priceAdvx->value()));
+        if(ui->SB_pricex->value()-ui->SB_priceAdvx->value() == 0)
+            ui->CB_paymentStatsx->setCurrentIndex(1);
+        else
+            ui->CB_paymentStatsx->setCurrentIndex(0);
+    }
+    else ui->Lb_priceRestDZx->setText(tr("DZD")+"  *  ");
 }
 
 TabWidgetClients::~TabWidgetClients()
@@ -331,6 +365,7 @@ void TabWidgetClients::startMapper(){
     mapper->addMapping(ui->LE_primeryEmlx, modelClient->fieldIndex("firstEmail"));
     mapper->addMapping(ui->CB_paymentStatsx, modelClient->fieldIndex("payement_state"));
     mapper->addMapping(ui->SB_pricex, modelClient->fieldIndex("price"));
+    mapper->addMapping(ui->SB_priceAdvx, modelClient->fieldIndex("pricePaid"));
 }
 
 void TabWidgetClients::deleteClient()
