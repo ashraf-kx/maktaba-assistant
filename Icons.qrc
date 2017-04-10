@@ -56,5 +56,7 @@
         <file>Icons/ic_format_size_white_18pt_3x.png</file>
         <file>Icons/ic_domain_2x.png</file>
         <file>Icons/ic_domain_white_2x.png</file>
+        <file>Icons/ic_attach_money_white_2x.png</file>
+        <file>Icons/ic_payment_white_2x.png</file>
     </qresource>
 </RCC>
