@@ -92,6 +92,8 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
     connect(ui->BT_delete,SIGNAL(clicked()),this,SLOT(deleteWorker()));
 
     connect(ui->BT_updateWorker,SIGNAL(clicked()),this,SLOT(updateWorker()));
+    connect(ui->CB_disponibility,SIGNAL(currentIndexChanged(int)),
+            this,SLOT(changeIconDisponibility()));
 }
 
 void TabWidgetWorkers::updateWorker()
@@ -113,6 +115,21 @@ TabWidgetWorkers::workerData TabWidgetWorkers::getDatafromForm()
     return mWorkerData;
 }
 
+void TabWidgetWorkers::changeIconDisponibility()
+{
+    if(ui->CB_disponibility->currentIndex() == 0)
+    {
+        ui->LB_AvIcon->setStyleSheet("QLabel{background-color: #2196F3;}");
+        ui->LB_AvIcon->setPixmap(QPixmap("://Icons/ic_done_white_24dp.png"));
+    }
+    else
+    {
+        ui->LB_AvIcon->setPixmap(QPixmap("://Icons/ic_clear_white_2x.png"));
+        ui->LB_AvIcon->setStyleSheet("QLabel{background-color: #9aa1a6;}");
+    }
+
+}
+
 bool TabWidgetWorkers::addWorker(TabWidgetWorkers::workerData mWorkerData)
 {
     this->DBH.open();
@@ -129,7 +146,7 @@ bool TabWidgetWorkers::addWorker(TabWidgetWorkers::workerData mWorkerData)
     query->bindValue(":phoneNumber",mWorkerData.phoneNumber);
     query->bindValue(":email", mWorkerData.email);
     query->bindValue(":remarke", mWorkerData.remarke);
-    query->bindValue(":isDisponible", "yes");
+    query->bindValue(":isDisponible", tr("worker disponible"));
     query->bindValue(":date_created",mWorkerData.date_created);
     query->bindValue(":date_modified",mWorkerData.date_modified);
 
@@ -199,6 +216,7 @@ void TabWidgetWorkers::startMapper(){
     mapper->addMapping(ui->LE_phonex, modelWorker->fieldIndex("phoneNumber"));
     mapper->addMapping(ui->LE_primeryEmlx, modelWorker->fieldIndex("email"));
     mapper->addMapping(ui->TE_remarkex, modelWorker->fieldIndex("remarke"));
+    mapper->addMapping(ui->CB_disponibility, modelWorker->fieldIndex("isDisponible"));
 }
 
 void TabWidgetWorkers::clearFormUpdate()

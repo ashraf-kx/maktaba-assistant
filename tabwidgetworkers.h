@@ -49,6 +49,7 @@ public slots:
     void deleteWorker();
     void updateWorker();
 
+    void changeIconDisponibility();
 signals:
     void dataWorkersChanged();
 

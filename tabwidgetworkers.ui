@@ -43,7 +43,7 @@ border:0px solid white;
    <enum>QTabWidget::Rounded</enum>
   </property>
   <property name="currentIndex">
-   <number>0</number>
+   <number>1</number>
   </property>
   <property name="iconSize">
    <size>
@@ -595,35 +595,9 @@ background-color: #2196F3;
           </spacer>
          </item>
          <item>
-          <widget class="QTextEdit" name="TE_remarke">
-           <property name="minimumSize">
-            <size>
-             <width>285</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>535</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <italic>true</italic>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="cursor" stdset="0">
-            <cursorShape>IBeamCursor</cursorShape>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
+          <widget class="QPlainTextEdit" name="TE_remarke">
            <property name="styleSheet">
-            <string notr="true">QTextEdit
+            <string notr="true">QPlainTextEdit
 {
 
   height:20px;
@@ -633,7 +607,7 @@ background-color: #2196F3;
     border: 1px solid #2196F3;
     vertical-align: middle;
 }
-QTextEdit:hover
+QPlainTextEdit:hover
 {
 	color: #000000;
    border-top:1px solid #FFFFFF;	
@@ -865,145 +839,81 @@ color: rgb(0, 163, 239);
       <property name="checkable">
        <bool>false</bool>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
-       <property name="spacing">
-        <number>10</number>
-       </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
-        <widget class="QWidget" name="widgetSearch" native="true">
-         <property name="styleSheet">
-          <string notr="true">QWidget
-{
-	background-color:#D32F2F;
-}</string>
+        <layout class="QVBoxLayout" name="verticalLayout_6">
+         <property name="spacing">
+          <number>10</number>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_8">
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <property name="leftMargin">
-           <number>15</number>
-          </property>
-          <property name="topMargin">
-           <number>10</number>
-          </property>
-          <property name="rightMargin">
-           <number>15</number>
-          </property>
-          <property name="bottomMargin">
-           <number>10</number>
-          </property>
-          <item>
-           <widget class="QLineEdit" name="LE_fullnameFiltre">
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLineEdit
-{
- margin-bottom: 2px;   
-    padding: 7px 8px;
-        padding-top: 7px;
-        padding-bottom: 7px;
-    outline: medium none;
-        outline-width: medium;
-        outline-style: none;
-        outline-color: -moz-use-text-color;
-
-    background-color: #C62828;
-color:white;
-    border: 1px solid #C62828;
-      
-    border-radius: 3px;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-        border-bottom-left-radius: 3px;
-    vertical-align: middle;
-}
-QLineEdit:hover
-{
-	 border: 1px solid #C62828;
-	 border-top-color: #C62828;
-     border-bottom-color: #C62828;  
-
-}</string>
-            </property>
-            <property name="maxLength">
-             <number>40</number>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="placeholderText">
-             <string>ادخال اسم الموظف المراد البحث عنه</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_27">
-            <property name="maximumSize">
-             <size>
-              <width>35</width>
-              <height>35</height>
-             </size>
-            </property>
-            <property name="baseSize">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="Icons.qrc">:/Icons/ic_search_white_2x.png</pixmap>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_9">
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_5">
+          <widget class="QSpinBox" name="SB_idWorkerx">
+           <property name="maximumSize">
+            <size>
+             <width>250</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="maximum">
+            <number>9999999</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_8">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>18</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_22">
            <property name="spacing">
-            <number>7</number>
-           </property>
-           <property name="leftMargin">
-            <number>4</number>
-           </property>
-           <property name="rightMargin">
-            <number>7</number>
+            <number>0</number>
            </property>
            <item>
-            <widget class="QSpinBox" name="SB_idWorkerx">
-             <property name="maximumSize">
+            <widget class="QLabel" name="label_16">
+             <property name="minimumSize">
               <size>
-               <width>250</width>
-               <height>16777215</height>
+               <width>30</width>
+               <height>30</height>
               </size>
              </property>
-             <property name="maximum">
-              <number>9999999</number>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <strikeout>false</strikeout>
+              </font>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel{
+background-color: #2196F3;
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="Icons.qrc">:/Icons/ic_perm_identity_white_2x.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="indent">
+              <number>0</number>
              </property>
             </widget>
            </item>
@@ -1061,6 +971,54 @@ QLineEdit:hover
              </property>
              <property name="placeholderText">
               <string>اسم الموظف</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_24">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_18">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <strikeout>false</strikeout>
+              </font>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel{
+background-color: #2196F3;
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="Icons.qrc">:/Icons/ic_phone_android_white_2x.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="indent">
+              <number>0</number>
              </property>
             </widget>
            </item>
@@ -1124,6 +1082,54 @@ QLineEdit:hover
              </property>
             </widget>
            </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_25">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_19">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <strikeout>false</strikeout>
+              </font>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel{
+background-color: #2196F3;
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="Icons.qrc">:/Icons/ic_mail_white_2x.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="indent">
+              <number>0</number>
+             </property>
+            </widget>
+           </item>
            <item>
             <widget class="QLineEdit" name="LE_primeryEmlx">
              <property name="minimumSize">
@@ -1184,8 +1190,77 @@ QLineEdit:hover
              </property>
             </widget>
            </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_25">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel
+{
+
+	color: rgb(0, 163, 239);
+}</string>
+           </property>
+           <property name="text">
+            <string>حالة الموظف</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="0,0">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
            <item>
-            <widget class="QTextEdit" name="TE_remarkex">
+            <widget class="QLabel" name="LB_AvIcon">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel{
+background-color: #2196F3;
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="Icons.qrc">:/Icons/ic_done_white_24dp.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="CB_disponibility">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
                <width>250</width>
@@ -1200,49 +1275,140 @@ QLineEdit:hover
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">QTextEdit
+              <string notr="true">QComboBox
+{
+	color: rgb(68, 68, 68);
+    background-color: #FFF;
+    border: 1px solid #2196F3;   
+	border-right:0px solid #FFFFFF;
+    vertical-align: middle;
+}
+QComboBox:hover
+{
+   color: #000000;
+   border-top:1px solid #FFFFFF;	
+   border-left:1px solid #FFFFFF;	
+   border-right:1px solid #FFFFFF;	
+   border-bottom:2px solid #2196F3;  
+   border-right:0px solid #FFFFFF;
+}</string>
+             </property>
+             <item>
+              <property name="text">
+               <string>متاح للعمل</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>غير متاح للعمل</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_9">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_24">
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel
+{
+
+	color: rgb(0, 163, 239);
+}</string>
+           </property>
+           <property name="text">
+            <string>ملاحظات </string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <item>
+            <widget class="QPlainTextEdit" name="TE_remarkex">
+             <property name="maximumSize">
+              <size>
+               <width>280</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+               <weight>75</weight>
+               <italic>true</italic>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPlainTextEdit
 {
 
   height:20px;
 	color: rgb(68, 68, 68);
 
     background-color: #FFF;
-    border: 1px solid #2196F3;   
+    border: 1px solid #2196F3;
     vertical-align: middle;
 }
-QTextEdit:hover
+QPlainTextEdit:hover
 {
 	color: #000000;
    border-top:1px solid #FFFFFF;	
    border-left:1px solid #FFFFFF;	
    border-right:1px solid #FFFFFF;	
-   border-bottom:2px solid #2196F3;  
-   border-right:2px solid #2196F3; 
+   border-bottom:2px solid #2196F3;
+   border-right:2px solid #2196F3;
    border-left:2px solid #2196F3;
 
-}</string>
+}
+</string>
              </property>
             </widget>
            </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>18</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_3">
-             <item>
-              <widget class="QPushButton" name="BT_updateWorker">
-               <property name="styleSheet">
-                <string notr="true">QPushButton
+            <widget class="QPushButton" name="BT_updateWorker">
+             <property name="styleSheet">
+              <string notr="true">QPushButton
 {
  position: relative;
     padding: 7px 12px;
@@ -1272,29 +1438,29 @@ color: #ffffff;
 
 }
 </string>
-               </property>
-               <property name="text">
-                <string>حفظ</string>
-               </property>
-               <property name="icon">
-                <iconset resource="Icons.qrc">
-                 <normaloff>:/Icons/ic_save_white_2x.png</normaloff>:/Icons/ic_save_white_2x.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>25</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="shortcut">
-                <string>Return, Enter</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="BT_delete">
-               <property name="styleSheet">
-                <string notr="true">QPushButton
+             </property>
+             <property name="text">
+              <string>حفظ</string>
+             </property>
+             <property name="icon">
+              <iconset resource="Icons.qrc">
+               <normaloff>:/Icons/ic_save_white_2x.png</normaloff>:/Icons/ic_save_white_2x.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>25</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="shortcut">
+              <string>Return, Enter</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="BT_delete">
+             <property name="styleSheet">
+              <string notr="true">QPushButton
 {
  position: relative;
     padding: 7px 12px;
@@ -1323,34 +1489,148 @@ color: #ffffff;
 
 }
 </string>
-               </property>
-               <property name="text">
-                <string>حذف</string>
-               </property>
-               <property name="icon">
-                <iconset resource="Icons.qrc">
-                 <normaloff>:/Icons/ic_delete_forever_white_2x.png</normaloff>:/Icons/ic_delete_forever_white_2x.png</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>25</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="shortcut">
-                <string>Del</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
+             </property>
+             <property name="text">
+              <string>حذف</string>
+             </property>
+             <property name="icon">
+              <iconset resource="Icons.qrc">
+               <normaloff>:/Icons/ic_delete_forever_white_2x.png</normaloff>:/Icons/ic_delete_forever_white_2x.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>25</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="shortcut">
+              <string>Del</string>
+             </property>
+            </widget>
            </item>
           </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QWidget" name="widgetSearch" native="true">
+           <property name="styleSheet">
+            <string notr="true">QWidget
+{
+	background-color:#D32F2F;
+}</string>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>15</number>
+            </property>
+            <property name="topMargin">
+             <number>10</number>
+            </property>
+            <property name="rightMargin">
+             <number>15</number>
+            </property>
+            <property name="bottomMargin">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QLineEdit" name="LE_fullnameFiltre">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLineEdit
+{
+ margin-bottom: 2px;   
+    padding: 7px 8px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+    outline: medium none;
+        outline-width: medium;
+        outline-style: none;
+        outline-color: -moz-use-text-color;
+
+    background-color: #C62828;
+color:white;
+    border: 1px solid #C62828;
+      
+    border-radius: 3px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+    vertical-align: middle;
+}
+QLineEdit:hover
+{
+	 border: 1px solid #C62828;
+	 border-top-color: #C62828;
+     border-bottom-color: #C62828;  
+
+}</string>
+              </property>
+              <property name="maxLength">
+               <number>40</number>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="placeholderText">
+               <string>ادخال اسم الموظف المراد البحث عنه</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_27">
+              <property name="maximumSize">
+               <size>
+                <width>35</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap resource="Icons.qrc">:/Icons/ic_search_white_2x.png</pixmap>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </item>
          <item>
           <widget class="QTableView" name="tableViewWorkers">
            <property name="minimumSize">
             <size>
-             <width>700</width>
+             <width>0</width>
              <height>0</height>
             </size>
            </property>
@@ -1366,38 +1646,11 @@ color: #ffffff;
            <property name="styleSheet">
             <string notr="true">QTableView
 {
- margin-bottom: 2px;   
-    padding: 7px 8px;
-        padding-top: 7px;
-        padding-bottom: 7px;
-    outline: medium none;
-        outline-width: medium;
-        outline-style: none;
-        outline-color: -moz-use-text-color;
-    color: #333;
-    background-color: #FFF;
-    background-repeat: no-repeat;
-    background-position: right center;
-    border: 1px solid #c5c5c5;
-        border-top-width: 1px;
-        border-bottom-width: 1px;
-        border-top-style: solid;
-        border-bottom-style: solid;
-        border-top-color: #c5c5c5;
-        border-bottom-color: #c5c5c5;      
-    border-radius: 3px;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-        border-bottom-left-radius: 3px;
-    vertical-align: middle;
+	border:0px solid white;
 }
 QTableView:hover
 {
-	 border: 1px solid #00bbff;
-	 border-top-color: #00bbff;
-        border-bottom-color: #00bbff;  
-
+	border:1px solid #2196F3;
 }</string>
            </property>
            <property name="locale">
