@@ -53,6 +53,8 @@ public slots:
     void globaleUpdate();
     void updateDoc();
 
+    void calculatePagesRest();
+    void displayNbrDoc(int val);
 private:
     Ui::TabWidgetDocuments *ui;
     QSqlDatabase DBH;

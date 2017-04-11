@@ -2,12 +2,14 @@
 #include "ui_tabwidgetdocuments.h"
 #include <QGraphicsDropShadowEffect>
 #include <QDir>
+#include <QCalendarWidget>
 
 TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     QTabWidget(parent),
     ui(new Ui::TabWidgetDocuments)
 {
     ui->setupUi(this);
+
     this->DBH = QSqlDatabase::addDatabase("QSQLITE","cnxnDocs");
     this->DBH.setDatabaseName(QDir::homePath()+"/AppData/Roaming/bits/"+"BYASS.db");
     this->DBH.setPassword("bitProjects");
@@ -71,6 +73,8 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     ui->tableView->setColumnHidden(15,true);
     ui->tableView->setColumnHidden(16,true);
     ui->tableView->setColumnHidden(17,true);
+    ui->tableView->setColumnHidden(18,true);
+    ui->tableView->setColumnHidden(19,true);
 
     startMapper();
 
@@ -83,6 +87,9 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     shX->setBlurRadius(8);
     shX->setOffset(2);
     shX->setColor(QColor(63, 63, 63, 180));
+
+    mapper->setSubmitPolicy(mapper->ManualSubmit);
+
 
     updateLists();
     currentActiveStats();
@@ -100,17 +107,42 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
 
     connect(ui->BT_updateDoc,SIGNAL(pressed()),this,SLOT(updateDoc()));
     connect(ui->BT_updateDoc,SIGNAL(released()),this,SLOT(globaleUpdate()));
+
+    connect(ui->SB_pagesDonex,SIGNAL(valueChanged(int)),this,SLOT(calculatePagesRest()));
+    connect(ui->SB_totalPagesx,SIGNAL(valueChanged(int)),this,SLOT(calculatePagesRest()));
+    connect(ui->SB_idDocx,SIGNAL(valueChanged(int)),this,SLOT(displayNbrDoc(int)));
 }
 
 void TabWidgetDocuments::updateDoc()
 {
-    if(ui->SB_pagesDonex->value() <=ui->SB_totalPagesx->value())
+    if(ui->SB_pagesDonex->value() <= ui->SB_totalPagesx->value())
     {
-        proxyModelDocs->submit();
-        clearFormUpdate();
+    this->DBH.open();
+    this->DBH.transaction();
+
+    //! [1] Save data into workers table.
+    QSqlQuery *query = new QSqlQuery(this->DBH);
+
+    query->prepare("UPDATE documents SET "
+                  "pagesDone= :pagesDone, pagesHand= :pagesHand, pagesWord= :pagesWord,"
+                  "isPrinted= :isPrinted, deliveryDay= :deliveryDay WHERE "
+                  "id=:id");
+
+    query->bindValue(":id", ui->SB_idDocx->value());
+    query->bindValue(":pagesDone", ui->SB_pagesDonex->value());
+    query->bindValue(":pagesHand", ui->SB_pagesHandx->value());
+    query->bindValue(":pagesWord", ui->SB_pagesWordx->value());
+    query->bindValue(":isPrinted", ui->CB_isPrintedx->currentText());
+    query->bindValue(":deliveryDay", ui->DE_deliveryDayx->date().toString("yyyy-MM-dd"));
+
+    query->exec();
+
+    this->DBH.commit();
+    modelDocs->select();
+    clearFormUpdate();
     }else{
         Toast *mToast = new Toast(this);
-        mToast->setMessage(tr("error typing a value of pages Done"));
+        mToast->setMessage(tr("error value pages done more then total pages "));
     }
 }
 
@@ -119,6 +151,8 @@ void TabWidgetDocuments::clearFormUpdate()
     ui->SB_idDocx->setValue(0);
     ui->SB_pagesDonex->setValue(0);
     ui->SB_totalPagesx->setValue(0);
+    ui->SB_pagesHandx->setValue(0);
+    ui->SB_pagesWordx->setValue(0);
     ui->DE_deliveryDayx->setDate(QDate::currentDate());
 }
 
@@ -172,8 +206,10 @@ QList<TabWidgetDocuments::Employer> TabWidgetDocuments::getListWorkers()
 
     //! [1] Save data into workers table.
     QSqlQuery *query = new QSqlQuery(this->DBH);
-    query->prepare("SELECT id,fullName FROM workers WHERE isDisponible='yes' ");
+    query->prepare("SELECT id,fullName FROM workers WHERE isDisponible= :isDisponible ");
+    query->bindValue(":isDisponible",tr("worker disponible"));
     query->exec();
+
     while (query->next()) {
             temp.id =  query->value(0).toInt();
             temp.fullName = query->value(1).toString();
@@ -326,17 +362,43 @@ void TabWidgetDocuments::displayArchivedDocs()
 
 void TabWidgetDocuments::startMapper()
 {
-    ui->DE_deliveryDayx->date().toString("yyyy-MM-dd");
     mapper->setModel(proxyModelDocs);
 
     mapper->addMapping(ui->SB_idDocx,modelDocs->fieldIndex("id"));
+
     mapper->addMapping(ui->DE_deliveryDayx, modelDocs->fieldIndex("deliveryDay"));
+    ui->DE_deliveryDayx->setMinimumDate(QDate::currentDate());
+    ui->DE_deliveryDayx->calendarWidget()->setFirstDayOfWeek(Qt::Saturday);
+    ui->DE_deliveryDayx->calendarWidget()->setGridVisible(true);
+    ui->DE_deliveryDayx->calendarWidget()->setHorizontalHeaderFormat(QCalendarWidget::SingleLetterDayNames);
+    ui->DE_deliveryDayx->calendarWidget()->setVerticalHeaderFormat(QCalendarWidget::NoVerticalHeader);
+    ui->DE_deliveryDayx->calendarWidget()->setLocale(QLocale(QLocale::Arabic,QLocale::Algeria));
+
+
     mapper->addMapping(ui->SB_pagesDonex, modelDocs->fieldIndex("pagesDone"));
     mapper->addMapping(ui->SB_totalPagesx,modelDocs->fieldIndex("totalPages"));
-    ui->SB_totalPagesx->setVisible(false);
     mapper->addMapping(ui->CB_isPrintedx, modelDocs->fieldIndex("isPrinted"));
+    mapper->addMapping(ui->SB_pagesHandx, modelDocs->fieldIndex("pagesHand"));
+    mapper->addMapping(ui->SB_pagesWordx, modelDocs->fieldIndex("pagesWord"));
 }
 
+void TabWidgetDocuments::calculatePagesRest()
+{
+    if(ui->SB_pagesDonex->value() <= ui->SB_totalPagesx->value())
+    {
+        ui->Lb_pagesRestx->setText(QString::number(ui->SB_totalPagesx->value()-ui->SB_pagesDonex->value()));
+    }
+    else
+    {
+        ui->Lb_pagesRestx->setText("*");
+    }
+}
+
+void TabWidgetDocuments::displayNbrDoc(int val)
+{
+    if(val == 0) ui->LB_idDocx->setText("*");
+    else ui->LB_idDocx->setText(QString::number(val));
+}
 
 TabWidgetDocuments::~TabWidgetDocuments()
 {
