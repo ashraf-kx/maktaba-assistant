@@ -16,7 +16,7 @@ DB::DB(QObject *parent) :
                            "phoneNumber VARCHAR(10),"
                            "email varchar(100),"
                            "remarke VARCHAR(250),"
-                           "isDisponible VARCHAR(3),"
+                           "isDisponible VARCHAR(15),"
                            "currentDocID INTEGER,"
                            "date_created TIMESTAMP,"
                            "date_modified TIMESTAMP)";
@@ -37,6 +37,8 @@ DB::DB(QObject *parent) :
                            "deliveryDay DATE,"
                            "dateStarted DATE,"
                            "dateFinished DATE,"
+                           "pagesHand INTEGER,"
+                           "pagesWord INTEGER,"
                            "date_created TIMESTAMP,"
                            "date_modified TIMESTAMP)";
 
