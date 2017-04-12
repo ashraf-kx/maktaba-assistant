@@ -117,6 +117,7 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
     ui->Bt_printTicket->setGraphicsEffect(sh5);
 
     initCalendar();
+    mapper->setSubmitPolicy(mapper->ManualSubmit);
 
     // Actions.
     connect(ui->BT_save,SIGNAL(clicked()),this,SLOT(saveDemande2DB()));
@@ -138,13 +139,53 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
 
     connect(ui->SB_priceAdvx,SIGNAL(valueChanged(int)),this,SLOT(restPricex()));
     connect(ui->SB_pricex,SIGNAL(valueChanged(int)),this,SLOT(restPricex()));
+
+    connect(ui->SB_idClientx,SIGNAL(valueChanged(QString)),
+            ui->LB_displayIdCx,SLOT(setText(QString)));
 }
 
 void TabWidgetClients::updateClient()
 {
-    proxyModelClient->submit();
-    clearFormUpdate();
-    emit dataClientsChanged();
+    int idClient = ui->SB_idClientx->value();
+    if(idClient != 0)
+    {
+        if(ui->SB_priceAdvx->value() <= ui->SB_pricex->value())
+        {
+        this->DBH.open();
+        this->DBH.transaction();
+
+        //! [1] Save data into workers table.
+        QSqlQuery *query = new QSqlQuery(this->DBH);
+
+        query->prepare("UPDATE clients SET "
+                      "fullname=:fullname,phoneNumber=:phoneNumber,firstEmail=:firstEmail,"
+                       "payement_state=:payement_state,price=:price,pricePaid=:pricePaid WHERE "
+                      "id=:id");
+
+        query->bindValue(":id",ui->SB_idClientx->value());
+        query->bindValue(":fullname",ui->LE_fullNamex->text());
+        query->bindValue(":phoneNumber",ui->LE_phonex->text());
+        query->bindValue(":firstEmail",ui->LE_primeryEmlx->text());
+        query->bindValue(":payement_state",ui->CB_paymentStatsx->currentText());
+        query->bindValue(":price",ui->SB_pricex->value());
+        query->bindValue(":pricePaid",ui->SB_priceAdvx->value());
+
+        query->exec();
+
+        this->DBH.commit();
+        modelClient->select();
+        clearFormUpdate();
+
+        emit dataClientsChanged();
+        }else{
+            Toast *mToast = new Toast(this);
+            mToast->setMessage(tr("error value price paid more then total price "));
+        }
+    }else{
+        Toast *mToast = new Toast(this);
+        mToast->setMessage(tr("select Client you want to update from the table"));
+    }
+
 }
 
 void TabWidgetClients::restPrice()
@@ -321,12 +362,14 @@ void TabWidgetClients::clearForm()
 
 void TabWidgetClients::clearFormUpdate()
 {
+    ui->LB_displayIdCx->setText("*");
     ui->SB_idClientx->setValue(0);
     ui->LE_fullNamex->clear();
     ui->LE_phonex->clear();
     ui->LE_primeryEmlx->clear();
     ui->SB_pricex->setValue(0);
-    ui->CB_paymentStatsx->setCurrentIndex(0);
+    ui->SB_priceAdvx->setValue(0);
+    ui->CB_paymentStatsx->setCurrentIndex(2);
 }
 
 void TabWidgetClients::saveDemande2DB()

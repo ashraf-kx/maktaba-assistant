@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>547</width>
-    <height>220</height>
+    <width>562</width>
+    <height>206</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -79,9 +79,9 @@
        </property>
        <property name="font">
         <font>
-         <family>Arial</family>
          <pointsize>10</pointsize>
          <weight>75</weight>
+         <italic>false</italic>
          <bold>true</bold>
         </font>
        </property>
@@ -351,8 +351,8 @@ background-color: #2196F3;
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
          <weight>75</weight>
+         <italic>true</italic>
          <bold>true</bold>
-         <kerning>false</kerning>
         </font>
        </property>
        <property name="cursor">
@@ -394,7 +394,7 @@ color: #ffffff;
 </string>
        </property>
        <property name="text">
-        <string>دخول</string>
+        <string>  دخول  </string>
        </property>
        <property name="icon">
         <iconset resource="Icons.qrc">
@@ -433,6 +433,9 @@ color: #ffffff;
         <font>
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
         </font>
        </property>
        <property name="cursor">
@@ -475,7 +478,7 @@ color: #ffffff;
 </string>
        </property>
        <property name="text">
-        <string>الغاء</string>
+        <string>  الغاء  </string>
        </property>
        <property name="icon">
         <iconset resource="Icons.qrc">

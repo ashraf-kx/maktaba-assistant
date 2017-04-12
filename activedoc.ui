@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>819</width>
-    <height>205</height>
+    <width>500</width>
+    <height>174</height>
    </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>500</width>
+    <height>16777215</height>
+   </size>
   </property>
   <property name="font">
    <font>
@@ -18,22 +24,16 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="layoutDirection">
+   <enum>Qt::RightToLeft</enum>
+  </property>
   <property name="styleSheet">
    <string notr="true">QWidget
 {
 	background-color: rgb(255, 255, 255);
 }</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3">
-   <property name="leftMargin">
-    <number>9</number>
-   </property>
-   <property name="topMargin">
-    <number>9</number>
-   </property>
-   <property name="rightMargin">
-    <number>9</number>
-   </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QFrame" name="frame">
      <property name="frameShape">
@@ -42,9 +42,68 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QPushButton" name="Bt_remove">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton
+{
+    padding: 7px 7px 7px 7px;
+    font-size: 15px;
+    font-family: Ubuntu;
+    color: #ffffff;
+    white-space: nowrap;
+    background-color:#FFF;
+   
+    border-radius: 3px;
+       
+    border: 1px solid #FFF;
+       
+    vertical-align: middle;
+}
+
+QPushButton:hover
+{
+background-color:#FFFFF9;
+    border: 1px solid #FFFFF9;
+color: #ffffff;
+
+}
+</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="Icons.qrc">
+            <normaloff>:/Icons/ic_clear_2x.png</normaloff>:/Icons/ic_clear_2x.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>15</width>
+            <height>15</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
         <item>
          <widget class="QPushButton" name="Bt_toArchive">
           <property name="maximumSize">
@@ -52,6 +111,9 @@
             <width>25</width>
             <height>25</height>
            </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton
@@ -99,62 +161,6 @@ color: #ffffff;
           </property>
          </widget>
         </item>
-        <item>
-         <spacer name="horizontalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QPushButton" name="Bt_remove">
-          <property name="styleSheet">
-           <string notr="true">QPushButton
-{
-    padding: 7px 7px 7px 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
-    color: #ffffff;
-    white-space: nowrap;
-    background-color:#FFF;
-   
-    border-radius: 3px;
-       
-    border: 1px solid #FFF;
-       
-    vertical-align: middle;
-}
-
-QPushButton:hover
-{
-background-color:#FFFFF9;
-    border: 1px solid #FFFFF9;
-color: #ffffff;
-
-}
-</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="Icons.qrc">
-            <normaloff>:/Icons/ic_clear_2x.png</normaloff>:/Icons/ic_clear_2x.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>15</width>
-            <height>15</height>
-           </size>
-          </property>
-         </widget>
-        </item>
        </layout>
       </item>
       <item>
@@ -179,20 +185,31 @@ color: #ffffff;
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="L_titleDoc">
+         <widget class="QLabel" name="L_nameWorker">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <pointsize>10</pointsize>
             <weight>75</weight>
-            <italic>true</italic>
             <bold>true</bold>
            </font>
           </property>
           <property name="text">
-           <string>الكتاب</string>
+           <string>  اسم الموظف  </string>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>false</bool>
           </property>
           <property name="margin">
            <number>5</number>
@@ -219,25 +236,26 @@ color: #ffffff;
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="L_nameWorker">
+         <widget class="QLabel" name="L_titleDoc">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
+            <pointsize>9</pointsize>
             <weight>75</weight>
+            <italic>true</italic>
             <bold>true</bold>
            </font>
           </property>
           <property name="text">
-           <string>اسم الموظف</string>
+           <string>  الكتاب  </string>
           </property>
           <property name="scaledContents">
            <bool>true</bool>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="wordWrap">
-           <bool>false</bool>
           </property>
           <property name="margin">
            <number>5</number>
@@ -260,31 +278,82 @@ color: #ffffff;
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <property name="leftMargin">
-         <number>15</number>
-        </property>
-        <property name="topMargin">
+       <layout class="QGridLayout" name="gridLayout">
+        <property name="horizontalSpacing">
          <number>0</number>
         </property>
-        <property name="rightMargin">
-         <number>15</number>
+        <property name="verticalSpacing">
+         <number>6</number>
         </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item>
-         <widget class="QProgressBar" name="PB_advance">
+        <item row="1" column="1">
+         <widget class="QProgressBar" name="PB_daysLeft">
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>0</height>
+            <height>25</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>16777215</height>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::RightToLeft</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QProgressBar {
+border:1px solid rgb(231, 231, 231);
+background: qlineargradient(spread:repeat, x1:0, y1:0.500273, x2:1, y2:0.505, stop:0.318182 rgba(255, 21, 0, 214), stop:0.715909 rgba(0, 104, 255, 147));
+border-radius: 0px;
+
+width: 10px;
+}
+
+QProgressBar::chunk {
+background:white;
+border: 1px solid white;
+border-radius: 0px;
+
+}</string>
+          </property>
+          <property name="value">
+           <number>50</number>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="textVisible">
+           <bool>true</bool>
+          </property>
+          <property name="invertedAppearance">
+           <bool>true</bool>
+          </property>
+          <property name="format">
+           <string>يوم متبقي</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QProgressBar" name="PB_advance">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>25</height>
            </size>
           </property>
           <property name="font">
@@ -333,54 +402,51 @@ border-radius: 0px;
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QProgressBar" name="PB_daysLeft">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_2">
           <property name="maximumSize">
            <size>
-            <width>16777215</width>
-            <height>16777215</height>
+            <width>25</width>
+            <height>25</height>
            </size>
           </property>
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="layoutDirection">
-           <enum>Qt::RightToLeft</enum>
-          </property>
           <property name="styleSheet">
-           <string notr="true">QProgressBar {
-border:1px solid rgb(231, 231, 231);
-background: qlineargradient(spread:repeat, x1:0, y1:0.500273, x2:1, y2:0.505, stop:0.318182 rgba(255, 21, 0, 214), stop:0.715909 rgba(0, 104, 255, 147));
-border-radius: 0px;
-
-width: 10px;
-}
-
-QProgressBar::chunk {
-background:white;
-border: 1px solid white;
-border-radius: 0px;
-
+           <string notr="true">QLabel{
+background-color: #2196F3;
 }</string>
           </property>
-          <property name="value">
-           <number>50</number>
+          <property name="text">
+           <string/>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+          <property name="pixmap">
+           <pixmap resource="Icons.qrc">:/Icons/ic_trending_up_white_2x.png</pixmap>
           </property>
-          <property name="textVisible">
+          <property name="scaledContents">
            <bool>true</bool>
           </property>
-          <property name="invertedAppearance">
-           <bool>true</bool>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="maximumSize">
+           <size>
+            <width>25</width>
+            <height>25</height>
+           </size>
           </property>
-          <property name="format">
-           <string>يوم متبقي</string>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+background-color: #2196F3;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="Icons.qrc">:/Icons/ic_hourglass_empty_white_2x.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
           </property>
          </widget>
         </item>

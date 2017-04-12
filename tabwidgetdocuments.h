@@ -13,6 +13,7 @@
 #include <QDebug>
 #include <QDate>
 #include <QtWidgets/QGraphicsDropShadowEffect>
+#include <QtWidgets/QGridLayout>
 
 #include "archiveddoc.h"
 #include "activedoc.h"
@@ -66,6 +67,8 @@ private:
 
     QSqlTableModel *modelClient;
     QGraphicsDropShadowEffect *sh;
+    QGridLayout *mGridLayout;
+    QGridLayout *mGridLayout2;
 };
 
 #endif // TABWIDGETDOCUMENTS_H

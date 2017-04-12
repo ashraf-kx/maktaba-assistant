@@ -10,6 +10,21 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    QGraphicsDropShadowEffect *sh = new QGraphicsDropShadowEffect();
+    sh->setBlurRadius(8);
+    sh->setOffset(2);
+    sh->setColor(QColor(63, 63, 63, 180));
+
+    QGraphicsDropShadowEffect *sh2 = new QGraphicsDropShadowEffect();
+    sh2->setBlurRadius(8);
+    sh2->setOffset(2);
+    sh2->setColor(QColor(63, 63, 63, 180));
+
+    QGraphicsDropShadowEffect *sh1 = new QGraphicsDropShadowEffect();
+    sh1->setBlurRadius(8);
+    sh1->setOffset(2,2);
+    sh1->setColor(QColor(63, 63, 63, 180));
+
     this->DBH = QSqlDatabase::addDatabase("QSQLITE","cnxnDocs");
     this->DBH.setDatabaseName(QDir::homePath()+"/AppData/Roaming/bits/"+"BYASS.db");
     this->DBH.setPassword("bitProjects");
@@ -88,6 +103,12 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     shX->setOffset(2);
     shX->setColor(QColor(63, 63, 63, 180));
 
+    mGridLayout = new QGridLayout(ui->groupBox);
+    mGridLayout->setHorizontalSpacing(10);
+
+    mGridLayout2 = new QGridLayout(ui->groupBox_);
+    mGridLayout2->setHorizontalSpacing(10);
+
     mapper->setSubmitPolicy(mapper->ManualSubmit);
 
 
@@ -98,6 +119,10 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
 
     ui->SB_idDocx->setVisible(false);
     ui->SB_idDocx->setValue(0);
+
+    ui->BT_associate->setGraphicsEffect(sh);
+    ui->BT_updateDoc->setGraphicsEffect(sh1);
+    ui->widgetSearch->setGraphicsEffect(sh2);
 
     connect(ui->BT_associate,SIGNAL(clicked(bool)),ui->BT_associate,SLOT(setDisabled(bool)));
     connect(ui->BT_associate,SIGNAL(clicked()),this,SLOT(doAssociate()));
@@ -288,6 +313,8 @@ void TabWidgetDocuments::currentActiveStats()
     this->DBH.open();
     this->DBH.transaction();
 
+
+
     foreach (ActiveDoc *form, ui->groupBox->findChildren<ActiveDoc*>())
        delete form;
 
@@ -295,6 +322,8 @@ void TabWidgetDocuments::currentActiveStats()
     QSqlQuery *query = new QSqlQuery(this->DBH);
     query->prepare("SELECT id,idWorker,titleDoc,totalPages,pagesDone,depositeDay,deliveryDay FROM documents WHERE dateStarted<>-1 AND dateFinished=-1");
     query->exec();
+
+    int row=0; int col=0;
     while(query->next())
     {
         //! create and place Items in the groupBox.
@@ -316,7 +345,11 @@ void TabWidgetDocuments::currentActiveStats()
 
         ActiveDoc *form= new ActiveDoc(this);
         form->_ActiveDoc(idDoc,nameWorker,idWorker,titleDoc,totalPages,pagesDone,depositeDay,deliveryDay);
-        ui->groupBox->layout()->addWidget(form);
+
+        mGridLayout->addWidget(form,row,col);
+        col++;
+        if(col == 3){ row++; col=0; }
+
         form->setVisible(true);
     }
     this->DBH.commit();
@@ -336,6 +369,7 @@ void TabWidgetDocuments::displayArchivedDocs()
     QSqlQuery *query = new QSqlQuery(this->DBH);
     query->prepare("SELECT id,idClient,titleDoc,pagesDone FROM documents WHERE dateFinished<>-1");
     query->exec();
+    int row=0; int col=0;
     while(query->next())
     {
         //! create and place Items in the groupBox.
@@ -353,7 +387,11 @@ void TabWidgetDocuments::displayArchivedDocs()
 
         ArchivedDoc *form= new ArchivedDoc(this);
         form->showArchivedDocs(idDoc,nameClient,titleDoc,pagesDone);
-        ui->groupBox_->layout()->addWidget(form);
+
+        mGridLayout2->addWidget(form,row,col);
+        col++;
+        if(col == 3){ row++; col=0; }
+
         form->setVisible(true);
     }
     this->DBH.commit();

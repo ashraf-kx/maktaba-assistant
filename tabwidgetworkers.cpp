@@ -24,6 +24,16 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
     sh1->setOffset(2,2);
     sh1->setColor(QColor(63, 63, 63, 180));
 
+    QGraphicsDropShadowEffect *shBA = new QGraphicsDropShadowEffect();
+    shBA->setBlurRadius(8);
+    shBA->setOffset(2,2);
+    shBA->setColor(QColor(63, 63, 63, 180));
+
+    QGraphicsDropShadowEffect *shBD = new QGraphicsDropShadowEffect();
+    shBD->setBlurRadius(8);
+    shBD->setOffset(2,2);
+    shBD->setColor(QColor(63, 63, 63, 180));
+
     mapper = new QDataWidgetMapper();
 
 
@@ -81,6 +91,10 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
     ui->BT_cancelInfoW->setGraphicsEffect(sh);
     ui->BT_saveWorker->setGraphicsEffect(sh2);
     ui->widgetSearch->setGraphicsEffect(sh1);
+    ui->BT_updateWorker->setGraphicsEffect(shBA);
+    ui->BT_delete->setGraphicsEffect(shBD);
+
+    mapper->setSubmitPolicy(mapper->ManualSubmit);
 
     // Actions.
     connect(ui->BT_saveWorker,SIGNAL(clicked()),this,SLOT(saveDemande2DB()));
@@ -94,13 +108,47 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
     connect(ui->BT_updateWorker,SIGNAL(clicked()),this,SLOT(updateWorker()));
     connect(ui->CB_disponibility,SIGNAL(currentIndexChanged(int)),
             this,SLOT(changeIconDisponibility()));
+
+    connect(ui->SB_idWorkerx,SIGNAL(valueChanged(QString)),
+            ui->LB_displayIdWx,SLOT(setText(QString)));
 }
 
 void TabWidgetWorkers::updateWorker()
 {
-    proxyModelWorker->submit();
-    clearFormUpdate();
-    emit dataWorkersChanged();
+    int idWorker = ui->SB_idWorkerx->value();
+    if(idWorker != 0)
+    {
+        this->DBH.open();
+        this->DBH.transaction();
+
+        //! [1] Save data into workers table.
+        QSqlQuery *query = new QSqlQuery(this->DBH);
+
+        query->prepare("UPDATE workers SET "
+                      "fullName=:fullName,phoneNumber=:phoneNumber,email=:email,"
+                       "remarke=:remarke,isDisponible=:isDisponible WHERE "
+                      "id=:id");
+
+        query->bindValue(":id",ui->SB_idWorkerx->value());
+        query->bindValue(":fullName",ui->LE_fullNamex->text());
+        query->bindValue(":phoneNumber",ui->LE_phonex->text());
+        query->bindValue(":email",ui->LE_primeryEmlx->text());
+        query->bindValue(":remarke", ui->TE_remarkex->toPlainText());
+        query->bindValue(":isDisponible", ui->CB_disponibility->currentText());
+
+        query->exec();
+
+        this->DBH.commit();
+        modelWorker->select();
+        clearFormUpdate();
+
+        emit dataWorkersChanged();
+
+    }else{
+        Toast *mToast = new Toast(this);
+        mToast->setMessage(tr("select Worker you want to update from the table"));
+    }
+
 }
 
 TabWidgetWorkers::workerData TabWidgetWorkers::getDatafromForm()
@@ -221,11 +269,13 @@ void TabWidgetWorkers::startMapper(){
 
 void TabWidgetWorkers::clearFormUpdate()
 {
+    ui->LB_displayIdWx->setText("*");
     ui->SB_idWorkerx->setValue(0);
     ui->LE_fullNamex->clear();
     ui->LE_phonex->clear();
     ui->LE_primeryEmlx->clear();
     ui->TE_remarkex->clear();
+    ui->CB_disponibility->setCurrentIndex(0);
 }
 
 void TabWidgetWorkers::deleteWorker()
