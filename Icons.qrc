@@ -59,5 +59,9 @@
         <file>Icons/ic_attach_money_white_2x.png</file>
         <file>Icons/ic_payment_white_2x.png</file>
         <file>Icons/ic_pan_tool_white_2x.png</file>
+        <file>Icons/ic_archive_2x.png</file>
+        <file>Icons/ic_insert_link_2x.png</file>
+        <file>Icons/ic_hourglass_empty_white_2x.png</file>
+        <file>Icons/ic_trending_up_white_2x.png</file>
     </qresource>
 </RCC>
