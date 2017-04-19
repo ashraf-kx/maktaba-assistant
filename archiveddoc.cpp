@@ -14,7 +14,7 @@ ArchivedDoc::ArchivedDoc(QWidget *parent) :
     sho->setOffset(2);
     sho->setColor(QColor(63, 63, 63, 180));
 
-    this->DBH = QSqlDatabase::addDatabase("QSQLITE","cnxnDeleteArch"+QString::number(QTime::currentTime().msec()));
+    this->DBH = QSqlDatabase::addDatabase("QSQLITE","cnxnArchive"+QString::number(QDateTime::currentMSecsSinceEpoch()));
     this->DBH.setDatabaseName(QDir::homePath()+"/AppData/Roaming/bits/"+"BYASS.db");
     this->DBH.setPassword("bitProjects");
     this->DBH.setUserName("neverAsk@4Pass");
@@ -46,8 +46,57 @@ void ArchivedDoc::removeFromArchive()
 void ArchivedDoc::showArchivedDocs(int idDoc, const QString &nameClient, const QString &titleDoc, int pagesDone)
 {
     this->DBH.transaction();
-    //
+
     this->idDoc = idDoc;
-    ui->L_showMessage->setText(nameClient+":\n \" "+titleDoc+"\" "+tr(" pages ")+QString::number(pagesDone)+" )");
+    QString mTitleDoc(tr("Empty")),
+            mIsPrinted(tr("Empty")),
+            mDateFinished(tr("Empty")),
+            mFullname(tr("Empty"));
+
+    int mIdClient(0),
+        mTotalPages(0),
+        mPagesDone(0),
+        mPrice(0), mPricePaid(0);
+
+    //! [1] Save data into workers table.
+    QSqlQuery *query = new QSqlQuery(this->DBH);
+    query->prepare("SELECT idClient,titleDoc,totalPages,pagesDone,isPrinted,dateFinished FROM documents WHERE id='"+QString::number(idDoc)+"' ");
+    query->exec();
+    while (query->next()) {
+            mIdClient   = query->value(0).toInt();
+            mTitleDoc   = query->value(1).toString();
+            mTotalPages = query->value(2).toInt();
+            mPagesDone  = query->value(3).toInt();
+            mIsPrinted  = query->value(4).toString();
+            mDateFinished  = query->value(5).toString();
+        }
+
+    query->prepare("SELECT fullname,price,pricePaid FROM clients WHERE id='"+QString::number(mIdClient)+"' ");
+    query->exec();
+    while (query->next()) {
+        mFullname   = query->value(0).toString();
+        mPrice      = query->value(1).toInt();
+        mPricePaid  = query->value(2).toInt();
+    }
     this->DBH.commit();
+
+    // apply calculations on the data colleted.
+    ui->Lb_nameClient->setText(mFullname);
+    ui->Lb_titleBook->setText(mTitleDoc);
+
+    if(mPagesDone < mTotalPages ){
+        ui->Lb_pages->setStyleSheet("QLabel{background-color:gray;}");
+    }else{
+        ui->Lb_pages->setStyleSheet("QLabel{background-color:#55ff00;}");
+    }
+
+    if(mIsPrinted == tr("printed"))
+        ui->Lb_print->setStyleSheet("QLabel{background-color:#55ff00;}");
+    else
+        ui->Lb_print->setStyleSheet("QLabel{background-color:gray;}");
+
+    if(mPrice == mPricePaid)
+        ui->Lb_dollar->setStyleSheet("QLabel{background-color:#55ff00;}");
+    else
+        ui->Lb_dollar->setStyleSheet("QLabel{background-color:gray;}");
 }
