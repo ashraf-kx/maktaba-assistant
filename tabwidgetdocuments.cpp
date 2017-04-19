@@ -70,7 +70,7 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     proxyModelDocs->setSourceModel(modelDocs);
 
     proxyModelDocs->setFilterRegExp(QRegExp("", Qt::CaseInsensitive,QRegExp::FixedString));
-    proxyModelDocs->setFilterKeyColumn(1);
+    proxyModelDocs->setFilterKeyColumn(3);
 
     ui->tableView->setModel(proxyModelDocs);
     ui->tableView->horizontalHeader()->stretchLastSection();
@@ -111,7 +111,6 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
 
     mapper->setSubmitPolicy(mapper->ManualSubmit);
 
-
     updateLists();
     currentActiveStats();
     displayArchivedDocs();
@@ -124,6 +123,7 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     ui->BT_updateDoc->setGraphicsEffect(sh1);
     ui->widgetSearch->setGraphicsEffect(sh2);
 
+    connect(ui->LE_fullnameFiltre,SIGNAL(textChanged(QString)),proxyModelDocs,SLOT(setFilterRegExp(QString)));
     connect(ui->BT_associate,SIGNAL(clicked(bool)),ui->BT_associate,SLOT(setDisabled(bool)));
     connect(ui->BT_associate,SIGNAL(clicked()),this,SLOT(doAssociate()));
 
@@ -142,29 +142,36 @@ void TabWidgetDocuments::updateDoc()
 {
     if(ui->SB_pagesDonex->value() <= ui->SB_totalPagesx->value())
     {
-    this->DBH.open();
-    this->DBH.transaction();
+        if((ui->SB_pagesWordx->value()+ui->SB_pagesHandx->value()) <= ui->SB_totalPagesx->value() )
+        {
+            this->DBH.open();
+            this->DBH.transaction();
 
-    //! [1] Save data into workers table.
-    QSqlQuery *query = new QSqlQuery(this->DBH);
+            //! [1] Save data into workers table.
+            QSqlQuery *query = new QSqlQuery(this->DBH);
 
-    query->prepare("UPDATE documents SET "
-                  "pagesDone= :pagesDone, pagesHand= :pagesHand, pagesWord= :pagesWord,"
-                  "isPrinted= :isPrinted, deliveryDay= :deliveryDay WHERE "
-                  "id=:id");
+            query->prepare("UPDATE documents SET "
+                          "pagesDone= :pagesDone, pagesHand= :pagesHand, pagesWord= :pagesWord,"
+                          "isPrinted= :isPrinted, deliveryDay= :deliveryDay WHERE "
+                          "id=:id");
 
-    query->bindValue(":id", ui->SB_idDocx->value());
-    query->bindValue(":pagesDone", ui->SB_pagesDonex->value());
-    query->bindValue(":pagesHand", ui->SB_pagesHandx->value());
-    query->bindValue(":pagesWord", ui->SB_pagesWordx->value());
-    query->bindValue(":isPrinted", ui->CB_isPrintedx->currentText());
-    query->bindValue(":deliveryDay", ui->DE_deliveryDayx->date().toString("yyyy-MM-dd"));
+            query->bindValue(":id", ui->SB_idDocx->value());
+            query->bindValue(":pagesDone", ui->SB_pagesDonex->value());
+            query->bindValue(":pagesHand", ui->SB_pagesHandx->value());
+            query->bindValue(":pagesWord", ui->SB_pagesWordx->value());
+            query->bindValue(":isPrinted", ui->CB_isPrintedx->currentText());
+            query->bindValue(":deliveryDay", ui->DE_deliveryDayx->date().toString("yyyy-MM-dd"));
 
-    query->exec();
+            query->exec();
 
-    this->DBH.commit();
-    modelDocs->select();
-    clearFormUpdate();
+            this->DBH.commit();
+            modelDocs->select();
+            clearFormUpdate();
+        }else
+        {
+            Toast *mToast = new Toast(this);
+            mToast->setMessage(tr("error value pages Hand plus word more then total pages "));
+        }
     }else{
         Toast *mToast = new Toast(this);
         mToast->setMessage(tr("error value pages done more then total pages "));
