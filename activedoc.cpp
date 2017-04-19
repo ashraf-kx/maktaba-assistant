@@ -46,7 +46,7 @@ void ActiveDoc::_ActiveDoc(int idDoc,const QString &nameWorker,int idWorker,cons
 
     ui->PB_advance->setMaximum(totalPages);
     ui->PB_advance->setValue(abs(pagesDone-totalPages));
-    ui->PB_advance->setFormat(QString::number(pagesDone));
+    ui->PB_advance->setFormat(tr("Pages Done ")+"( "+QString::number(pagesDone)+" ) ");
 
 
     QDate now = QDate::currentDate();
@@ -54,8 +54,7 @@ void ActiveDoc::_ActiveDoc(int idDoc,const QString &nameWorker,int idWorker,cons
     ui->PB_daysLeft->setMaximum(depositeDay.daysTo(deliveryDay));
     int daysLeft = now.daysTo(deliveryDay);
     ui->PB_daysLeft->setValue(daysLeft);
-    // ui->L_Cancel->setText(QString::number(daysLeft)+"Left\n"+QString::number(pagesDone)+"/"+QString::number(totalPages));
-    ui->PB_daysLeft->setFormat("( "+QString::number(daysLeft)+" )"+tr("days left  "));
+    ui->PB_daysLeft->setFormat(tr("days left  ")+"( "+QString::number(daysLeft)+" )");
 
 }
 
