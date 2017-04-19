@@ -350,9 +350,6 @@ background-color: #2196F3;
         <font>
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
         </font>
        </property>
        <property name="cursor">
@@ -394,7 +391,7 @@ color: #ffffff;
 </string>
        </property>
        <property name="text">
-        <string>  دخول  </string>
+        <string>    دخول  </string>
        </property>
        <property name="icon">
         <iconset resource="Icons.qrc">
@@ -433,9 +430,6 @@ color: #ffffff;
         <font>
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <italic>true</italic>
-         <bold>true</bold>
         </font>
        </property>
        <property name="cursor">
