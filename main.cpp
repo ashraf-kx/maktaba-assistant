@@ -13,21 +13,21 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
-    QString serialKey="ProcessorId       \r\r\nBFEBFBFF0001067A  \r\r\n\r\r\n";
+    /*QString serialKey="SerialNumber       \r\r\n20090516388200000  \r\r\n5VEV4RLC           \r\r\n\r\r\n";
     QProcess process;
     process.setWorkingDirectory(QDir::homePath());
-    process.start("wmic cpu get ProcessorId"); // CPUID. wmic cpu get ProcessorId
+    process.start("wmic diskdrive get SerialNumber"); // CPUID. wmic cpu get ProcessorId
     process.waitForBytesWritten();             // DISKID .wmic diskdrive get SerialNumber
     process.waitForFinished();
 
     if(serialKey == QString(process.readAll()))
-    {
+    {*/
         QDate mDateExpire;
-        mDateExpire.setDate(2017,05,05);
+        mDateExpire.setDate(2017,05,07);
         if(QDate::currentDate().daysTo(mDateExpire) >= 0 )
         {
             QMessageBox msg;
-            msg.setWindowIcon(QIcon("://Icons/icon-evergreen-alt.png"));
+            msg.setWindowIcon(QIcon(":Icons/icon-evergreen-alt.ico"));
             msg.setWindowTitle(QObject::tr("Product Not Activated"));
             msg.setText("this product is on trailer mode, days left "
                          +QString::number(QDate::currentDate().daysTo(mDateExpire)) );
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
             translator.load(":biblioYass_ar");
             a.installTranslator(&translator);
 
-        a.setWindowIcon(QIcon(QPixmap(":Icons/icon-evergreen-alt.png")));
+        a.setWindowIcon(QIcon(QPixmap(":Icons/icon-evergreen-alt.ico")));
 
         QDir mDir(QDir::homePath()+"/AppData/Roaming/bits");
         if(!mDir.exists())
@@ -74,15 +74,15 @@ int main(int argc, char *argv[])
         return a.exec();
         }else{
             QMessageBox msg;
-            msg.setWindowIcon(QIcon("://Icons/icon-evergreen-alt.png"));
+            msg.setWindowIcon(QIcon(":Icons/icon-evergreen-alt.png"));
             msg.setWindowTitle(QObject::tr("Activate Product"));
             msg.setText( QObject::tr("this product is not free to use, buy it."
-                                     "Contact Us: scos2017@gmail.com") );
+                                     "Contact Us: achrafkarrouche@gmail.com") );
             msg.setIcon( QMessageBox::Information );
             msg.exec();
             exit(0);
         }
-    }else
+    /*}else
     {
         QMessageBox msg;
         msg.setWindowIcon(QIcon("://Icons/icon-evergreen-alt.png"));
@@ -92,5 +92,5 @@ int main(int argc, char *argv[])
         msg.setIcon( QMessageBox::Information );
         msg.exec();
         exit(0);
-    }
+    }*/
 }
