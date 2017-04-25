@@ -50,6 +50,7 @@ bool Login::tryLogin()
         QString username = "";
         QString password = "";
 
+        this->DBH.open();
         this->DBH.transaction();
         SimpleCrypt crypto(Q_UINT64_C(0x16af28db99bbca1f));
 
