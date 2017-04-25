@@ -64,5 +64,6 @@
         <file>Icons/ic_hourglass_empty_white_2x.png</file>
         <file>Icons/ic_trending_up_white_2x.png</file>
         <file>Icons/ic_work_2x.png</file>
+        <file>Icons/icon-evergreen-alt.ico</file>
     </qresource>
 </RCC>
