@@ -79,6 +79,7 @@ void ActiveDoc::cancelAssociate()
 
 void ActiveDoc::saveToArchive()
 {
+    this->DBH.open();
     this->DBH.transaction();
     QSqlQuery *query = new QSqlQuery(this->DBH);
     query->exec("UPDATE documents SET dateFinished='"+QDate::currentDate().toString("yyyy-MM-dd")+"' WHERE id="+QString::number(idDoc));
