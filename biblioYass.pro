@@ -56,3 +56,4 @@ RESOURCES += \
     lang.qrc
 
 TRANSLATIONS = biblioYass_ar.ts
+

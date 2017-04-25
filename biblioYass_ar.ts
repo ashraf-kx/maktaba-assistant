@@ -77,27 +77,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="dialog.ui" line="116"/>
+        <location filename="dialog.ui" line="98"/>
         <source>هل تريد حفظ المعلومات ؟</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="dialog.ui" line="178"/>
+        <location filename="dialog.ui" line="160"/>
         <source>لا</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialog.ui" line="181"/>
+        <location filename="dialog.ui" line="163"/>
         <source>Esc</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="dialog.ui" line="219"/>
+        <location filename="dialog.ui" line="201"/>
         <source>نعم</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialog.ui" line="222"/>
+        <location filename="dialog.ui" line="204"/>
         <source>Return</source>
         <translation type="unfinished"></translation>
     </message>
@@ -131,22 +131,18 @@
         <translation>كلمة المرور</translation>
     </message>
     <message utf8="true">
-        <location filename="login.ui" line="394"/>
-        <source>    دخول  </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
+        <location filename="login.ui" line="397"/>
         <source>  دخول  </source>
         <oldsource>دخول</oldsource>
-        <translation type="obsolete">دخول</translation>
+        <translation type="unfinished">دخول</translation>
     </message>
     <message>
-        <location filename="login.ui" line="407"/>
+        <location filename="login.ui" line="410"/>
         <source>Return</source>
         <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
-        <location filename="login.ui" line="475"/>
+        <location filename="login.ui" line="481"/>
         <source>  الغاء  </source>
         <translation type="unfinished"></translation>
     </message>
@@ -155,7 +151,7 @@
         <translation type="obsolete">إلغاء</translation>
     </message>
     <message>
-        <location filename="login.ui" line="488"/>
+        <location filename="login.ui" line="494"/>
         <source>Esc</source>
         <translation type="unfinished"></translation>
     </message>
@@ -717,12 +713,13 @@
     <message>
         <location filename="tabwidgetclients.cpp" line="182"/>
         <source>error value price paid more then total price </source>
-        <translation type="unfinished"></translation>
+        <translation> خطأ : المبلغ المدفوع  اكبر من المبلغ 
+الاجمالي</translation>
     </message>
     <message>
         <location filename="tabwidgetclients.cpp" line="186"/>
         <source>select Client you want to update from the table</source>
-        <translation type="unfinished"></translation>
+        <translation> إختر الزبون المراد تعديله من الجدول </translation>
     </message>
     <message>
         <location filename="tabwidgetclients.cpp" line="195"/>
@@ -992,12 +989,13 @@
     <message>
         <location filename="tabwidgetdocuments.cpp" line="173"/>
         <source>error value pages Hand plus word more then total pages </source>
-        <translation type="unfinished"></translation>
+        <translation>مجموع الصفجات باليد و الوورد يفوق عدد 
+الصفحات الإجمالية</translation>
     </message>
     <message>
         <location filename="tabwidgetdocuments.cpp" line="177"/>
         <source>error value pages done more then total pages </source>
-        <translation type="unfinished"></translation>
+        <translation>عدد الصفحات المنجزة يفوق عدد الصفحات الإجمالي  </translation>
     </message>
     <message>
         <source>error typing a value of pages Done</source>
@@ -1128,32 +1126,32 @@
     <message>
         <location filename="tabwidgetsettings.cpp" line="124"/>
         <source>update Address DONE</source>
-        <translation type="unfinished"></translation>
+        <translation>تم تحديث العنوان بنجاح</translation>
     </message>
     <message>
         <location filename="tabwidgetsettings.cpp" line="127"/>
         <source>Address must has more then 6 caracteres</source>
-        <translation type="unfinished"></translation>
+        <translation>يجب ان يكون العنوان يفوق 6 حروف</translation>
     </message>
     <message>
         <location filename="tabwidgetsettings.cpp" line="131"/>
         <source>write the Address in the box</source>
-        <translation type="unfinished"></translation>
+        <translation>أدخل العنوان في المكان المناسب</translation>
     </message>
     <message>
         <location filename="tabwidgetsettings.cpp" line="154"/>
         <source>update phone number DONE</source>
-        <translation type="unfinished"></translation>
+        <translation>تم تعديل رقم الهاتف بنجاح</translation>
     </message>
     <message>
         <location filename="tabwidgetsettings.cpp" line="157"/>
         <source>phone number must has more then 9 numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>يجب ان يحتوي رقم الهاتف 10 ارقام</translation>
     </message>
     <message>
         <location filename="tabwidgetsettings.cpp" line="161"/>
         <source>write the phone number in the box</source>
-        <translation type="unfinished"></translation>
+        <translation>أدخل رقم الهاتف في الخانة المناسبة له</translation>
     </message>
 </context>
 <context>
@@ -1317,7 +1315,7 @@
     <message>
         <location filename="tabwidgetworkers.cpp" line="149"/>
         <source>select Worker you want to update from the table</source>
-        <translation type="unfinished"></translation>
+        <translation>إختر الموظف المراد تعديله من الجدول</translation>
     </message>
     <message>
         <location filename="tabwidgetworkers.cpp" line="197"/>

@@ -632,7 +632,7 @@ QLineEdit:hover
                 <string/>
                </property>
                <property name="maxLength">
-                <number>14</number>
+                <number>10</number>
                </property>
                <property name="frame">
                 <bool>true</bool>

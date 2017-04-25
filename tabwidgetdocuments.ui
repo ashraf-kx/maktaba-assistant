@@ -1305,7 +1305,7 @@ background-color: #2196F3;
 }</string>
              </property>
              <property name="text">
-              <string>عدد الصفحات غير المنجزة</string>
+              <string> عدد الصفحات غير المنجزة  </string>
              </property>
             </widget>
            </item>
