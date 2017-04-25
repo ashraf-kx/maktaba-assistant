@@ -9,6 +9,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->showMaximized();
+    this->setWindowTitle(tr("Librery helper"));
+    this->setWindowIcon(QIcon(":Icons/icon-evergreen-alt.ico"));
+
     shadowWidget= new QGraphicsDropShadowEffect();
     shadowWidget->setBlurRadius(8);
     shadowWidget->setXOffset(0);
@@ -33,12 +37,14 @@ MainWindow::MainWindow(QWidget *parent) :
     logoutAction->setIconVisibleInMenu(true);
     logoutAction->setIcon(QIcon(":Icons/ic_exit_to_app_2x.png"));
     logoutAction->setDisabled(true);
+    logoutAction->setVisible(false);
 
     connect(logoutAction, SIGNAL(triggered()), this, SLOT(changeModeLogin()));
 
     quitAction = new QAction(tr("Quit"), this);
     quitAction->setIconVisibleInMenu(true);
     quitAction->setIcon(QIcon(":Icons/ic_power_settings_new_2x.png"));
+    quitAction->setVisible(false);
 
     connect(quitAction, SIGNAL(triggered()), this, SLOT(close()));
 
@@ -50,17 +56,12 @@ MainWindow::MainWindow(QWidget *parent) :
     trayMenu->addAction(quitAction);
 
     systemTray->setContextMenu(trayMenu);
-    systemTray->setIcon(QIcon(QPixmap(":Icons/icon-evergreen-alt.png")));
+    systemTray->setIcon(QIcon(QPixmap(":Icons/icon-evergreen-alt.ico")));
     systemTray->show();
 
     systemTray->showMessage(tr("Librery YS"),tr("Develop everywhere."),QSystemTrayIcon::Information,1000);
 
     mDB = new DB();
-
-    this->showMaximized();
-    this->setWindowTitle(tr("Librery helper"));
-    this->setWindowIcon(QIcon(QPixmap(":Icons/icon-evergreen-alt.png")));
-
 
     mTopNav            = new topNav(this);
     mTabWidgetClient   = new TabWidgetClients(this);
@@ -78,7 +79,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mTopNav->getBTDocs(),SIGNAL(clicked()),this,SLOT(showTDocument()));
 
     connect(mTopNav->getBTLogOut(),SIGNAL(pressed()),this,SLOT(changeModeLogin()));
-    connect(mTopNav->getBTLogOut(),SIGNAL(released()),this,SLOT(switchMode()));
+   
     connect(mLogin->getBtLogin(),SIGNAL(released()),this,SLOT(switchMode()));
 
     connect(mTabWidgetClient,SIGNAL(dataClientsChanged()),
@@ -122,6 +123,7 @@ void MainWindow::switchMode()
 
         ui->centralWidget->layout()->addWidget(mTopNav);
         mTopNav->setVisible(true);
+        mTopNav->changeStyleClient();
         ui->centralWidget->layout()->addWidget(mTabWidgetClient);
         mTabWidgetClient->setVisible(true);
     }
@@ -140,7 +142,6 @@ void MainWindow::switchMode()
         mTabWidgetWorker->setVisible(false);
         ui->centralWidget->layout()->removeWidget(mTabWidgetDocument);
         mTabWidgetDocument->setVisible(false);
-
     }
 }
 

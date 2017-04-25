@@ -288,6 +288,7 @@ void TabWidgetWorkers::deleteWorker()
     if(D->exec()==1)
     {
         int idWorker = ui->SB_idWorkerx->value();
+
         this->DBH.open();
         this->DBH.transaction();
 

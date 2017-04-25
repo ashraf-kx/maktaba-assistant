@@ -37,6 +37,7 @@ ArchivedDoc::~ArchivedDoc()
 
 void ArchivedDoc::removeFromArchive()
 {
+    this->DBH.open();
     this->DBH.transaction();
     QSqlQuery *query = new QSqlQuery(this->DBH);
     query->exec("UPDATE documents SET dateFinished='-1' WHERE id="+QString::number(this->idDoc));
@@ -45,6 +46,7 @@ void ArchivedDoc::removeFromArchive()
 
 void ArchivedDoc::showArchivedDocs(int idDoc, const QString &nameClient, const QString &titleDoc, int pagesDone)
 {
+    this->DBH.open();
     this->DBH.transaction();
 
     this->idDoc = idDoc;
