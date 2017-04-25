@@ -459,7 +459,7 @@ void TabWidgetClients::printTicket()
 
     QString CName,CDocN,DateDP,DateDV,pages,lang,phoneN,AdressLocal;
 
-
+    this->DBH.open();
     this->DBH.transaction();
     QSqlQuery *query = new QSqlQuery(this->DBH);
 
@@ -485,6 +485,7 @@ void TabWidgetClients::printTicket()
     }
 
     this->DBH.commit();
+    this->DBH.close();
 
     QString Ticket = tr("N : ")+QString::number(idClient)+"\n"+
             tr("Full Name : ")+CName+"\n"+
