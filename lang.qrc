@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>biblioYass_ar.qm</file>
+        <file>LibraryManager_ar.qm</file>
     </qresource>
 </RCC>

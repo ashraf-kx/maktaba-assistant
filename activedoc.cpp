@@ -27,7 +27,6 @@ ActiveDoc::ActiveDoc(QWidget *parent) :
 
     ui->frame->setGraphicsEffect(sh);
 
-
     connect(ui->Bt_toArchive,SIGNAL(pressed()),this,SLOT(saveToArchive()));
     connect(ui->Bt_toArchive,SIGNAL(released()),parent,SLOT(displayArchivedDocs()));
     connect(ui->Bt_toArchive,SIGNAL(released()),this,SLOT(deleteLater()));
@@ -42,12 +41,12 @@ void ActiveDoc::_ActiveDoc(int idDoc,const QString &nameWorker,int idWorker,cons
     this->idDoc    = idDoc;
     this->idWorker = idWorker;
     ui->L_nameWorker->setText(nameWorker);
+
     ui->L_titleDoc->setText(" \" "+titleDoc+" \" ");
 
     ui->PB_advance->setMaximum(totalPages);
     ui->PB_advance->setValue(abs(pagesDone-totalPages));
     ui->PB_advance->setFormat(tr("Pages Done ")+"( "+QString::number(pagesDone)+" ) ");
-
 
     QDate now = QDate::currentDate();
 

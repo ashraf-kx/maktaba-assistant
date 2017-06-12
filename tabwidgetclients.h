@@ -81,6 +81,7 @@ private:
     QDataWidgetMapper *mapper;
     QSortFilterProxyModel *proxyModelClient;
     QWidget *father;
+
 };
 
 #endif

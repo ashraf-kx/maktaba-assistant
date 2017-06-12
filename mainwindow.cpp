@@ -89,6 +89,11 @@ MainWindow::MainWindow(QWidget *parent) :
             mTabWidgetDocument,SLOT(globaleUpdate()));
 }
 
+void MainWindow::updateUIAnimation()
+{
+
+}
+
 MainWindow::~MainWindow()
 {
     delete mTabWidgetSettings;
@@ -156,6 +161,7 @@ void MainWindow::showTClient()
 
     ui->centralWidget->layout()->addWidget(mTabWidgetClient);
     mTabWidgetClient->setVisible(true);
+
 }
 
 void MainWindow::showTWorker()

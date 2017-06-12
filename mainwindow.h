@@ -14,7 +14,6 @@
 #include <QGraphicsDropShadowEffect>
 #include "toast.h"
 
-
 namespace Ui {
 class MainWindow;
 }
@@ -36,6 +35,7 @@ public slots:
     void displayMessage(const QString &msg);
     void displaySetting();
 
+    void updateUIAnimation();
 private:
     Ui::MainWindow *ui;
     DB                 *mDB;

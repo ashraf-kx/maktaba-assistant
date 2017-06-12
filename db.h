@@ -9,6 +9,7 @@
 #include <QSqlDatabase>
 #include <QDateTime>
 #include <QDir>
+#include <QtSql>
 
 
 class DB : public QObject

@@ -1874,8 +1874,14 @@ QDateEdit:hover
    border-right:0px solid #FFFFFF;
 }</string>
                  </property>
+                 <property name="frame">
+                  <bool>true</bool>
+                 </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                  </property>
                  <property name="currentSection">
                   <enum>QDateTimeEdit::YearSection</enum>

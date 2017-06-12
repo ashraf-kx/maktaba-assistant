@@ -68,10 +68,10 @@ DB::DB(QObject *parent) :
                            "date_modified TIMESTAMP)";
 
 
-            this->DBH = QSqlDatabase::addDatabase("QSQLITE");
-            this->DBH.setDatabaseName(QDir::homePath()+"/AppData/Roaming/bits/"+"BYASS.db");
-            this->DBH.setPassword("bitProjects");
-            this->DBH.setUserName("neverAsk@4Pass");
+            this->DBH = QSqlDatabase::addDatabase("QMYSQL");
+            this->DBH.setDatabaseName("BYASS");
+            this->DBH.setPassword("root");
+            this->DBH.setUserName("root");
 
             if(this->DBH.open()) qDebug()<<"default cnxn opened."<<endl;
             this->DBH.transaction();

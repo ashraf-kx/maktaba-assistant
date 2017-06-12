@@ -274,7 +274,7 @@ color: #ffffff;
          <widget class="QLabel" name="L_titleDoc">
           <property name="minimumSize">
            <size>
-            <width>150</width>
+            <width>300</width>
             <height>0</height>
            </size>
           </property>
@@ -294,6 +294,9 @@ color: #ffffff;
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
           </property>
           <property name="margin">
            <number>5</number>

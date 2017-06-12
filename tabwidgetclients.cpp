@@ -98,6 +98,7 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
     ui->tableView->resizeColumnsToContents();
 
     ui->tableView->show();
+    ui->tableView->setWordWrap(true);
 
     ui->DE_deposite->setDate(QDate::currentDate());
     ui->DE_delivery->setDate(QDate::currentDate().addDays(1));
@@ -118,6 +119,7 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
 
     initCalendar();
     mapper->setSubmitPolicy(mapper->ManualSubmit);
+
 
     // Actions.
     connect(ui->BT_save,SIGNAL(clicked()),this,SLOT(saveDemande2DB()));

@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     if(serialKey == QString(process.readAll()))
     {*/
         QDate mDateExpire;
-        mDateExpire.setDate(2017,05,07);
+        mDateExpire.setDate(2017,07,07);
         if(QDate::currentDate().daysTo(mDateExpire) >= 0 )
         {
             QMessageBox msg;
