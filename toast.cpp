@@ -1,13 +1,12 @@
 #include "toast.h"
 #include "ui_toast.h"
-#include <QGraphicsDropShadowEffect>
-#include <QDebug>
 
 Toast::Toast(QWidget *parent) :
     QFrame(parent),
     ui(new Ui::Toast)
 {
     ui->setupUi(this);
+    setParent(qApp->activeWindow());
 
     QGraphicsDropShadowEffect * sh = new QGraphicsDropShadowEffect();
     sh->setBlurRadius(8);
@@ -16,32 +15,45 @@ Toast::Toast(QWidget *parent) :
     this->setGraphicsEffect(sh);
 
     this->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
-    this->setWindowOpacity(0.9);
-    this->setGeometry(5,30,300,80);
     this->setVisible(true);
 
-    mTimer = new QTimer();
-    mTimer->setInterval(600);
-    mTimer->start();
+    QSize size = qApp->activeWindow()->size();
 
-    colorA = 255;
-    connect(mTimer,SIGNAL(timeout()),this,SLOT(fade()));
+    animSlideOut = new QPropertyAnimation(this, "geometry");
+
+    animSlideOut->setDuration(200);
+    animSlideOut->setStartValue(QRect(QPoint(0,size.height()),QPoint(size.width(),size.height())));
+    animSlideOut->setEndValue(QRect(QPoint(0,size.height()-35),QPoint(size.width(),size.height())));
+    animSlideOut->setEasingCurve(QEasingCurve::OutSine);
+
+    animSlideIn = new QPropertyAnimation(this, "geometry");
+
+    animSlideIn->setDuration(200);
+    animSlideIn->setStartValue(QRect(QPoint(0,size.height()-35),QPoint(size.width(),size.height())));
+    animSlideIn->setEndValue(QRect(QPoint(0,size.height()),QPoint(size.width(),size.height())));
+    animSlideIn->setEasingCurve(QEasingCurve::InSine);
+
+    QTimer *mTimer = new  QTimer();
+    mTimer->setInterval(2750);
+
+    connect(animSlideOut,SIGNAL(finished()),mTimer,SLOT(start()));
+    connect(mTimer,SIGNAL(timeout()),this,SLOT(slideInStart()));
+    connect(animSlideIn,SIGNAL(finished()),this,SLOT(close()));
+
 }
 
-void Toast::fade()
+void Toast::slideInStart()
 {
-    if(colorA < 75 ) this->deleteLater();
-    mTimer->setInterval(500);
-    mTimer->start();
-    colorA = colorA-25;
-    this->setStyleSheet("background-color: rgba(178, 6, 245,"+QString::number(colorA)+");"
-                        "color: rgb(255, 255, 255);"
-                        "border-radius:15px;");
+    animSlideIn->start();
 }
 
-void Toast::setMessage(const QString& msg)
+void Toast::show(const QString &message, const QString& style)
 {
-    ui->label->setText(msg);
+
+    this->setStyleSheet(style);
+    ui->label->setText(message);
+
+    animSlideOut->start();
 }
 
 Toast::~Toast()
