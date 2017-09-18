@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>762</width>
-    <height>78</height>
+    <width>784</width>
+    <height>41</height>
    </rect>
   </property>
   <property name="cursor">
@@ -45,6 +45,14 @@
      </property>
      <item>
       <widget class="QPushButton" name="pushButton">
+       <property name="font">
+        <font>
+         <family>Titillium Web</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
@@ -91,9 +99,6 @@ border:2px solid #b3d4fc;
        <property name="font">
         <font>
          <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <kerning>false</kerning>
         </font>
        </property>
        <property name="mouseTracking">
@@ -110,7 +115,7 @@ margin:0px 0px 0px 0px;
 }</string>
        </property>
        <property name="text">
-        <string>مكتبة ياسين</string>
+        <string>المساعد المكتبي</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -118,7 +123,202 @@ margin:0px 0px 0px 0px;
       </widget>
      </item>
      <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="BT_Books">
+         <property name="font">
+          <font>
+           <family>Ubuntu</family>
+           <pointsize>-1</pointsize>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+ position: relative;
+    padding: 0px 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    font-size: 15px;
+    font-family: Ubuntu;
+    color: #9E9E9E;
+    white-space: nowrap;
+    background-color: #3F51B5;
+   
+    border-radius: 0px;
+	  border: 1px solid #3F51B5 ;
+    
+      
+        
+    vertical-align: middle;
+}
+
+QPushButton:hover
+{
+ background-color: #03A9F4;
+ border-top: 1px solid  #03A9F4 ;
+ border-left: 1px solid  #03A9F4 ;
+ border-right: 1px solid  #03A9F4 ;
+border-bottom: 2px solid #FF4081;
+ color: #ffffff;
+
+}
+</string>
+         </property>
+         <property name="text">
+          <string>الكتب / الوثائق</string>
+         </property>
+         <property name="icon">
+          <iconset resource="Icons.qrc">
+           <normaloff>:/Icons/ic_attachment_white_24dp.png</normaloff>:/Icons/ic_attachment_white_24dp.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>35</width>
+           <height>35</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="BT_Workers">
+         <property name="font">
+          <font>
+           <family>Ubuntu</family>
+           <pointsize>-1</pointsize>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+ position: relative;
+    padding: 0px 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    font-size: 15px;
+    font-family: Ubuntu;
+    color: #9E9E9E;
+    white-space: nowrap;
+    background-color: #3F51B5;
+   
+    border-radius: 0px;
+	  border: 1px solid #3F51B5 ;
+    
+      
+        
+    vertical-align: middle;
+}
+
+QPushButton:hover
+{
+ background-color: #03A9F4;
+ border-top: 1px solid  #03A9F4 ;
+ border-left: 1px solid  #03A9F4 ;
+ border-right: 1px solid  #03A9F4 ;
+border-bottom: 2px solid #FF4081;
+ color: #ffffff;
+
+}
+</string>
+         </property>
+         <property name="text">
+          <string>الموظفين</string>
+         </property>
+         <property name="icon">
+          <iconset resource="Icons.qrc">
+           <normaloff>:/Icons/ic_work_white_24dp.png</normaloff>:/Icons/ic_work_white_24dp.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>35</width>
+           <height>35</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="BT_Clients">
+         <property name="font">
+          <font>
+           <family>Ubuntu</family>
+           <pointsize>-1</pointsize>
+          </font>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+ position: relative;
+    padding: 0px 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    font-size: 15px;
+    font-family: Ubuntu;
+    color: #9E9E9E;
+    white-space: nowrap;
+    background-color: #3F51B5;
+   
+    border-radius: 0px;
+	  border: 1px solid #3F51B5 ;
+    
+      
+        
+    vertical-align: middle;
+}
+
+QPushButton:hover
+{
+ background-color: #03A9F4;
+ border-top: 1px solid  #03A9F4 ;
+ border-left: 1px solid  #03A9F4 ;
+ border-right: 1px solid  #03A9F4 ;
+border-bottom: 2px solid #FF4081;
+ color: #ffffff;
+
+}
+</string>
+         </property>
+         <property name="text">
+          <string>الزبائن</string>
+         </property>
+         <property name="icon">
+          <iconset resource="Icons.qrc">
+           <normaloff>:/Icons/ic_supervisor_account_white_24dp.png</normaloff>:/Icons/ic_supervisor_account_white_24dp.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>35</width>
+           <height>35</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
       <widget class="QPushButton" name="Bt_logOut">
+       <property name="font">
+        <font>
+         <family>Titillium Web</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
@@ -151,202 +351,6 @@ border:2px solid #b3d4fc;
          <width>35</width>
          <height>35</height>
         </size>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="BT_Books">
-       <property name="font">
-        <font>
-         <family>Ubuntu</family>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <kerning>false</kerning>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton
-{
- position: relative;
-    padding: 0px 0px;
-        padding-top: 0px;
-        padding-bottom: 0px;
-    font-size: 15px;
-    font-family: Ubuntu;
-    color: #9E9E9E;
-    white-space: nowrap;
-    background-color: #3F51B5;
-   
-    border-radius: 0px;
-	  border: 1px solid #3F51B5 ;
-    
-      
-        
-    vertical-align: middle;
-}
-
-QPushButton:hover
-{
- background-color: #03A9F4;
- border-top: 1px solid  #03A9F4 ;
- border-left: 1px solid  #03A9F4 ;
- border-right: 1px solid  #03A9F4 ;
-border-bottom: 2px solid #FF4081;
- color: #ffffff;
-
-}
-</string>
-       </property>
-       <property name="text">
-        <string>الكتب / الوثائق</string>
-       </property>
-       <property name="icon">
-        <iconset resource="Icons.qrc">
-         <normaloff>:/Icons/ic_attachment_white_24dp.png</normaloff>:/Icons/ic_attachment_white_24dp.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>35</width>
-         <height>35</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="BT_Workers">
-       <property name="font">
-        <font>
-         <family>Ubuntu</family>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <kerning>false</kerning>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton
-{
- position: relative;
-    padding: 0px 0px;
-        padding-top: 0px;
-        padding-bottom: 0px;
-    font-size: 15px;
-    font-family: Ubuntu;
-    color: #9E9E9E;
-    white-space: nowrap;
-    background-color: #3F51B5;
-   
-    border-radius: 0px;
-	  border: 1px solid #3F51B5 ;
-    
-      
-        
-    vertical-align: middle;
-}
-
-QPushButton:hover
-{
- background-color: #03A9F4;
- border-top: 1px solid  #03A9F4 ;
- border-left: 1px solid  #03A9F4 ;
- border-right: 1px solid  #03A9F4 ;
-border-bottom: 2px solid #FF4081;
- color: #ffffff;
-
-}
-</string>
-       </property>
-       <property name="text">
-        <string>المـوظفين</string>
-       </property>
-       <property name="icon">
-        <iconset resource="Icons.qrc">
-         <normaloff>:/Icons/ic_work_white_24dp.png</normaloff>:/Icons/ic_work_white_24dp.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>35</width>
-         <height>35</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="BT_Clients">
-       <property name="font">
-        <font>
-         <family>Ubuntu</family>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <kerning>false</kerning>
-        </font>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton
-{
- position: relative;
-    padding: 0px 0px;
-        padding-top: 0px;
-        padding-bottom: 0px;
-    font-size: 15px;
-    font-family: Ubuntu;
-    color: #9E9E9E;
-    white-space: nowrap;
-    background-color: #3F51B5;
-   
-    border-radius: 0px;
-	  border: 1px solid #3F51B5 ;
-    
-      
-        
-    vertical-align: middle;
-}
-
-QPushButton:hover
-{
- background-color: #03A9F4;
- border-top: 1px solid  #03A9F4 ;
- border-left: 1px solid  #03A9F4 ;
- border-right: 1px solid  #03A9F4 ;
-border-bottom: 2px solid #FF4081;
- color: #ffffff;
-
-}
-</string>
-       </property>
-       <property name="text">
-        <string>الزبائــن</string>
-       </property>
-       <property name="icon">
-        <iconset resource="Icons.qrc">
-         <normaloff>:/Icons/ic_supervisor_account_white_24dp.png</normaloff>:/Icons/ic_supervisor_account_white_24dp.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>35</width>
-         <height>35</height>
-        </size>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
        </property>
       </widget>
      </item>
