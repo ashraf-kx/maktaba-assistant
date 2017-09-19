@@ -151,6 +151,7 @@ private:
     QString depositeDay;
     QString deliveryDay;
     bool    isDeliveredByMail;
+    QString    dateFinished;
     QString    date_created;
     QString    date_modified;
 
@@ -179,33 +180,35 @@ public:
         depositeDay.clear();
         deliveryDay.clear();
         isDeliveredByMail = false;
+        dateFinished.clear();
         date_created.clear();
         date_modified.clear();
     }
 
     int     getID(){ return id;}
     int     getWriterID(){ return writerID; }
-    int     getOwnerID(){ return ownerID;  }
+    int     getOwnerID(){  return ownerID;  }
     QString getTitleDoc(){ return titleDoc;}
-    uint    getTotalPages(){ return totalPages;}
+    uint    getTotalPages(){  return totalPages;}
     QString getLanguageDoc(){ return languageDoc;}
-    QString getFontFamily(){ return fontFamily;}
+    QString getFontFamily(){  return fontFamily;}
     uint    getFontSize(){ return fontSize;}
-    QString getTypeDoc(){ return typeDoc;}
+    QString getTypeDoc(){  return typeDoc;}
     uint    getPagesDone(){ return pagesDone; }
     uint    getPagesWord(){ return pagesWord; }
     uint    getPagesHand(){ return pagesHand; }
     QString getPrintingColor(){ return printingColor;}
-    bool    getIsPrinted(){ return isPrinted; }
+    bool    getIsPrinted(){   return isPrinted; }
     QString getDepositeDay(){ return depositeDay;}
     QString getDeliveryDay(){ return deliveryDay;}
     bool    getIesDeliveredByMail(){ return isDeliveredByMail; }
-    QString getDateCreated(){ return date_created;}
+    QString getDateFinished(){ return dateFinished; }
+    QString getDateCreated(){  return date_created; }
     QString getDateModified(){ return date_modified;}
 
     void setID(int value){ id = value; }
     void setWriterID(int value){ writerID = value; }
-    void setOwnerID(int value){ ownerID = value;  }
+    void setOwnerID(int value){  ownerID = value;  }
     void setTitleDoc(const QString &text){ titleDoc = text; }
     void setTotalPages(uint value){ totalPages = value; }
     void setLanguageDoc(const QString &text){ languageDoc = text; }
@@ -220,6 +223,7 @@ public:
     void setDepositeDay(const QString &text){  depositeDay  = text; }
     void setDeliveryDay(const QString &text){  deliveryDay  = text; }
     void setIsDeliveredByMail(bool value){ isDeliveredByMail = value; }
+    void setDateFinished(const QString &text){ dateFinished  = text; }
     void setDateCreated(const QString &text){ date_created   = text; }
     void setDateModified(const QString &text){ date_modified = text; }
 };
@@ -235,7 +239,7 @@ private:
     QString email;
 
     Document *document;
-    QList<Document> listDocuments;
+    QList<Document*> listDocuments;
 
     QString payement_state;
     uint price;
@@ -275,7 +279,7 @@ public:
     QString getEmail(){ return email; }
 
     Document* getDocument(){ return document; }
-    QList<Document> getListDocuments(){ return listDocuments; }
+    QList<Document*> getListDocuments(){ return listDocuments; }
 
     QString getPayement_state(){ return payement_state; }
     uint getPrice(){ return price; }
@@ -290,7 +294,7 @@ public:
     void setEmail(const QString &text ){ email = text; }
 
     void setDocument(Document *doc){ document = doc; }
-    void setListDocuments(QList<Document> list ){ listDocuments  = list; }
+    void setListDocuments(QList<Document*> list ){ listDocuments  = list; }
 
     void setPayement_state(const QString &text){ payement_state  = text; }
     void setPrice(uint value){ price = value; }
