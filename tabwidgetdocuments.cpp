@@ -19,7 +19,7 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     queryModelDocs->setQuery("SELECT `id`,`titleDoc`,`typeDoc`,"
                              "`fontFamily`,`fontSize`,`printingColor`,"
                              "`isPrinted`,`languageDoc`,`totalPages`,`pagesDone`,"
-                             "`deliveryDay` FROM `documents`",DB->getCnx());
+                             "`pagesHand`,`pagesWord`,`deliveryDay` FROM `documents`",DB->getCnx());
 
     TA.clear();
     TA["id"]            = 0;
@@ -32,7 +32,9 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     TA["languageDoc"]   = 7;
     TA["totalPages"]    = 8;
     TA["pagesDone"]     = 9;
-    TA["deliveryDay"]   = 10;
+    TA["pagesHand"]     = 10;
+    TA["pagesWord"]     = 11;
+    TA["deliveryDay"]   = 12;
 
     queryModelDocs->setHeaderData(TA["id"], Qt::Horizontal, tr("N#"));
     queryModelDocs->setHeaderData(TA["titleDoc"], Qt::Horizontal, tr("Title Doc"));
@@ -44,6 +46,8 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     queryModelDocs->setHeaderData(TA["languageDoc"], Qt::Horizontal, tr("Language Doc"));
     queryModelDocs->setHeaderData(TA["totalPages"], Qt::Horizontal, tr("Total Pages"));
     queryModelDocs->setHeaderData(TA["pagesDone"], Qt::Horizontal, tr("Pages Done"));
+    queryModelDocs->setHeaderData(TA["pagesHand"], Qt::Horizontal, tr("Pages By Hand"));
+    queryModelDocs->setHeaderData(TA["pagesWord"], Qt::Horizontal, tr("Pages By Word"));
     queryModelDocs->setHeaderData(TA["deliveryDay"], Qt::Horizontal, tr("Delivery Date"));
 
     proxyModelDocs = new QSortFilterProxyModel(this);
@@ -87,7 +91,7 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     ui->BT_updateDoc->setGraphicsEffect(Style::shadowbutton());
     ui->widgetSearch->setGraphicsEffect(Style::shadowbutton());
 
-    connect(ui->LE_fullnameFiltre,SIGNAL(textChanged(QString)),proxyModelDocs,SLOT(setFilterRegExp(QString)));
+    connect(ui->Le_search,SIGNAL(textChanged(QString)),proxyModelDocs,SLOT(setFilterRegExp(QString)));
     connect(ui->BT_associate,SIGNAL(clicked(bool)),ui->BT_associate,SLOT(setDisabled(bool)));
     connect(ui->BT_associate,SIGNAL(clicked()),this,SLOT(doAssociate()));
 
@@ -100,6 +104,22 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
     connect(ui->SB_pagesDonex,SIGNAL(valueChanged(int)),this,SLOT(calculatePagesRest()));
     connect(ui->SB_totalPagesx,SIGNAL(valueChanged(int)),this,SLOT(calculatePagesRest()));
     connect(ui->SB_idDocx,SIGNAL(valueChanged(int)),this,SLOT(displayNbrDoc(int)));
+
+    // Table View Data Contolled.
+    connect(ui->Bt_edit,SIGNAL(pressed()),ui->widget,SLOT(hide()));
+    connect(ui->Bt_edit,SIGNAL(released()),ui->widget,SLOT(show()));
+
+    initListRowsPerPage();
+    ui->Cb_rows->setCurrentIndex(0);
+
+    connect(ui->Cb_rows,SIGNAL(currentTextChanged(QString)),this,SLOT(updateTableViewRows()));
+    connect(ui->Cb_pages,SIGNAL(currentTextChanged(QString)),this,SLOT(showPageRows()));
+
+    connect(ui->Le_search,SIGNAL(textChanged(QString)),
+            proxyModelDocs,SLOT(setFilterRegExp(QString)));
+
+    connect(ui->Bt_previous,SIGNAL(clicked(bool)),this,SLOT(previousPage()));
+    connect(ui->Bt_next,SIGNAL(clicked(bool)),this,SLOT(nextPage()));
 }
 
 void TabWidgetDocuments::updateDoc()
@@ -119,9 +139,10 @@ void TabWidgetDocuments::updateDoc()
 
             DB->updateDocument(doc);
 
-            queryModelDocs->setQuery("SELECT `id`,`titleDoc`,`typeDoc`,`fontFamily`,`fontSize`,`printingColor`,"
-                                     "`isPrinted`,`languageDoc`,`totalPages`,`pagesDone`,`deliveryDay` "
-                                     "FROM `documents`");
+            queryModelDocs->setQuery("SELECT `id`,`titleDoc`,`typeDoc`,"
+                                     "`fontFamily`,`fontSize`,`printingColor`,"
+                                     "`isPrinted`,`languageDoc`,`totalPages`,`pagesDone`,"
+                                     "`pagesHand`,`pagesWord`,`deliveryDay` FROM `documents`",DB->getCnx());
             clearFormUpdate();
         }else
         {
@@ -173,11 +194,11 @@ void TabWidgetDocuments::doAssociate()
 {
     if(docsList.size()>0)
     {
-        DB->assignDoc2Worker(ui->CB_pickDoc->currentText(),ui->CB_pickWrkr->currentText());
+        DB->assignDoc2Worker(ui->CB_pickWrkr->currentText(),ui->CB_pickDoc->currentText());
         queryModelDocs->setQuery("SELECT `id`,`titleDoc`,`typeDoc`,"
                                  "`fontFamily`,`fontSize`,`printingColor`,"
                                  "`isPrinted`,`languageDoc`,`totalPages`,`pagesDone`,"
-                                 "`deliveryDay` FROM `documents`",DB->getCnx()); // TODO : Change Me ASSHOLE.
+                                 "`pagesHand`,`pagesWord`,`deliveryDay` FROM `documents`",DB->getCnx()); // TODO : Change Me ASSHOLE.
         // update ListDoc . but ListWorkers nothing changes.
         updateLists();
         currentActiveStats();
@@ -216,7 +237,7 @@ void TabWidgetDocuments::currentActiveStats()
     queryModelDocs->setQuery("SELECT `id`,`titleDoc`,`typeDoc`,"
                              "`fontFamily`,`fontSize`,`printingColor`,"
                              "`isPrinted`,`languageDoc`,`totalPages`,`pagesDone`,"
-                             "`deliveryDay` FROM `documents`",DB->getCnx());
+                             "`pagesHand`,`pagesWord`,`deliveryDay` FROM `documents`",DB->getCnx());
 }
 
 void TabWidgetDocuments::displayArchivedDocs()
@@ -229,13 +250,10 @@ void TabWidgetDocuments::displayArchivedDocs()
     int row = 0;  int col = 0;
     foreach (Document* doc, docsList) {
 
-        QString clientName = DB->getClientNameByID(doc->getOwnerID());
+        DB->getClientNameByID(doc->getOwnerID());
 
         ArchivedDoc *form= new ArchivedDoc(this);
-        form->showArchivedDocs(doc->getID(),
-                               clientName,
-                               doc->getTitleDoc(),
-                               doc->getPagesDone());
+        form->showArchivedDoc(doc->getID());
 
         mGridLayout2->addWidget(form,row,col);
         col++;
@@ -247,7 +265,7 @@ void TabWidgetDocuments::displayArchivedDocs()
     queryModelDocs->setQuery("SELECT `id`,`titleDoc`,`typeDoc`,"
                              "`fontFamily`,`fontSize`,`printingColor`,"
                              "`isPrinted`,`languageDoc`,`totalPages`,`pagesDone`,"
-                             "`deliveryDay` FROM `documents`",DB->getCnx());
+                             "`pagesHand`,`pagesWord`,`deliveryDay` FROM `documents`",DB->getCnx());
 }
 
 void TabWidgetDocuments::createMapper()
@@ -292,4 +310,142 @@ void TabWidgetDocuments::displayNbrDoc(int val)
 TabWidgetDocuments::~TabWidgetDocuments()
 {
     delete ui;
+}
+
+
+// Controle the table View Data, show only 15 line and so on .
+void TabWidgetDocuments::setmModelIndex(QModelIndex idx,QModelIndex idx2)
+{
+    Q_UNUSED(idx2);
+    mapper->setCurrentModelIndex(idx);
+}
+
+void TabWidgetDocuments::updateMessageInfo()
+{
+    int startIdx =0;
+    int numRowsVisible =0;
+    int modelRows = queryModelDocs->rowCount();
+    if(ui->Cb_pages->count()>0 && ui->Cb_rows->count()>0)
+    {
+        startIdx = (ui->Cb_pages->currentText().toInt()-1)*ui->Cb_rows->currentText().toInt();
+        numRowsVisible = ui->Cb_rows->currentText().toInt();
+
+        int endIdx = startIdx+numRowsVisible;
+        if(endIdx>modelRows) endIdx = modelRows;
+        ui->L_info->setText(tr("Showing ")+QString::number(startIdx+1)+
+                            tr(" to ")+QString::number(endIdx)+
+                            tr(" From ")+QString::number(modelRows)+
+                            tr(" Entries."));
+    }
+}
+
+void TabWidgetDocuments::nextPage()
+{
+    int idxCurrent = ui->Cb_pages->currentIndex();
+    if(idxCurrent < ui->Cb_pages->count()-1 )
+    {
+        ui->Cb_pages->setCurrentIndex(idxCurrent+1);
+        updateMessageInfo();
+    }
+}
+
+void TabWidgetDocuments::previousPage()
+{
+    int idxCurrent = ui->Cb_pages->currentIndex();
+    if(idxCurrent > 0 )
+    {
+        ui->Cb_pages->setCurrentIndex(idxCurrent-1);
+        updateMessageInfo();
+    }
+}
+
+void TabWidgetDocuments::selectedColumn(QModelIndex idx,QModelIndex idx2)
+{
+    Q_UNUSED(idx2)
+    qDebug()<<"row : "<<idx.row()<<"Collumn : "<<idx.column();
+
+   idxColSelected = idx.column();//ui->tableView->currentIndex().column();
+   if(idxColSelected >= 0 )
+   {
+       proxyModelDocs->setFilterRegExp(QRegExp("", Qt::CaseInsensitive));
+       proxyModelDocs->setFilterKeyColumn(idxColSelected);
+       ui->Le_search->setPlaceholderText(tr("Search By ")+queryModelDocs->headerData(idxColSelected,Qt::Horizontal,Qt::DisplayRole).toString());
+   }
+}
+
+void TabWidgetDocuments::hideAllRows()
+{
+    for(int i=0; i<queryModelDocs->rowCount(); i++)
+    {
+        ui->tableView->hideRow(i);
+    }
+}
+
+void TabWidgetDocuments::showAllRows()
+{
+    for(int i=0; queryModelDocs->rowCount();i++)
+    {
+        ui->tableView->showRow(i);
+    }
+}
+
+void TabWidgetDocuments::initListRowsPerPage()
+{
+    ui->Cb_rows->clear();
+    int maxRows  = queryModelDocs->rowCount();
+    ui->Cb_rows->addItem(QString::number(maxRows));
+
+    if(maxRows >= 10 ) ui->Cb_rows->addItem("10");
+    if(maxRows >= 15 ) ui->Cb_rows->addItem("15");
+    if(maxRows >= 20 ) ui->Cb_rows->addItem("20");
+    if(maxRows >= 30 ) ui->Cb_rows->addItem("30");
+    if(maxRows >= 50 ) ui->Cb_rows->addItem("50");
+    if(maxRows >= 100 ) ui->Cb_rows->addItem("100");
+}
+
+void TabWidgetDocuments::initListNumberPages()
+{
+    ui->Cb_pages->clear();
+    int maxRows   = queryModelDocs->rowCount();
+    int RowsCount = ui->Cb_rows->currentText().toInt();
+
+    int NumPages  = maxRows/RowsCount;
+    int restPages = maxRows%RowsCount;
+
+    int save_i = 0;
+    for(int i=1; i<= NumPages;i++)
+    {
+        ui->Cb_pages->addItem(QString::number(i));
+        save_i = i;
+    }
+
+    if(restPages > 0) ui->Cb_pages->addItem(QString::number(save_i+1));
+    updateMessageInfo();
+}
+
+void TabWidgetDocuments::showPageRows()
+{
+    hideAllRows();
+    int startIdx =0;
+    int numRowsVisible =0;
+    if(ui->Cb_pages->count()>0 && ui->Cb_rows->count()>0)
+    {
+        startIdx = (ui->Cb_pages->currentText().toInt()-1)*ui->Cb_rows->currentText().toInt();
+        numRowsVisible = ui->Cb_rows->currentText().toInt();
+
+        int endIdx = startIdx+numRowsVisible;
+        if(endIdx>queryModelDocs->rowCount()) endIdx = queryModelDocs->rowCount();
+
+        for(int i = startIdx; i< endIdx; i++)
+        {
+            ui->tableView->showRow(i);
+        }
+        updateMessageInfo();
+    }
+}
+
+void TabWidgetDocuments::updateTableViewRows()
+{
+    initListNumberPages();
+    showPageRows();
 }

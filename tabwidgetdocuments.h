@@ -52,6 +52,18 @@ public slots:
     void calculatePagesRest();
     void displayNbrDoc(int val);
 
+    void setmModelIndex(QModelIndex idx, QModelIndex idx2);
+    void updateMessageInfo();
+    void nextPage();
+    void previousPage();
+    void selectedColumn(QModelIndex idx,QModelIndex idx2);
+    void hideAllRows();
+    void showAllRows();
+    void initListRowsPerPage();
+    void initListNumberPages();
+    void showPageRows();
+    void updateTableViewRows();
+
 private:
     Ui::TabWidgetDocuments *ui;
     DBH *DB;
@@ -66,6 +78,7 @@ private:
     QGridLayout *mGridLayout;
     QGridLayout *mGridLayout2;
     QHash<QString,int> TA;
+    int idxColSelected;
 };
 
 #endif // TABWIDGETDOCUMENTS_H

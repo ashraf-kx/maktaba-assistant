@@ -52,9 +52,23 @@ public slots:
 
     void restPrice();
     void restPricex();
+
     void setmModelIndex(QModelIndex idx, QModelIndex idx2);
+
+    void updateMessageInfo();
+    void nextPage();
+    void previousPage();
+    void selectedColumn(QModelIndex idx,QModelIndex idx2);
+    void hideAllRows();
+    void showAllRows();
+    void initListRowsPerPage();
+    void initListNumberPages();
+    void showPageRows();
+    void updateTableViewRows();
+
 signals:
     void dataClientsChanged();
+
 
 private:
     Ui::TabWidgetClients *ui;
@@ -66,6 +80,7 @@ private:
     QSortFilterProxyModel *proxyModelClient;
     QWidget *father;
     QHash<QString,int> TA;
+    int idxColSelected;
 
 };
 

@@ -39,19 +39,19 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
 
     proxyModelWorker = new QSortFilterProxyModel(this);
     proxyModelWorker->setSourceModel(queryModelWorker);
-    ui->tableViewWorkers->setModel(proxyModelWorker);
+    ui->tableView->setModel(proxyModelWorker);
 
 //    proxyModelWorker->setFilterRegExp(QRegExp("", Qt::CaseInsensitive,QRegExp::FixedString));
 //    proxyModelWorker->setFilterKeyColumn(1);
 
-    ui->tableViewWorkers->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->tableViewWorkers->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->tableViewWorkers->setSortingEnabled(true);
-    ui->tableViewWorkers->setSelectionMode(QAbstractItemView::SingleSelection);
-    ui->tableViewWorkers->horizontalHeader()->stretchLastSection();
-    ui->tableViewWorkers->verticalHeader()->stretchLastSection();
-    ui->tableViewWorkers->resizeColumnsToContents();
-    ui->tableViewWorkers->show();
+    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableView->setSortingEnabled(true);
+    ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tableView->horizontalHeader()->stretchLastSection();
+    ui->tableView->verticalHeader()->stretchLastSection();
+    ui->tableView->resizeColumnsToContents();
+    ui->tableView->show();
 
     mapper->setSubmitPolicy(mapper->ManualSubmit);
     createMapper();
@@ -68,8 +68,8 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
     connect(ui->BT_saveWorker,SIGNAL(clicked()),this,SLOT(saveDemande2DB()));
     connect(ui->BT_saveWorker,SIGNAL(clicked(bool)),ui->BT_saveWorker,SLOT(setDisabled(bool)));
     connect(ui->BT_cancelInfoW,SIGNAL(clicked()),this,SLOT(clearForm()));
-    connect(ui->LE_fullnameFiltre,SIGNAL(textChanged(QString)),proxyModelWorker,SLOT(setFilterRegExp(QString)));
-    connect(ui->tableViewWorkers->selectionModel(), SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),
+    connect(ui->Le_search,SIGNAL(textChanged(QString)),proxyModelWorker,SLOT(setFilterRegExp(QString)));
+    connect(ui->tableView->selectionModel(), SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),
             mapper, SLOT(setCurrentModelIndex(QModelIndex)));
     connect(ui->BT_delete,SIGNAL(clicked()),this,SLOT(deleteWorker()));
 
@@ -79,6 +79,23 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
 
     connect(ui->SB_idWorkerx,SIGNAL(valueChanged(QString)),
             ui->LB_displayIdWx,SLOT(setText(QString)));
+
+
+    // Table View Data Contolled.
+    connect(ui->Bt_edit,SIGNAL(pressed()),ui->widget,SLOT(hide()));
+    connect(ui->Bt_edit,SIGNAL(released()),ui->widget,SLOT(show()));
+
+    initListRowsPerPage();
+    ui->Cb_rows->setCurrentIndex(0);
+
+    connect(ui->Cb_rows,SIGNAL(currentTextChanged(QString)),this,SLOT(updateTableViewRows()));
+    connect(ui->Cb_pages,SIGNAL(currentTextChanged(QString)),this,SLOT(showPageRows()));
+
+    connect(ui->Le_search,SIGNAL(textChanged(QString)),
+            proxyModelWorker,SLOT(setFilterRegExp(QString)));
+
+    connect(ui->Bt_previous,SIGNAL(clicked(bool)),this,SLOT(previousPage()));
+    connect(ui->Bt_next,SIGNAL(clicked(bool)),this,SLOT(nextPage()));
 }
 
 void TabWidgetWorkers::updateWorker()
@@ -241,4 +258,141 @@ void TabWidgetWorkers::deleteWorker()
         mToast->show(tr("select worker you want to delete from the table"),"");
     }
     ui->GB_updateWorker->setEnabled(true);
+}
+
+// Controle the table View Data, show only 15 line and so on .
+void TabWidgetWorkers::setmModelIndex(QModelIndex idx,QModelIndex idx2)
+{
+    Q_UNUSED(idx2);
+    mapper->setCurrentModelIndex(idx);
+}
+
+void TabWidgetWorkers::updateMessageInfo()
+{
+    int startIdx =0;
+    int numRowsVisible =0;
+    int modelRows = queryModelWorker->rowCount();
+    if(ui->Cb_pages->count()>0 && ui->Cb_rows->count()>0)
+    {
+        startIdx = (ui->Cb_pages->currentText().toInt()-1)*ui->Cb_rows->currentText().toInt();
+        numRowsVisible = ui->Cb_rows->currentText().toInt();
+
+        int endIdx = startIdx+numRowsVisible;
+        if(endIdx>modelRows) endIdx = modelRows;
+        ui->L_info->setText(tr("Showing ")+QString::number(startIdx+1)+
+                            tr(" to ")+QString::number(endIdx)+
+                            tr(" From ")+QString::number(modelRows)+
+                            tr(" Entries."));
+    }
+}
+
+void TabWidgetWorkers::nextPage()
+{
+    int idxCurrent = ui->Cb_pages->currentIndex();
+    if(idxCurrent < ui->Cb_pages->count()-1 )
+    {
+        ui->Cb_pages->setCurrentIndex(idxCurrent+1);
+        updateMessageInfo();
+    }
+}
+
+void TabWidgetWorkers::previousPage()
+{
+    int idxCurrent = ui->Cb_pages->currentIndex();
+    if(idxCurrent > 0 )
+    {
+        ui->Cb_pages->setCurrentIndex(idxCurrent-1);
+        updateMessageInfo();
+    }
+}
+
+void TabWidgetWorkers::selectedColumn(QModelIndex idx,QModelIndex idx2)
+{
+    Q_UNUSED(idx2)
+    qDebug()<<"row : "<<idx.row()<<"Collumn : "<<idx.column();
+
+   idxColSelected = idx.column();//ui->tableView->currentIndex().column();
+   if(idxColSelected >= 0 )
+   {
+       proxyModelWorker->setFilterRegExp(QRegExp("", Qt::CaseInsensitive));
+       proxyModelWorker->setFilterKeyColumn(idxColSelected);
+       ui->Le_search->setPlaceholderText(tr("Search By ")+queryModelWorker->headerData(idxColSelected,Qt::Horizontal,Qt::DisplayRole).toString());
+   }
+}
+
+void TabWidgetWorkers::hideAllRows()
+{
+    for(int i=0; i<queryModelWorker->rowCount(); i++)
+    {
+        ui->tableView->hideRow(i);
+    }
+}
+
+void TabWidgetWorkers::showAllRows()
+{
+    for(int i=0; queryModelWorker->rowCount();i++)
+    {
+        ui->tableView->showRow(i);
+    }
+}
+
+void TabWidgetWorkers::initListRowsPerPage()
+{
+    ui->Cb_rows->clear();
+    int maxRows  = queryModelWorker->rowCount();
+    ui->Cb_rows->addItem(QString::number(maxRows));
+
+    if(maxRows >= 10 ) ui->Cb_rows->addItem("10");
+    if(maxRows >= 15 ) ui->Cb_rows->addItem("15");
+    if(maxRows >= 20 ) ui->Cb_rows->addItem("20");
+    if(maxRows >= 30 ) ui->Cb_rows->addItem("30");
+    if(maxRows >= 50 ) ui->Cb_rows->addItem("50");
+    if(maxRows >= 100 ) ui->Cb_rows->addItem("100");
+}
+
+void TabWidgetWorkers::initListNumberPages()
+{
+    ui->Cb_pages->clear();
+    int maxRows   = queryModelWorker->rowCount();
+    int RowsCount = ui->Cb_rows->currentText().toInt();
+
+    int NumPages  = maxRows/RowsCount;
+    int restPages = maxRows%RowsCount;
+
+    int save_i = 0;
+    for(int i=1; i<= NumPages;i++)
+    {
+        ui->Cb_pages->addItem(QString::number(i));
+        save_i = i;
+    }
+
+    if(restPages > 0) ui->Cb_pages->addItem(QString::number(save_i+1));
+    updateMessageInfo();
+}
+
+void TabWidgetWorkers::showPageRows()
+{
+    hideAllRows();
+    int startIdx =0;
+    int numRowsVisible =0;
+    if(ui->Cb_pages->count()>0 && ui->Cb_rows->count()>0)
+    {
+        startIdx = (ui->Cb_pages->currentText().toInt()-1)*ui->Cb_rows->currentText().toInt();
+        numRowsVisible = ui->Cb_rows->currentText().toInt();
+
+        int endIdx = startIdx+numRowsVisible;
+        if(endIdx>queryModelWorker->rowCount()) endIdx = queryModelWorker->rowCount();
+
+        for(int i = startIdx; i< endIdx; i++)
+        {
+            ui->tableView->showRow(i);
+        }
+        updateMessageInfo();
+    }
+}
+
+void TabWidgetWorkers::updateTableViewRows()
+{
+    initListNumberPages();
+    showPageRows();
 }

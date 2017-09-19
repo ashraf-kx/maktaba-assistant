@@ -41,6 +41,19 @@ public slots:
     void updateWorker();
 
     void changeIconDisponibility();
+
+    void setmModelIndex(QModelIndex idx, QModelIndex idx2);
+    void updateMessageInfo();
+    void nextPage();
+    void previousPage();
+    void selectedColumn(QModelIndex idx,QModelIndex idx2);
+    void hideAllRows();
+    void showAllRows();
+    void initListRowsPerPage();
+    void initListNumberPages();
+    void showPageRows();
+    void updateTableViewRows();
+
 signals:
     void dataWorkersChanged();
 
@@ -52,6 +65,7 @@ private:
     QSortFilterProxyModel *proxyModelWorker;
     QDataWidgetMapper     *mapper;
     QHash<QString,int> TA;
+    int idxColSelected;
 };
 
 #endif // TABWIDGETWORKERS_H
