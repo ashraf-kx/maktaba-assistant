@@ -17,6 +17,11 @@
 #include <QPrintDialog>
 
 #include <QCalendarWidget>
+#include <QHash>
+
+#include <classes.h>
+#include "dbh.h"
+Q_DECLARE_LOGGING_CATEGORY(CLN)
 
 namespace Ui {
 class TabWidgetClients;
@@ -25,43 +30,20 @@ class TabWidgetClients;
 class TabWidgetClients : public QTabWidget
 {
     Q_OBJECT
-    struct clientData {
-        QString idDocument;
-        QString fullname;
-        QString titleDoc;
-        QString totalPages;
-        QString languageDoc;
-        QString fontFamily,fontSize,typeDoc,printingColor;
-
-        QString depositeDay;
-        QString deliveryDay;
-
-        QString remarke;
-        QString payement_state;
-        QString phoneNumber;
-        QString FirstEmail;
-        bool isDeliveredByMail;
-
-        QString price;
-        QString pricePaid;
-        uint date_created;
-        uint date_modified;
-    };
 public:
     explicit TabWidgetClients(QWidget *parent = 0);
-    clientData getDatafromForm();
-    bool addClient(clientData mClientData);
-    bool verificationSubmitedData(clientData mClientData);
+    Client *getDatafromForm();
+    bool addClient(Client *data);
+    bool verificationSubmitedData(Client *mClientData);
 
     ~TabWidgetClients();
     void displayOneRow();
     void clearFormUpdate();
 
-
 public slots:
     void clearForm();
     void saveDemande2DB();
-    void startMapper();
+    void createMapper();
     void deleteClient();
     void printTicket();
     void initCalendar();
@@ -70,17 +52,20 @@ public slots:
 
     void restPrice();
     void restPricex();
+    void setmModelIndex(QModelIndex idx, QModelIndex idx2);
 signals:
     void dataClientsChanged();
 
 private:
     Ui::TabWidgetClients *ui;
-    QSqlDatabase DBH;
+    DBH *DB;
 
     QSqlTableModel    *modelClient;
+    QSqlQueryModel    *queryModelClient;
     QDataWidgetMapper *mapper;
     QSortFilterProxyModel *proxyModelClient;
     QWidget *father;
+    QHash<QString,int> TA;
 
 };
 

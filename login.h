@@ -9,7 +9,10 @@
 #include "toast.h"
 
 #include "simplecrypt.h"
+#include <classes.h>
+#include "dbh.h"
 
+Q_DECLARE_LOGGING_CATEGORY(LGN)
 
 namespace Ui {
 class Login;
@@ -29,11 +32,11 @@ public slots:
     bool tryLogin();
     void setModeLogin(bool val);
 private:
-    Ui::Login *ui;
-    SimpleCrypt *crypto;
-    QSqlDatabase DBH;
-    int idAdmin;
-    bool loginMode;
+    Ui::Login    *ui;
+    SimpleCrypt  *crypto;
+    DBH   *DB;
+    int   idAdmin;
+    bool  loginMode;
     Toast *mToast;
 };
 

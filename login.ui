@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>562</width>
-    <height>206</height>
+    <width>656</width>
+    <height>463</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,13 +16,13 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="mainlayout">
    <item>
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
-       <family>Arial</family>
-       <pointsize>22</pointsize>
+       <family>Titillium Web</family>
+       <pointsize>12</pointsize>
        <weight>75</weight>
        <italic>false</italic>
        <bold>true</bold>
@@ -46,6 +46,12 @@
      </property>
      <item>
       <spacer name="horizontalSpacer_8">
+       <property name="font">
+        <font>
+         <family>Titillium Web</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -79,7 +85,8 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <family>Titillium Web</family>
+         <pointsize>12</pointsize>
          <weight>75</weight>
          <italic>false</italic>
          <bold>true</bold>
@@ -143,6 +150,8 @@ QLineEdit:hover
        </property>
        <property name="font">
         <font>
+         <family>Titillium Web</family>
+         <pointsize>12</pointsize>
          <strikeout>false</strikeout>
         </font>
        </property>
@@ -170,6 +179,12 @@ background-color: #2196F3;
      </item>
      <item>
       <spacer name="horizontalSpacer_10">
+       <property name="font">
+        <font>
+         <family>Titillium Web</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -190,6 +205,12 @@ background-color: #2196F3;
      </property>
      <item>
       <spacer name="horizontalSpacer_9">
+       <property name="font">
+        <font>
+         <family>Titillium Web</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -223,7 +244,8 @@ background-color: #2196F3;
        </property>
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <family>Titillium Web</family>
+         <pointsize>12</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -289,6 +311,8 @@ QLineEdit:hover
        </property>
        <property name="font">
         <font>
+         <family>Titillium Web</family>
+         <pointsize>12</pointsize>
          <strikeout>false</strikeout>
         </font>
        </property>
@@ -316,6 +340,12 @@ background-color: #2196F3;
      </item>
      <item>
       <spacer name="horizontalSpacer_11">
+       <property name="font">
+        <font>
+         <family>Titillium Web</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -333,6 +363,12 @@ background-color: #2196F3;
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <spacer name="horizontalSpacer">
+       <property name="font">
+        <font>
+         <family>Titillium Web</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -413,6 +449,12 @@ color: #ffffff;
      </item>
      <item>
       <spacer name="horizontalSpacer_2">
+       <property name="font">
+        <font>
+         <family>Titillium Web</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -491,6 +533,12 @@ color: #ffffff;
      </item>
      <item>
       <spacer name="horizontalSpacer_3">
+       <property name="font">
+        <font>
+         <family>Titillium Web</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -506,13 +554,33 @@ color: #ffffff;
    </item>
    <item>
     <widget class="QLabel" name="LB_msg">
+     <property name="font">
+      <font>
+       <family>Titillium Web</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="text">
       <string/>
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="QQuickWidget" name="quickWidget">
+     <property name="resizeMode">
+      <enum>QQuickWidget::SizeRootObjectToView</enum>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QQuickWidget</class>
+   <extends>QWidget</extends>
+   <header>QtQuickWidgets/QQuickWidget</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="Icons.qrc"/>
  </resources>

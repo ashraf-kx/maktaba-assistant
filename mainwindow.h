@@ -10,9 +10,13 @@
 #include "tabwidgetsettings.h"
 #include "topnav.h"
 #include "login.h"
-#include "db.h"
+#include "dbh.h"
 #include <QGraphicsDropShadowEffect>
 #include "toast.h"
+
+#include <classes.h>
+#include "dbh.h"
+Q_DECLARE_LOGGING_CATEGORY(DBRD)
 
 namespace Ui {
 class MainWindow;
@@ -38,7 +42,7 @@ public slots:
     void updateUIAnimation();
 private:
     Ui::MainWindow *ui;
-    DB                 *mDB;
+    DBH                *mDB;
     TabWidgetClients   *mTabWidgetClient;
     TabWidgetWorkers   *mTabWidgetWorker;
     TabWidgetDocuments *mTabWidgetDocument;

@@ -25,6 +25,12 @@
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
     <widget class="QFrame" name="frame">
+     <property name="font">
+      <font>
+       <family>Titillium Web</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">QFrame{
 	background-color: rgb(255, 255, 255);
@@ -44,6 +50,12 @@
         </property>
         <item>
          <spacer name="horizontalSpacer_2">
+          <property name="font">
+           <font>
+            <family>Titillium Web</family>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -62,6 +74,12 @@
             <width>30</width>
             <height>30</height>
            </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Ubuntu</family>
+            <pointsize>-1</pointsize>
+           </font>
           </property>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
@@ -121,6 +139,12 @@ color: #ffffff;
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Titillium Web</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
             <property name="whatsThis">
              <string>هل تم انجاز كل الصفحات</string>
             </property>
@@ -149,6 +173,12 @@ color: #ffffff;
               <height>30</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Titillium Web</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
             <property name="toolTip">
              <string>هل تم طباعة الوثيقة</string>
             </property>
@@ -176,6 +206,12 @@ color: #ffffff;
               <width>30</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Titillium Web</family>
+              <pointsize>11</pointsize>
+             </font>
             </property>
             <property name="toolTip">
              <string>هل تم الدفع كليا</string>
@@ -214,6 +250,12 @@ color: #ffffff;
             <height>16777215</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <family>Titillium Web</family>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
           <property name="styleSheet">
            <string notr="true">background-color: rgb(0, 170, 255);</string>
           </property>
@@ -228,6 +270,12 @@ color: #ffffff;
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
              <spacer name="horizontalSpacer_3">
+              <property name="font">
+               <font>
+                <family>Titillium Web</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -253,6 +301,12 @@ color: #ffffff;
                 <height>30</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Titillium Web</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">QLabel
 {
@@ -275,6 +329,12 @@ color: #ffffff;
             </item>
             <item>
              <spacer name="horizontalSpacer">
+              <property name="font">
+               <font>
+                <family>Titillium Web</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -292,7 +352,8 @@ color: #ffffff;
            <widget class="QLabel" name="Lb_nameClient">
             <property name="font">
              <font>
-              <pointsize>10</pointsize>
+              <family>Titillium Web</family>
+              <pointsize>11</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
@@ -309,6 +370,12 @@ color: #ffffff;
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
              <spacer name="horizontalSpacer_4">
+              <property name="font">
+               <font>
+                <family>Titillium Web</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -327,6 +394,12 @@ color: #ffffff;
                 <width>30</width>
                 <height>30</height>
                </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Titillium Web</family>
+                <pointsize>11</pointsize>
+               </font>
               </property>
               <property name="styleSheet">
                <string notr="true">QLabel
@@ -347,6 +420,12 @@ color: #ffffff;
             </item>
             <item>
              <spacer name="horizontalSpacer_5">
+              <property name="font">
+               <font>
+                <family>Titillium Web</family>
+                <pointsize>11</pointsize>
+               </font>
+              </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -370,7 +449,8 @@ color: #ffffff;
             </property>
             <property name="font">
              <font>
-              <pointsize>9</pointsize>
+              <family>Titillium Web</family>
+              <pointsize>11</pointsize>
               <weight>75</weight>
               <bold>true</bold>
              </font>
@@ -406,6 +486,12 @@ color: #ffffff;
           <width>16777215</width>
           <height>3</height>
          </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Titillium Web</family>
+          <pointsize>11</pointsize>
+         </font>
         </property>
         <property name="styleSheet">
          <string notr="true">QLabel

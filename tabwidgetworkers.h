@@ -12,6 +12,10 @@
 #include "dialog.h"
 #include "toast.h"
 
+#include <classes.h>
+#include "dbh.h"
+Q_DECLARE_LOGGING_CATEGORY(WRK)
+
 namespace Ui {
 class TabWidgetWorkers;
 }
@@ -19,25 +23,12 @@ class TabWidgetWorkers;
 class TabWidgetWorkers : public QTabWidget
 {
     Q_OBJECT
-    struct workerData {
-        QString fullName;
-        QString phoneNumber;
-        QString email;
-        QString remarke;
-        QString isDisponible;
-        int currnetDocID;
-        int lastDocID;
-        int nextDocID;
-        QList<int> listDocsHundled;
-        uint date_created;
-        uint date_modified;
-    };
     
 public:
     explicit TabWidgetWorkers(QWidget *parent = 0);
-    workerData getDatafromForm();
-    bool addWorker(workerData mWorkerData);
-    bool verificationSubmitedData(workerData mWorkerData);
+    Worker* getDatafromForm();
+    bool addWorker(Worker* data);
+    bool verificationSubmitedData(Worker* data);
     ~TabWidgetWorkers();
 
     void clearFormUpdate();
@@ -45,7 +36,7 @@ public:
 public slots:
     void clearForm();
     void saveDemande2DB();
-    void startMapper();
+    void createMapper();
     void deleteWorker();
     void updateWorker();
 
@@ -55,12 +46,12 @@ signals:
 
 private:
     Ui::TabWidgetWorkers *ui;
-    QSqlDatabase          DBH;
+    DBH *DB;
 
-    QSqlTableModel        *modelWorker;
+    QSqlQueryModel        *queryModelWorker;
     QSortFilterProxyModel *proxyModelWorker;
     QDataWidgetMapper     *mapper;
-
+    QHash<QString,int> TA;
 };
 
 #endif // TABWIDGETWORKERS_H

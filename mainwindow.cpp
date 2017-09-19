@@ -3,6 +3,8 @@
 #include "login.h"
 #include "dialog.h"
 
+Q_LOGGING_CATEGORY(DBRD,"DBRD")
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -61,13 +63,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     systemTray->showMessage(tr("Librery YS"),tr("Develop everywhere."),QSystemTrayIcon::Information,1000);
 
-    mDB = new DB();
+    mDB = new DBH("_dashboard_");
+    mDB->createEmptyDB();
 
     mTopNav            = new topNav(this);
     mTabWidgetClient   = new TabWidgetClients(this);
     mTabWidgetWorker   = new TabWidgetWorkers(this);
     mTabWidgetDocument = new TabWidgetDocuments(this);
-    mLogin             = new Login();
+    mLogin             = new Login(this);
 
     mTopNav->setGraphicsEffect(shadowWidget);
 
@@ -199,5 +202,5 @@ void MainWindow::displaySetting()
 
 void MainWindow::displayMessage(const QString &msg)
 {
-    ui->statusBar->showMessage(msg,10000);
+    //ui->statusBar->showMessage(msg,10000);
 }

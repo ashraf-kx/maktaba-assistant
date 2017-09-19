@@ -18,6 +18,11 @@
 #include "archiveddoc.h"
 #include "activedoc.h"
 #include "toast.h"
+#include <QHash>
+
+#include <classes.h>
+#include "dbh.h"
+Q_DECLARE_LOGGING_CATEGORY(DOC)
 
 namespace Ui {
 class TabWidgetDocuments;
@@ -26,22 +31,12 @@ class TabWidgetDocuments;
 class TabWidgetDocuments : public QTabWidget
 {
     Q_OBJECT
-    struct Employer{
-        QString fullName;
-        int id;
-    };
-
-    struct Document{
-        QString title;
-        QString owner;
-        int id;
-    };
     
 public:
     explicit TabWidgetDocuments(QWidget *parent = 0);
     QList<Document> getListDocsAvailable();
-    QList<Employer> getListWorkers();
-    void startMapper();
+    QList<Worker *> getWorkersList();
+    void createMapper();
     void clearFormUpdate();
 
     ~TabWidgetDocuments();
@@ -56,19 +51,21 @@ public slots:
 
     void calculatePagesRest();
     void displayNbrDoc(int val);
+
 private:
     Ui::TabWidgetDocuments *ui;
-    QSqlDatabase DBH;
-    QSqlTableModel    *modelDocs;
+    DBH *DB;
+    QSqlQueryModel    *queryModelDocs;
     QDataWidgetMapper *mapper;
     QSortFilterProxyModel *proxyModelDocs;
-    QList<Document> listdocs;
-    QList<Employer> listEmpls;
+    QList<Document*> docsList;
+    QList<Worker*>   workersList;
 
     QSqlTableModel *modelClient;
     QGraphicsDropShadowEffect *sh;
     QGridLayout *mGridLayout;
     QGridLayout *mGridLayout2;
+    QHash<QString,int> TA;
 };
 
 #endif // TABWIDGETDOCUMENTS_H

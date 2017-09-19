@@ -11,6 +11,10 @@
 #include <simplecrypt.h>
 #include "toast.h"
 
+#include <classes.h>
+#include "dbh.h"
+Q_DECLARE_LOGGING_CATEGORY(STG)
+
 namespace Ui {
 class TabWidgetSettings;
 }
@@ -31,7 +35,7 @@ public slots:
 
 private:
     Ui::TabWidgetSettings *ui;
-    QSqlDatabase DBH;
+    DBH *DB;
     QSqlQuery    *query;
     Toast        *mToast;
 };

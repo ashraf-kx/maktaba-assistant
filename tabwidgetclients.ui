@@ -12,9 +12,10 @@
   </property>
   <property name="font">
    <font>
-    <pointsize>9</pointsize>
-    <weight>75</weight>
-    <bold>true</bold>
+    <family>Titillium Web</family>
+    <pointsize>12</pointsize>
+    <weight>50</weight>
+    <bold>false</bold>
     <underline>false</underline>
     <strikeout>false</strikeout>
     <kerning>false</kerning>
@@ -32,10 +33,14 @@
   <property name="styleSheet">
    <string notr="true">QTabWidget{
 border:0px solid white;
+	background-color: rgb(255, 255, 255);
 }</string>
   </property>
+  <property name="tabPosition">
+   <enum>QTabWidget::North</enum>
+  </property>
   <property name="tabShape">
-   <enum>QTabWidget::Triangular</enum>
+   <enum>QTabWidget::Rounded</enum>
   </property>
   <property name="currentIndex">
    <number>0</number>
@@ -50,18 +55,27 @@ border:0px solid white;
    <enum>Qt::ElideNone</enum>
   </property>
   <property name="documentMode">
-   <bool>true</bool>
+   <bool>false</bool>
   </property>
   <property name="tabBarAutoHide">
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="T_addClient">
+   <property name="font">
+    <font>
+     <family>Titillium Web</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
    <attribute name="icon">
     <iconset resource="Icons.qrc">
      <normaloff>:/Icons/ic_add_circle_outline_2x.png</normaloff>:/Icons/ic_add_circle_outline_2x.png</iconset>
    </attribute>
    <attribute name="title">
-    <string>   إضــافة زبون   </string>
+    <string>   إضافة زبون   </string>
    </attribute>
    <attribute name="toolTip">
     <string>لإضافة زبون جديد</string>
@@ -71,7 +85,8 @@ border:0px solid white;
      <widget class="QGroupBox" name="GB_addClient">
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <family>Titillium Web</family>
+        <pointsize>11</pointsize>
         <weight>75</weight>
         <italic>true</italic>
         <bold>true</bold>
@@ -89,7 +104,7 @@ border:0px solid white;
       <property name="styleSheet">
        <string notr="true">QGroupeBox
 {
-background-color:#fafafa;
+	background-color: rgb(255, 255, 255);
 }</string>
       </property>
       <property name="title">
@@ -187,7 +202,8 @@ background-color: #2196F3;
                </property>
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -327,7 +343,8 @@ background-color: #2196F3;
                </property>
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -367,7 +384,7 @@ QLineEdit:hover
                 <set>Qt::AlignCenter</set>
                </property>
                <property name="placeholderText">
-                <string>عنوان المذكـرة / الوثيقة / الكتاب</string>
+                <string>عنوان المذكرة / الوثيقة / الكتاب</string>
                </property>
               </widget>
              </item>
@@ -461,7 +478,8 @@ background-color: #2196F3;
                </property>
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -501,7 +519,7 @@ QLineEdit:hover
                 <set>Qt::AlignCenter</set>
                </property>
                <property name="placeholderText">
-                <string>البريــد الإلكتروني للزبون</string>
+                <string>البريـد الإلكتروني للزبون</string>
                </property>
               </widget>
              </item>
@@ -595,7 +613,8 @@ background-color: #2196F3;
                </property>
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -680,7 +699,8 @@ QLineEdit:hover
             <widget class="QLabel" name="LB_deliveryDay_2">
              <property name="font">
               <font>
-               <pointsize>10</pointsize>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -731,7 +751,8 @@ QLineEdit:hover
                </property>
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <italic>true</italic>
                  <bold>true</bold>
@@ -799,7 +820,8 @@ QPlainTextEdit:hover
             <widget class="QLabel" name="LB_languageDoc_2">
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -894,7 +916,8 @@ background-color: #2196F3;
                </property>
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -981,7 +1004,8 @@ QComboBox:hover
             <widget class="QLabel" name="LB_languageDoc">
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -994,7 +1018,7 @@ QComboBox:hover
 }</string>
              </property>
              <property name="text">
-              <string>لغة المذكــرة / الوثيقة / الكتاب</string>
+              <string>لغة المذكرة / الوثيقة / الكتاب</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1076,7 +1100,8 @@ background-color: #2196F3;
                </property>
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -1153,7 +1178,8 @@ QComboBox:hover
             <widget class="QLabel" name="LB_totalPages">
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -1248,7 +1274,8 @@ background-color: #2196F3;
                </property>
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -1311,7 +1338,8 @@ QSpinBox:hover
             <widget class="QLabel" name="LB_deliveryDay_4">
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -1400,8 +1428,8 @@ background-color: #2196F3;
                </property>
                <property name="font">
                 <font>
-                 <family>Microsoft Sans Serif</family>
-                 <pointsize>8</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                  <stylestrategy>PreferDefault</stylestrategy>
@@ -1468,7 +1496,7 @@ QComboBox:hover
                </property>
                <property name="currentFont">
                 <font>
-                 <family>Arial Black</family>
+                 <family>DejaVu Sans</family>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -1494,7 +1522,8 @@ QComboBox:hover
             <widget class="QLabel" name="LB_deliveryDay_3">
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -1583,7 +1612,8 @@ background-color: #2196F3;
                </property>
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                  <kerning>false</kerning>
@@ -1745,7 +1775,8 @@ QComboBox:hover
               <widget class="QLabel" name="LB_depositeDay">
                <property name="font">
                 <font>
-                 <pointsize>9</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -1840,7 +1871,8 @@ background-color: #2196F3;
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>10</pointsize>
+                   <family>Titillium Web</family>
+                   <pointsize>11</pointsize>
                    <weight>75</weight>
                    <bold>true</bold>
                   </font>
@@ -1931,6 +1963,8 @@ QDateEdit:hover
                  </property>
                  <property name="font">
                   <font>
+                   <family>Titillium Web</family>
+                   <pointsize>11</pointsize>
                    <weight>75</weight>
                    <bold>true</bold>
                    <kerning>false</kerning>
@@ -2070,7 +2104,8 @@ background-color: #2196F3;
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>10</pointsize>
+                   <family>Titillium Web</family>
+                   <pointsize>11</pointsize>
                    <weight>75</weight>
                    <bold>true</bold>
                   </font>
@@ -2155,13 +2190,15 @@ QDateEdit:hover
                  </property>
                  <property name="font">
                   <font>
+                   <family>Titillium Web</family>
+                   <pointsize>11</pointsize>
                    <weight>75</weight>
                    <bold>true</bold>
                    <kerning>false</kerning>
                   </font>
                  </property>
                  <property name="autoFillBackground">
-                  <bool>true</bool>
+                  <bool>false</bool>
                  </property>
                  <property name="locale">
                   <locale language="Arabic" country="Algeria"/>
@@ -2228,7 +2265,8 @@ QDateEdit:hover
                </property>
                <property name="font">
                 <font>
-                 <pointsize>9</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -2326,7 +2364,8 @@ background-color: #2196F3;
                  </property>
                  <property name="font">
                   <font>
-                   <pointsize>10</pointsize>
+                   <family>Titillium Web</family>
+                   <pointsize>11</pointsize>
                    <weight>75</weight>
                    <bold>true</bold>
                   </font>
@@ -2403,7 +2442,8 @@ QComboBox:hover
                </property>
                <property name="font">
                 <font>
-                 <pointsize>9</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -2505,6 +2545,7 @@ background-color: #2196F3;
                   </property>
                   <property name="font">
                    <font>
+                    <family>Titillium Web</family>
                     <pointsize>11</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
@@ -2545,7 +2586,8 @@ QLabel:hover
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>9</pointsize>
+                    <family>Titillium Web</family>
+                    <pointsize>11</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -2714,6 +2756,7 @@ background-color: #2196F3;
                   </property>
                   <property name="font">
                    <font>
+                    <family>Titillium Web</family>
                     <pointsize>11</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
@@ -2745,7 +2788,8 @@ background-color: #2196F3;
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>9</pointsize>
+                    <family>Titillium Web</family>
+                    <pointsize>11</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -2803,7 +2847,8 @@ QSpinBox:hover
               <widget class="QLabel" name="label">
                <property name="font">
                 <font>
-                 <pointsize>9</pointsize>
+                 <family>Titillium Web</family>
+                 <pointsize>11</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -3034,6 +3079,9 @@ color: #ffffff;
    </layout>
   </widget>
   <widget class="QWidget" name="T_updateClient">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
    <attribute name="icon">
     <iconset resource="Icons.qrc">
      <normaloff>:/Icons/ic_update_2x.png</normaloff>:/Icons/ic_update_2x.png</iconset>
@@ -3049,10 +3097,11 @@ color: #ffffff;
      <widget class="QGroupBox" name="GB_updateClient">
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <italic>true</italic>
-        <bold>true</bold>
+        <family>Titillium Web</family>
+        <pointsize>11</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
         <underline>false</underline>
         <strikeout>false</strikeout>
         <kerning>false</kerning>
@@ -3117,6 +3166,14 @@ border-top:1px solid #FF165A;
          </property>
          <item>
           <widget class="QWidget" name="widgetSearch" native="true">
+           <property name="font">
+            <font>
+             <family>Titillium Web</family>
+             <pointsize>11</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">QWidget
 {
@@ -3153,6 +3210,14 @@ border-top:1px solid #FF165A;
                 <height>0</height>
                </size>
               </property>
+              <property name="font">
+               <font>
+                <family>Titillium Web</family>
+                <pointsize>11</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
               <property name="layoutDirection">
                <enum>Qt::LeftToRight</enum>
               </property>
@@ -3174,9 +3239,10 @@ border-top:1px solid #FF165A;
              <widget class="QLineEdit" name="LE_fullnameFiltre">
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Titillium Web</family>
+                <pointsize>11</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
                </font>
               </property>
               <property name="layoutDirection">
@@ -3234,10 +3300,10 @@ QLineEdit:hover
            </property>
            <property name="font">
             <font>
-             <family>Arial</family>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Titillium Web</family>
+             <pointsize>11</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
              <kerning>false</kerning>
             </font>
            </property>
@@ -3273,6 +3339,9 @@ QTableView:hover
            <property name="gridStyle">
             <enum>Qt::CustomDashLine</enum>
            </property>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
           </widget>
          </item>
         </layout>
@@ -3292,6 +3361,12 @@ QTableView:hover
              <width>250</width>
              <height>16777215</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Titillium Web</family>
+             <pointsize>11</pointsize>
+            </font>
            </property>
            <property name="maximum">
             <number>9999999</number>
@@ -3367,7 +3442,8 @@ color: #ffffff;
             <widget class="QLabel" name="LB_displayIdCx">
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -3447,7 +3523,8 @@ color: #ffffff;
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -3552,7 +3629,8 @@ background-color: #2196F3;
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -3660,7 +3738,8 @@ background-color: #2196F3;
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -3784,7 +3863,8 @@ background-color: #2196F3;
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -3923,6 +4003,7 @@ background-color: #2196F3;
              </property>
              <property name="font">
               <font>
+               <family>Titillium Web</family>
                <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
@@ -3971,7 +4052,8 @@ QLabel:hover
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -4093,6 +4175,7 @@ background-color: #2196F3;
              </property>
              <property name="font">
               <font>
+               <family>Titillium Web</family>
                <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
@@ -4141,7 +4224,8 @@ QLabel:hover
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -4225,6 +4309,8 @@ background-color: #2196F3;
             <widget class="QLabel" name="Lb_priceRestDZx">
              <property name="font">
               <font>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -4245,6 +4331,8 @@ background-color: #2196F3;
             <widget class="QLabel" name="label_26">
              <property name="font">
               <font>
+               <family>Titillium Web</family>
+               <pointsize>11</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
