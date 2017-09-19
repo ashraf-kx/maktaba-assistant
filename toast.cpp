@@ -8,11 +8,11 @@ Toast::Toast(QWidget *parent) :
     ui->setupUi(this);
     setParent(qApp->activeWindow());
 
-    QGraphicsDropShadowEffect * sh = new QGraphicsDropShadowEffect();
-    sh->setBlurRadius(8);
-    sh->setOffset(2);
-    sh->setColor(QColor(63, 63, 63, 180));
-    this->setGraphicsEffect(sh);
+//    QGraphicsDropShadowEffect * sh = new QGraphicsDropShadowEffect();
+//    sh->setBlurRadius(8);
+//    sh->setOffset(2);
+//    sh->setColor(QColor(63, 63, 63, 180));
+//    this->setGraphicsEffect(sh);
 
     this->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     this->setVisible(true);
