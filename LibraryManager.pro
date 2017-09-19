@@ -4,15 +4,15 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql printsupport
-
-TARGET = LibraryManager
+QT       += core gui sql printsupport  quickwidgets
+#webenginewidgets
+CONFIG   += c++11
+TARGET   = LibraryManager
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    db.cpp \
     tabwidgetclients.cpp \
     tabwidgetworkers.cpp \
     tabwidgetdocuments.cpp \
@@ -23,10 +23,11 @@ SOURCES += main.cpp\
     simplecrypt.cpp \
     tabwidgetsettings.cpp \
     dialog.cpp \
-    toast.cpp
+    mdialog.cpp \
+    toast.cpp \
+    dbh.cpp
 
 HEADERS  += mainwindow.h \
-    db.h \
     tabwidgetclients.h \
     tabwidgetworkers.h \
     tabwidgetdocuments.h \
@@ -37,7 +38,10 @@ HEADERS  += mainwindow.h \
     simplecrypt.h \
     tabwidgetsettings.h \
     dialog.h \
-    toast.h
+    mdialog.h \
+    toast.h \
+    dbh.h \
+    classes.h
 
 FORMS    += mainwindow.ui \
     tabwidgetclients.ui \
@@ -49,12 +53,18 @@ FORMS    += mainwindow.ui \
     activedoc.ui \
     tabwidgetsettings.ui \
     dialog.ui \
+    mdialog.ui \
     toast.ui
 
 RESOURCES += \
     Icons.qrc \
-    lang.qrc
+    languages.qrc \
+    sounds.qrc \
+    styles.qrc
 
 TRANSLATIONS = LibraryManager_ar.ts
+
+DISTFILES += \
+    logFile.ini
 
 

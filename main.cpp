@@ -5,13 +5,17 @@
 #include <QTranslator>
 #include <QSharedMemory>
 #include <QProcess>
+#include <QMessageBox>
+//#include <QWebEngineView>
 
 int main(int argc, char *argv[])
 {
     Q_INIT_RESOURCE(Icons);
-    Q_INIT_RESOURCE(lang);
+    Q_INIT_RESOURCE(languages);
 
     QApplication a(argc, argv);
+
+
 
     /*QString serialKey="SerialNumber       \r\r\n20090516388200000  \r\r\n5VEV4RLC           \r\r\n\r\r\n";
     QProcess process;
@@ -23,7 +27,7 @@ int main(int argc, char *argv[])
     if(serialKey == QString(process.readAll()))
     {*/
         QDate mDateExpire;
-        mDateExpire.setDate(2017,07,07);
+        mDateExpire.setDate(2017,10,07);
         if(QDate::currentDate().daysTo(mDateExpire) >= 0 )
         {
             QMessageBox msg;
@@ -34,20 +38,20 @@ int main(int argc, char *argv[])
             msg.setIcon( QMessageBox::Information );
             msg.exec();
 
-        QSharedMemory shared("62d60669-bb94-4a94-88bb-b964890a7e04");
+//        QSharedMemory shared("62d60669-bb94-4a94-88bb-b964890a7e04");
 
-              if( !shared.create( 512, QSharedMemory::ReadWrite) )
-              {
-                // For a GUI application, replace this by :
-                QMessageBox msgBox;
-                msgBox.setText( QObject::tr("Can't start more than one instance of the application.") );
-                msgBox.setIcon( QMessageBox::Critical );
-                msgBox.exec();
+//              if( !shared.create( 512, QSharedMemory::ReadWrite) )
+//              {
+//                // For a GUI application, replace this by :
+//                QMessageBox msgBox;
+//                msgBox.setText( QObject::tr("Can't start more than one instance of the application.") );
+//                msgBox.setIcon( QMessageBox::Critical );
+//                msgBox.exec();
 
-                // qWarning() << "Can't start more than one instance of the application.";
+//                // qWarning() << "Can't start more than one instance of the application.";
 
-                exit(0);
-              }
+//                exit(0);
+//              }
 
             QTranslator translator;
             translator.load(":biblioYass_ar");
