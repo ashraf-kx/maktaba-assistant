@@ -48,6 +48,10 @@ public:
     int updateAdminAddress(const QString &address);
     int updateAdminPhone(const QString &phone);
     void anyError(QSqlError e);
+    int cancelAssignment(int idDoc, int idWorker);
+    int moveToArchive(int idDoc);
+    int removeFromArchive(int idDoc);
+    Client *getClientAndDocByID(int id);
 };
 
 #endif // DBH_H

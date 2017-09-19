@@ -429,7 +429,7 @@ QList<Document*> DBH::getAvailableDocsList()
 {
     QList<Document*> list;
     list.clear();
-    Document* doc = new Document();
+    Document* doc;
 
     mTransaction();
 
@@ -440,6 +440,7 @@ QList<Document*> DBH::getAvailableDocsList()
 
     while (query->next())
     {
+        doc = new Document();
         doc->setID(query->value("id").toInt());
         doc->setTitleDoc(query->value("titleDoc").toString());
         list<<doc;
@@ -480,6 +481,10 @@ bool DBH::assignDoc2Worker(const QString &workerName,const QString &docTitle)
 {
     int idWorker = -1;
     int idDoc    = -1;
+
+    qCDebug(DDB)<<"Worker Name : "<<workerName
+               <<"doc Title : "<<docTitle;
+
     mTransaction();
 
     //! Get Both Indexes Document & Worker.
@@ -522,7 +527,7 @@ QList<Document*> DBH::getActiveDocsList()
 {
     QList<Document*> list;
     list.clear();
-    Document *doc = new Document();
+    Document *doc;
 
     mTransaction();
 
@@ -530,15 +535,13 @@ QList<Document*> DBH::getActiveDocsList()
     query->prepare("SELECT `id`,`idWorker`,`titleDoc`,"
                    "`totalPages`,`pagesDone`,`depositeDay`,"
                    "`deliveryDay` FROM `documents` WHERE "
-                   "`dateStarted` IS NOT NULL "); // AND `dateFinished` IS NOT NULL
+                   "`dateStarted` IS NOT NULL AND `dateFinished` IS NULL");
 
-//    query->bindValue(":dateStarted",-1);
-//    query->bindValue(":dateFinished",-1);
     query->exec();
 
     while(query->next())
     {
-        doc->clear();
+        doc = new Document();
         doc->setID(query->value("id").toInt());
         doc->setWriterID(query->value("idWorker").toInt());
         doc->setTitleDoc(query->value("titleDoc").toString());
@@ -577,19 +580,19 @@ QList<Document*> DBH::getArchivedDocsList()
 {
     QList<Document*> list;
     list.clear();
-    Document* doc = new Document();
+    Document* doc;
 
     mTransaction();
 
     query->clear();
     query->prepare("SELECT `id`,`idClient`,`titleDoc`,`pagesDone` "
-                   "FROM `documents` WHERE `dateFinished` <> :dateFinished");
-    query->bindValue(":dateFinished",-1);
+                   "FROM `documents` WHERE `dateFinished` IS NOT NULL "); //
+    // query->bindValue(":dateFinished",-1);
     query->exec();
 
     while(query->next())
     {
-        doc->clear();
+        doc = new Document();
         doc->setID(query->value("id").toInt());
         doc->setOwnerID(query->value("idClient").toInt());
         doc->setTitleDoc(query->value("titleDoc").toString());
@@ -657,7 +660,7 @@ int DBH::addWorker(Worker* data)
                    "`remarke`, `isDisponible`,`currentDocID`,"
                    "`date_created`,`date_modified`) VALUES ("
                    "NULL, :fullName, :phoneNumber, :email,:remarke,"
-                   "NULL, NULL, :date_created, :date_modified);");
+                   ":isDisponible, NULL, :date_created, :date_modified);");
 
     query->bindValue(":fullName",   data->getFullName());
     query->bindValue(":phoneNumber",data->getPhoneNumber());
@@ -782,4 +785,102 @@ int DBH::updateAdminPhone(const QString &phone)
 
     mCommit();
     return rowUpdated;
+}
+
+int DBH::cancelAssignment(int idDoc,int idWorker)
+{
+    int rowUpdated = -1;
+    mTransaction();
+
+    query->clear();
+    query->prepare("UPDATE `documents` SET `idWorker` = NULL,`dateStarted` = NULL WHERE `id`=:id");
+    query->bindValue(":id",idDoc);
+    query->exec();
+    rowUpdated = query->numRowsAffected();
+
+    query->clear();
+    query->prepare("UPDATE `workers` SET `currentDocID` = NULL WHERE `id`= :id");
+    query->bindValue(":id",idWorker);
+    query->exec();
+    rowUpdated += query->numRowsAffected();
+
+    mCommit();
+    // update ListDoc . but ListWorkers nothing changes.
+    return rowUpdated;
+}
+
+int DBH::moveToArchive(int idDoc)
+{
+    int rowUpdated = -1;
+    mTransaction();
+
+    query->clear();
+    query->prepare("UPDATE `documents` SET `dateFinished`=:dateFinished WHERE id=:id");
+    query->bindValue(":dateFinished",QDate::currentDate().toString("yyyy-MM-dd")); // FIXME :
+    query->bindValue(":id",idDoc);
+    query->exec();
+    rowUpdated = query->numRowsAffected();
+
+    mCommit();
+    return rowUpdated;
+}
+
+int DBH::removeFromArchive(int idDoc)
+{
+    int rowUpdated = -1;
+    mTransaction();
+
+    query->clear();
+    query->prepare("UPDATE `documents` SET `dateFinished` = NULL WHERE `id`= :id");
+    query->bindValue(":id",idDoc);
+    query->exec();
+    rowUpdated = query->numRowsAffected();
+
+    mCommit();
+    return rowUpdated;
+}
+
+Client *DBH::getClientAndDocByID(int id) // FIXME : I Look Really Bad,No Sense.
+{
+    Client* data;
+    Document* doc;
+    int idClient = -1;
+    mTransaction();
+
+    query->clear();
+    query->prepare("SELECT `idClient`,`titleDoc`,`totalPages`,"
+                   "`pagesDone`,`isPrinted`,`dateFinished` "
+                   "FROM `documents` WHERE `id`= :id");
+    query->bindValue(":id",id);
+    query->exec();
+
+    if(query->next())
+    {
+        doc = new Document();
+        idClient      = query->value("idClient").toInt();
+        doc->setTitleDoc(query->value("titleDoc").toString());
+        doc->setTotalPages(query->value("totalPages").toInt());
+        doc->setPagesDone(query->value("pagesDone").toInt());
+        doc->setIsPrinted(query->value("isPrinted").toBool());
+        doc->setDateFinished(query->value("dateFinished").toString());
+    }
+
+    query->clear();
+    query->prepare("SELECT `fullname`,`price`,`pricePaid`"
+                   "FROM `clients` WHERE `id`=:id");
+    query->bindValue(":id",idClient);
+    query->exec();
+
+    if(query->next()) {
+        data = new Client();
+        data->setID(idClient);
+        data->setFullname(query->value("fullname").toString());
+        data->setPrice(query->value("price").toInt());
+        data->setPricePaid(query->value("pricePaid").toInt());
+    }
+
+    data->setDocument(doc);
+
+    mCommit();
+    return data;
 }
