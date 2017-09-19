@@ -2,16 +2,17 @@
 #define ARCHIVEDDOC_H
 
 #include <QtWidgets/QWidget>
-#include <QDate>
-#include <QDebug>
-#include <QSqlDatabase>
-#include <QSqlQuery>
+#include "ui_archiveddoc.h"
+
+#include <classes.h>
+#include "dbh.h"
+Q_DECLARE_LOGGING_CATEGORY(ARDC)
 
 namespace Ui {
 class ArchivedDoc;
 }
 
-class ArchivedDoc : public QWidget
+class ArchivedDoc : public QWidget, Ui::ArchivedDoc
 {
     Q_OBJECT
     
@@ -20,11 +21,10 @@ public:
     ~ArchivedDoc();
 
 public slots:
-    void showArchivedDocs(int idDoc,const QString &nameClient,const QString &titleDoc,int pagesDone);
+    void showArchivedDoc(int idDoc);
     void removeFromArchive();
 private:
-    Ui::ArchivedDoc *ui;
-    QSqlDatabase DBH;
+    DBH *DB;
     int idDoc;
 };
 
