@@ -2,18 +2,18 @@
 #define ACTIVEDOC_H
 
 #include <QtWidgets/QWidget>
-#include <QDate>
-#include <QDebug>
-#include <QSqlDatabase>
-#include <QSqlQuery>
 
+#include "ui_activedoc.h"
 
+#include <classes.h>
+#include "dbh.h"
+Q_DECLARE_LOGGING_CATEGORY(ACDC)
 
 namespace Ui {
 class ActiveDoc;
 }
 
-class ActiveDoc : public QWidget
+class ActiveDoc : public QWidget, Ui::ActiveDoc
 {
     Q_OBJECT
     
@@ -22,14 +22,12 @@ public:
     void _ActiveDoc(int idDoc,const QString &nameWorker,int idWorker,const QString &titleDoc, int totalPages, int pagesDone,QDate depositeDay,QDate deliveryDay);
     ~ActiveDoc();
 
-
 public slots:
     void cancelAssociate();
     void saveToArchive();
 
 private:
-    Ui::ActiveDoc *ui;
-    QSqlDatabase DBH;
+    DBH *DB;
     int idWorker;
     int idDoc;    
 };
