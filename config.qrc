@@ -1,1 +1,7 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/">
+        <file alias="mysql_db">Cfg/mysql_db.json</file>
+        <file alias="postgres_db">Cfg/postgreSql_db.json</file>
+        <file alias="sqlite_db">Cfg/sqlite_db.json</file>
+    </qresource>
+</RCC>
