@@ -16,10 +16,10 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
 
     mapper         = new QDataWidgetMapper();
     queryModelDocs = new QSqlQueryModel();
-    queryModelDocs->setQuery("SELECT `id`,`titleDoc`,`typeDoc`,"
-                             "`fontFamily`,`fontSize`,`printingColor`,"
-                             "`isPrinted`,`languageDoc`,`totalPages`,`pagesDone`,"
-                             "`pagesHand`,`pagesWord`,`deliveryDay` FROM `documents`",DB->getCnx());
+    queryModelDocs->setQuery("SELECT id,titleDoc,typeDoc,"
+                             "fontFamily,fontSize,printingColor,"
+                             "isPrinted,languageDoc,totalPages,pagesDone,"
+                             "pagesHand,pagesWord,deliveryDay FROM documents",DB->getCnx());
 
     TA.clear();
     TA["id"]            = 0;
@@ -139,10 +139,10 @@ void TabWidgetDocuments::updateDoc()
 
             DB->updateDocument(doc);
 
-            queryModelDocs->setQuery("SELECT `id`,`titleDoc`,`typeDoc`,"
-                                     "`fontFamily`,`fontSize`,`printingColor`,"
-                                     "`isPrinted`,`languageDoc`,`totalPages`,`pagesDone`,"
-                                     "`pagesHand`,`pagesWord`,`deliveryDay` FROM `documents`",DB->getCnx());
+            queryModelDocs->setQuery("SELECT id,titleDoc,typeDoc,"
+                                     "fontFamily,fontSize,printingColor,"
+                                     "isPrinted,languageDoc,totalPages,pagesDone,"
+                                     "pagesHand,pagesWord,deliveryDay FROM documents",DB->getCnx());
             clearFormUpdate();
         }else
         {
@@ -195,10 +195,10 @@ void TabWidgetDocuments::doAssociate()
     if(docsList.size()>0)
     {
         DB->assignDoc2Worker(ui->CB_pickWrkr->currentText(),ui->CB_pickDoc->currentText());
-        queryModelDocs->setQuery("SELECT `id`,`titleDoc`,`typeDoc`,"
-                                 "`fontFamily`,`fontSize`,`printingColor`,"
-                                 "`isPrinted`,`languageDoc`,`totalPages`,`pagesDone`,"
-                                 "`pagesHand`,`pagesWord`,`deliveryDay` FROM `documents`",DB->getCnx()); // TODO : Change Me ASSHOLE.
+        queryModelDocs->setQuery("SELECT id,titleDoc,typeDoc,"
+                                 "fontFamily,fontSize,printingColor,"
+                                 "isPrinted,languageDoc,totalPages,pagesDone,"
+                                 "pagesHand,pagesWord,deliveryDay FROM documents",DB->getCnx()); // TODO : Change Me ASSHOLE.
         // update ListDoc . but ListWorkers nothing changes.
         updateLists();
         currentActiveStats();
@@ -234,10 +234,10 @@ void TabWidgetDocuments::currentActiveStats()
         form->setVisible(true);
     }
 
-    queryModelDocs->setQuery("SELECT `id`,`titleDoc`,`typeDoc`,"
-                             "`fontFamily`,`fontSize`,`printingColor`,"
-                             "`isPrinted`,`languageDoc`,`totalPages`,`pagesDone`,"
-                             "`pagesHand`,`pagesWord`,`deliveryDay` FROM `documents`",DB->getCnx());
+    queryModelDocs->setQuery("SELECT id,titleDoc,typeDoc,"
+                             "fontFamily,fontSize,printingColor,"
+                             "isPrinted,languageDoc,totalPages,pagesDone,"
+                             "pagesHand,pagesWord,deliveryDay FROM documents",DB->getCnx());
 }
 
 void TabWidgetDocuments::displayArchivedDocs()
@@ -262,10 +262,10 @@ void TabWidgetDocuments::displayArchivedDocs()
         form->setVisible(true);
     }
 
-    queryModelDocs->setQuery("SELECT `id`,`titleDoc`,`typeDoc`,"
-                             "`fontFamily`,`fontSize`,`printingColor`,"
-                             "`isPrinted`,`languageDoc`,`totalPages`,`pagesDone`,"
-                             "`pagesHand`,`pagesWord`,`deliveryDay` FROM `documents`",DB->getCnx());
+    queryModelDocs->setQuery("SELECT id,titleDoc,typeDoc,"
+                             "fontFamily,fontSize,printingColor,"
+                             "isPrinted,languageDoc,totalPages,pagesDone,"
+                             "pagesHand,pagesWord,deliveryDay FROM documents",DB->getCnx());
 }
 
 void TabWidgetDocuments::createMapper()

@@ -20,10 +20,10 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
     mapper           = new QDataWidgetMapper();
     queryModelClient = new QSqlQueryModel();
 
-    queryModelClient->setQuery("SELECT `id`,`fullname`,`phoneNumber`,"
-                               "`firstEmail`,`isDeliveredByMail`,`remarke`,"
-                               "`payement_state`,`price`,`pricePaid`,"
-                               "`date_created`,`date_modified` FROM `clients` ",DB->getCnx());
+    queryModelClient->setQuery("SELECT id,fullname,phoneNumber,"
+                               "firstEmail,isDeliveredByMail,remarke,"
+                               "payement_state,price,pricePaid,"
+                               "date_created,date_modified FROM clients ",DB->getCnx());
 
     TA.clear();
     TA["id"]            = 0;
@@ -149,10 +149,10 @@ void TabWidgetClients::updateClient()
 
             DB->updateClient(data);
 
-            queryModelClient->setQuery("SELECT `id`,`fullname`,`phoneNumber`,"
-                                       "`firstEmail`,`isDeliveredByMail`,`remarke`,"
-                                       "`payement_state`,`price`,`pricePaid`,`date_created`,"
-                                       "`date_modified` FROM `clients` ",DB->getCnx());
+            queryModelClient->setQuery("SELECT id,fullname,phoneNumber,"
+                                       "firstEmail,isDeliveredByMail,remarke,"
+                                       "payement_state,price,pricePaid,date_created,"
+                                       "date_modified FROM clients ",DB->getCnx());
 
             clearFormUpdate();
 
@@ -269,8 +269,8 @@ bool TabWidgetClients::addClient(Client* data)
     int idClient = DB->addClient(data);
     DB->addDocument(idClient,data->getDocument());
 
-    queryModelClient->setQuery("SELECT `id`,`fullname`,`phoneNumber`,`firstEmail`,`isDeliveredByMail`,"
-                               " `remarke`,`payement_state`,`price`,`pricePaid`,`date_created`,`date_modified` FROM `clients` ",DB->getCnx());
+    queryModelClient->setQuery("SELECT id,fullname,phoneNumber,firstEmail,isDeliveredByMail,"
+                               " remarke,payement_state,price,pricePaid,date_created,date_modified FROM clients ",DB->getCnx());
     emit dataClientsChanged();
     return true;
 }
@@ -361,8 +361,8 @@ void TabWidgetClients::deleteClient()
         {
             DB->deleteClientByID(idClient);
 
-            queryModelClient->setQuery("SELECT `id`, `fullname`, `phoneNumber`, `firstEmail`, `isDeliveredByMail`,"
-                                       " `remarke`, `payement_state`, `price`, `pricePaid`, `date_created`, `date_modified` FROM `clients` ",DB->getCnx());
+            queryModelClient->setQuery("SELECT id, fullname, phoneNumber, firstEmail, isDeliveredByMail,"
+                                       " remarke, payement_state, price, pricePaid, date_created, date_modified FROM clients ",DB->getCnx());
 
             clearFormUpdate();
             emit dataClientsChanged();

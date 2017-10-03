@@ -16,9 +16,9 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
     DB = new DBH("_workers_");
 
     queryModelWorker = new QSqlQueryModel();
-    queryModelWorker->setQuery("SELECT `id`,`fullName`,`phoneNumber`,"
-                               "`email`,`remarke`,`isDisponible`,"
-                               "`date_created` FROM `workers` ",DB->getCnx());
+    queryModelWorker->setQuery("SELECT id,fullName,phoneNumber,"
+                               "email,remarke,isDisponible,"
+                               "date_created FROM workers ",DB->getCnx());
 
     TA.clear();
     TA["id"]          = 0;
@@ -113,9 +113,9 @@ void TabWidgetWorkers::updateWorker()
 
         DB->updateWorker(wrk);
 
-        queryModelWorker->setQuery("SELECT `id`,`fullName`,`phoneNumber`,"
-                                   "`email`,`remarke`,`isDisponible`,"
-                                   "`date_created` FROM `workers` ",DB->getCnx());
+        queryModelWorker->setQuery("SELECT id,fullName,phoneNumber,"
+                                   "email,remarke,isDisponible,"
+                                   "date_created FROM workers ",DB->getCnx());
         clearFormUpdate();
         emit dataWorkersChanged();
 
@@ -134,7 +134,7 @@ Worker *TabWidgetWorkers::getDatafromForm()
     data->setEmail(ui->LE_primeryEmailW->text());
     data->setRemarke(ui->TE_remarke->toPlainText());
     data->setDateCreated(QDateTime::currentDateTime().toString(Qt::ISODate));
-    data->setDateModified(data->getDateCreated());
+    data->setDateModified(QDateTime::currentDateTime().toString(Qt::ISODate));
     return data;
 }
 
@@ -157,9 +157,9 @@ bool TabWidgetWorkers::addWorker(Worker *data)
 {
     int idWorker = DB->addWorker(data);
 
-    queryModelWorker->setQuery("SELECT `id`,`fullName`,`phoneNumber`,"
-                               "`email`,`remarke`,`isDisponible`,"
-                               "`date_created` FROM `workers` ",DB->getCnx());
+    queryModelWorker->setQuery("SELECT id,fullName,phoneNumber,"
+                               "email,remarke,isDisponible,"
+                               "date_created FROM workers ",DB->getCnx());
     emit dataWorkersChanged();
 
     if(idWorker > -1)
@@ -247,9 +247,9 @@ void TabWidgetWorkers::deleteWorker()
     {
         DB->deleteWorkerbyID(ui->SB_idWorkerx->value());
 
-        queryModelWorker->setQuery("SELECT `id`,`fullName`,`phoneNumber`,"
-                                   "`email`,`remarke`,`isDisponible`,"
-                                   "`date_created` FROM `workers` ",DB->getCnx());
+        queryModelWorker->setQuery("SELECT id,fullName,phoneNumber,"
+                                   "email,remarke,isDisponible,"
+                                   "date_created FROM workers ",DB->getCnx());
         clearFormUpdate();
         emit dataWorkersChanged();
     }
