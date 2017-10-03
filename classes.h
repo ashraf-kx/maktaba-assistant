@@ -1,6 +1,7 @@
 #ifndef CLASSES_H
 #define CLASSES_H
 
+#include <QtCore>
 #include "toast.h"
 #include "dialog.h"
 #include <QGraphicsDropShadowEffect>
@@ -8,6 +9,7 @@
 #include <QKeyEvent>
 #include <QCryptographicHash>
 #include <QDir>
+#include <QFile>
 #include <QMessageBox>
 #include "mdialog.h"
 
@@ -27,6 +29,17 @@
 #include <QCryptographicHash>
 #include <QDateTime>
 #include <QSqlError>
+
+//! [Qt Json ]
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonValue>
+#include <QJsonParseError>
+
+//Q_DECLARE_LOGGING_CATEGORY(CLS)
+
+//Q_LOGGING_CATEGORY(CLS,"CLASSES")
 
 class Style
 {
@@ -301,6 +314,49 @@ public:
     void setPricePaid(uint value){ pricePaid = value; }
     void setDateCreated(const QString &text){ date_created   = text; }
     void setDateModified(const QString &text){ date_modified = text; }
+};
+
+class QJson
+{
+
+public:
+    explicit QJson(){ }
+
+    static QJsonDocument *loadFile(const QString& name)
+    {
+        QFile mFile(":"+name);
+
+        if (!mFile.open(QIODevice::ReadOnly)) {
+            qCritical()<<"Couldn't open file : "<<name;
+            return NULL;
+        }
+
+        QByteArray dataJson = mFile.readAll();
+
+        QJsonParseError error;
+        QJsonDocument *loadDoc = new QJsonDocument(QJsonDocument::fromJson(dataJson,&error));
+
+        qInfo()<<"in File : "<<name<<" >"<<error.errorString();
+
+        mFile.close();
+        return loadDoc;
+    }
+
+    static bool saveFile(const QString& name,QJsonDocument& jsonDoc)
+    {
+        QFile mFile(":"+name);
+
+        if (!mFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            qCritical()<<"Couldn't open file.";
+            return false;
+        }
+
+        //QJsonDocument saveDoc(gameObject);
+        mFile.write(jsonDoc.toJson());
+        mFile.close();
+
+        return true;
+    }
 };
 
 #endif // CLASSES_H
