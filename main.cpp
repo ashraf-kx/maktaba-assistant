@@ -15,8 +15,6 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
-
-
     /*QString serialKey="SerialNumber       \r\r\n20090516388200000  \r\r\n5VEV4RLC           \r\r\n\r\r\n";
     QProcess process;
     process.setWorkingDirectory(QDir::homePath());
