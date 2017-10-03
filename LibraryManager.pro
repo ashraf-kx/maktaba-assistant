@@ -4,8 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql printsupport  quickwidgets
-#webenginewidgets
+QT       += core gui sql printsupport  quickwidgets webenginewidgets
 CONFIG   += c++11
 TARGET   = LibraryManager
 TEMPLATE = app
@@ -60,7 +59,8 @@ RESOURCES += \
     Icons.qrc \
     languages.qrc \
     sounds.qrc \
-    styles.qrc
+    styles.qrc \
+    config.qrc
 
 TRANSLATIONS = LibraryManager_ar.ts
 
