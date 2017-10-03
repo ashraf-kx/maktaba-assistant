@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 {
     Q_INIT_RESOURCE(Icons);
     Q_INIT_RESOURCE(languages);
+    Q_INIT_RESOURCE(config);
 
     QApplication a(argc, argv);
 
