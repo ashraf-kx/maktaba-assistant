@@ -1,9 +1,8 @@
 {
-	"DB_DRIVER" : "QMYSQL",
-	//"DB_CONNECTION": "mysql",
-	"DB_HOST": "127.0.0.1",
-	"DB_PORT": 3306,
-	"DB_DATABASE": "",
-	"DB_USERNAME": "",
-	"DB_PASSWORD" : ""
+	"driver" : "QPSQL",
+	"host": "localhost",
+	"port": 5432,
+	"db_name": "libdz",
+	"username": "postgres",
+	"password" : "achraf"
 }

@@ -1,9 +1,13 @@
 {
-	"DB_DRIVER" : "QMYSQL",
-	"DB_CONNECTION": "mysql",
+	"DB_DRIVER" : "QSQLITE",
+	"DB_CONNECTION": "initConnection",
 	"DB_HOST": "127.0.0.1",
 	"DB_PORT": 3306,
-	"DB_DATABASE": "",
-	"DB_USERNAME": "",
-	"DB_PASSWORD" : ""
+	"DB_NAME": {
+		"windows" : "/AppData/Roaming/bits/BYASS.db",
+		"linux"   : "/.libdz/BYASS.DB"
+	},
+	"DB_USERNAME": "root",
+	"DB_PASSWORD" : "root"
 }
+
