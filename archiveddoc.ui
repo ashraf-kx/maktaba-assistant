@@ -362,6 +362,12 @@ color: #ffffff;
           </item>
           <item>
            <widget class="QLabel" name="Lb_titleBook">
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <pointsize>9</pointsize>
@@ -377,6 +383,9 @@ color: #ffffff;
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>

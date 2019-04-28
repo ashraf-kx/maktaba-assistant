@@ -91,9 +91,6 @@ border:2px solid #b3d4fc;
        <property name="font">
         <font>
          <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <kerning>false</kerning>
         </font>
        </property>
        <property name="mouseTracking">
@@ -110,7 +107,7 @@ margin:0px 0px 0px 0px;
 }</string>
        </property>
        <property name="text">
-        <string>مكتبة ياسين</string>
+        <string>مكتبة الراشدين</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -167,9 +164,6 @@ border:2px solid #b3d4fc;
         <font>
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <kerning>false</kerning>
         </font>
        </property>
        <property name="cursor">
@@ -229,9 +223,6 @@ border-bottom: 2px solid #FF4081;
         <font>
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <kerning>false</kerning>
         </font>
        </property>
        <property name="cursor">
@@ -291,9 +282,6 @@ border-bottom: 2px solid #FF4081;
         <font>
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <kerning>false</kerning>
         </font>
        </property>
        <property name="cursor">

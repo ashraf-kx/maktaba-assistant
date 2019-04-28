@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     if(serialKey == QString(process.readAll()))
     {*/
         QDate mDateExpire;
-        mDateExpire.setDate(2017,05,07);
+        mDateExpire.setDate(2019,10,22);
         if(QDate::currentDate().daysTo(mDateExpire) >= 0 )
         {
             QMessageBox msg;
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
               }
 
             QTranslator translator;
-            translator.load(":biblioYass_ar");
+            translator.load(":LibraryManager_ar");
             a.installTranslator(&translator);
 
         a.setWindowIcon(QIcon(QPixmap(":Icons/icon-evergreen-alt.ico")));

@@ -45,7 +45,7 @@ border:0px solid white;
    <enum>QTabWidget::Triangular</enum>
   </property>
   <property name="currentIndex">
-   <number>0</number>
+   <number>1</number>
   </property>
   <property name="iconSize">
    <size>
@@ -1196,7 +1196,7 @@ QLineEdit:hover
               <set>Qt::ImhDialableCharactersOnly</set>
              </property>
              <property name="maxLength">
-              <number>14</number>
+              <number>24</number>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1808,6 +1808,18 @@ QTableView:hover
            <property name="locale">
             <locale language="English" country="UnitedStates"/>
            </property>
+           <property name="sortingEnabled">
+            <bool>true</bool>
+           </property>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+           <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="verticalHeaderStretchLastSection">
+            <bool>false</bool>
+           </attribute>
           </widget>
          </item>
         </layout>
