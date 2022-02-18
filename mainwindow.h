@@ -14,15 +14,15 @@
 #include <QGraphicsDropShadowEffect>
 #include "toast.h"
 
-
-namespace Ui {
-class MainWindow;
+namespace Ui
+{
+    class MainWindow;
 }
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-    
+
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -38,16 +38,16 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
-    DB                 *mDB;
-    TabWidgetClients   *mTabWidgetClient;
-    TabWidgetWorkers   *mTabWidgetWorker;
+    DB *mDB;
+    TabWidgetClients *mTabWidgetClient;
+    TabWidgetWorkers *mTabWidgetWorker;
     TabWidgetDocuments *mTabWidgetDocument;
-    TabWidgetSettings  *mTabWidgetSettings;
-    Login              *mLogin;
-    topNav             *mTopNav;
+    TabWidgetSettings *mTabWidgetSettings;
+    Login *mLogin;
+    topNav *mTopNav;
 
-    QSystemTrayIcon    *systemTray;
-    QMenu              *trayMenu;
+    QSystemTrayIcon *systemTray;
+    QMenu *trayMenu;
 
     QAction *configAction;
     QAction *maximizeAction;

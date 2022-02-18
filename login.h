@@ -10,15 +10,15 @@
 
 #include "simplecrypt.h"
 
-
-namespace Ui {
-class Login;
+namespace Ui
+{
+    class Login;
 }
 
 class Login : public QWidget
 {
     Q_OBJECT
-    
+
 public:
     explicit Login(QWidget *parent = 0);
     ~Login();
@@ -28,10 +28,10 @@ public:
 public slots:
     bool tryLogin();
     void setModeLogin(bool val);
+
 private:
     Ui::Login *ui;
     SimpleCrypt *crypto;
-    QSqlDatabase DBH;
     int idAdmin;
     bool loginMode;
     Toast *mToast;

@@ -7,13 +7,10 @@
 #include "dialog.h"
 #include "toast.h"
 
-
-TabWidgetClients::TabWidgetClients(QWidget *parent) :
-    QTabWidget(parent),
-    ui(new Ui::TabWidgetClients)
+TabWidgetClients::TabWidgetClients(QWidget *parent) : QTabWidget(parent),
+                                                      ui(new Ui::TabWidgetClients)
 {
     ui->setupUi(this);
-
 
     QGraphicsDropShadowEffect *sh = new QGraphicsDropShadowEffect();
     sh->setBlurRadius(8);
@@ -45,36 +42,32 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
     sh5->setOffset(2);
     sh5->setColor(QColor(63, 63, 63, 180));
 
-    this->DBH = QSqlDatabase::addDatabase("QSQLITE","cnxnClient");
-    this->DBH.setDatabaseName(QDir::homePath()+"/AppData/Roaming/bits/"+"BYASS.db");
-    this->DBH.setPassword("bitProjects");
-    this->DBH.setUserName("neverAsk@4Pass");
-    this->DBH.open();
-
     mapper = new QDataWidgetMapper();
-    modelClient = new QSqlTableModel(this,this->DBH);
+    QSqlDatabase connection = QSqlDatabase::database();
+    qInfo() << "client connection is open: " << connection.open();
+    modelClient = new QSqlTableModel(this, connection);
     modelClient->setTable("clients");
     modelClient->select();
 
-    QStringList listHeader;
-    listHeader<<tr("Client name");
-    listHeader<<tr("Phone number");
-    listHeader<<tr("email");
-    listHeader<<tr("isDeliveredByMail");
-    listHeader<<tr("remarke");
-    listHeader<<tr("payement state");
-    listHeader<<tr("price");
-    listHeader<<tr("price Paid");
+    QStringList listHeaders;
+    listHeaders << tr("Client name");
+    listHeaders << tr("Phone number");
+    listHeaders << tr("email");
+    listHeaders << tr("isDeliveredByMail");
+    listHeaders << tr("remarke");
+    listHeaders << tr("payement state");
+    listHeaders << tr("price");
+    listHeaders << tr("price Paid");
 
     modelClient->setHeaderData(0, Qt::Horizontal, tr("N#"));
-    modelClient->setHeaderData(1, Qt::Horizontal, listHeader.at(0));
-    modelClient->setHeaderData(2, Qt::Horizontal, listHeader.at(1));
-    modelClient->setHeaderData(3, Qt::Horizontal, listHeader.at(2));
-    modelClient->setHeaderData(4, Qt::Horizontal, listHeader.at(3));
-    modelClient->setHeaderData(5, Qt::Horizontal, listHeader.at(4));
-    modelClient->setHeaderData(6, Qt::Horizontal, listHeader.at(5));
-    modelClient->setHeaderData(7, Qt::Horizontal, listHeader.at(6));
-    modelClient->setHeaderData(8, Qt::Horizontal, listHeader.at(7));
+    modelClient->setHeaderData(1, Qt::Horizontal, listHeaders.at(0));
+    modelClient->setHeaderData(2, Qt::Horizontal, listHeaders.at(1));
+    modelClient->setHeaderData(3, Qt::Horizontal, listHeaders.at(2));
+    modelClient->setHeaderData(4, Qt::Horizontal, listHeaders.at(3));
+    modelClient->setHeaderData(5, Qt::Horizontal, listHeaders.at(4));
+    modelClient->setHeaderData(6, Qt::Horizontal, listHeaders.at(5));
+    modelClient->setHeaderData(7, Qt::Horizontal, listHeaders.at(6));
+    modelClient->setHeaderData(8, Qt::Horizontal, listHeaders.at(7));
 
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -86,9 +79,8 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
 
     proxyModelClient->setSourceModel(modelClient);
 
-    proxyModelClient->setFilterRegExp(QRegExp("", Qt::CaseInsensitive,QRegExp::FixedString));
+    proxyModelClient->setFilterRegExp(QRegExp("", Qt::CaseInsensitive, QRegExp::FixedString));
     proxyModelClient->setFilterKeyColumn(1);
-
 
     ui->tableView->setModel(proxyModelClient);
 
@@ -102,9 +94,9 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
     ui->DE_deposite->setDate(QDate::currentDate());
     ui->DE_delivery->setDate(QDate::currentDate().addDays(1));
 
-    ui->tableView->setColumnHidden(4,true);
-    ui->tableView->setColumnHidden(9,true);
-    ui->tableView->setColumnHidden(10,true);
+    ui->tableView->setColumnHidden(4, true);
+    ui->tableView->setColumnHidden(9, true);
+    ui->tableView->setColumnHidden(10, true);
 
     startMapper();
     ui->SB_idClientx->setVisible(false);
@@ -119,102 +111,109 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
     initCalendar();
     mapper->setSubmitPolicy(mapper->ManualSubmit);
 
-
     // Actions.
-    connect(ui->BT_save,SIGNAL(clicked()),this,SLOT(saveDemande2DB()));
-    connect(ui->BT_save,SIGNAL(clicked(bool)),ui->BT_save,SLOT(setDisabled(bool)));
-    connect(ui->BT_cancel_2,SIGNAL(clicked()),this,SLOT(clearForm()));
-    connect(ui->LE_fullnameFiltre,SIGNAL(textChanged(QString)),proxyModelClient,SLOT(setFilterRegExp(QString)));
-    connect(ui->tableView->selectionModel(), SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),
+    connect(ui->BT_save, SIGNAL(clicked()), this, SLOT(saveDemande2DB()));
+    connect(ui->BT_save, SIGNAL(clicked(bool)), ui->BT_save, SLOT(setDisabled(bool)));
+    connect(ui->BT_cancel_2, SIGNAL(clicked()), this, SLOT(clearForm()));
+    connect(ui->LE_fullnameFiltre, SIGNAL(textChanged(QString)), proxyModelClient, SLOT(setFilterRegExp(QString)));
+    connect(ui->tableView->selectionModel(), SIGNAL(currentRowChanged(QModelIndex, QModelIndex)),
             mapper, SLOT(setCurrentModelIndex(QModelIndex)));
-    connect(ui->Bt_deleteClient,SIGNAL(clicked()),this,SLOT(deleteClient()));
-    connect(ui->Bt_printTicket,SIGNAL(clicked()),this,SLOT(printTicket()));
+    connect(ui->Bt_deleteClient, SIGNAL(clicked()), this, SLOT(deleteClient()));
+    connect(ui->Bt_printTicket, SIGNAL(clicked()), this, SLOT(printTicket()));
 
-    connect(ui->BT_updateClient,SIGNAL(clicked()),this,SLOT(updateClient()));
+    connect(ui->BT_updateClient, SIGNAL(clicked()), this, SLOT(updateClient()));
 
-    connect(ui->DE_deposite,SIGNAL(dateChanged(const QDate &)),
-            this,SLOT(updateMinDeliveryDay(const QDate &)));
+    connect(ui->DE_deposite, SIGNAL(dateChanged(QDate)), this, SLOT(updateMinDeliveryDay(QDate)));
 
-    connect(ui->SB_priceAdv,SIGNAL(valueChanged(int)),this,SLOT(restPrice()));
-    connect(ui->SB_price,SIGNAL(valueChanged(int)),this,SLOT(restPrice()));
+    connect(ui->SB_priceAdv, SIGNAL(valueChanged(int)), this, SLOT(restPrice()));
+    connect(ui->SB_price, SIGNAL(valueChanged(int)), this, SLOT(restPrice()));
 
-    connect(ui->SB_priceAdvx,SIGNAL(valueChanged(int)),this,SLOT(restPricex()));
-    connect(ui->SB_pricex,SIGNAL(valueChanged(int)),this,SLOT(restPricex()));
+    connect(ui->SB_priceAdvx, SIGNAL(valueChanged(int)), this, SLOT(restPricex()));
+    connect(ui->SB_pricex, SIGNAL(valueChanged(int)), this, SLOT(restPricex()));
 
-    connect(ui->SB_idClientx,SIGNAL(valueChanged(QString)),
-            ui->LB_displayIdCx,SLOT(setText(QString)));
+    connect(ui->SB_idClientx, SIGNAL(valueChanged(QString)), ui->LB_displayIdCx, SLOT(setText(QString)));
 }
 
 void TabWidgetClients::updateClient()
 {
     int idClient = ui->SB_idClientx->value();
-    if(idClient != 0)
+    if (idClient != 0)
     {
-        if(ui->SB_priceAdvx->value() <= ui->SB_pricex->value())
+        if (ui->SB_priceAdvx->value() <= ui->SB_pricex->value())
         {
-        this->DBH.open();
-        this->DBH.transaction();
+            QSqlDatabase connection = QSqlDatabase::database();
+            if (connection.open())
+            {
+                connection.transaction();
+                //! [1] Save data into workers table.
+                QSqlQuery *query = new QSqlQuery(connection);
 
-        //! [1] Save data into workers table.
-        QSqlQuery *query = new QSqlQuery(this->DBH);
+                query->prepare("UPDATE clients SET "
+                               "fullname=:fullname,phoneNumber=:phoneNumber,firstEmail=:firstEmail,"
+                               "payement_state=:payement_state,price=:price,pricePaid=:pricePaid WHERE "
+                               "id=:id");
 
-        query->prepare("UPDATE clients SET "
-                      "fullname=:fullname,phoneNumber=:phoneNumber,firstEmail=:firstEmail,"
-                       "payement_state=:payement_state,price=:price,pricePaid=:pricePaid WHERE "
-                      "id=:id");
+                query->bindValue(":id", ui->SB_idClientx->value());
+                query->bindValue(":fullname", ui->LE_fullNamex->text());
+                query->bindValue(":phoneNumber", ui->LE_phonex->text());
+                query->bindValue(":firstEmail", ui->LE_primeryEmlx->text());
+                query->bindValue(":payement_state", ui->CB_paymentStatsx->currentText());
+                query->bindValue(":price", ui->SB_pricex->value());
+                query->bindValue(":pricePaid", ui->SB_priceAdvx->value());
 
-        query->bindValue(":id",ui->SB_idClientx->value());
-        query->bindValue(":fullname",ui->LE_fullNamex->text());
-        query->bindValue(":phoneNumber",ui->LE_phonex->text());
-        query->bindValue(":firstEmail",ui->LE_primeryEmlx->text());
-        query->bindValue(":payement_state",ui->CB_paymentStatsx->currentText());
-        query->bindValue(":price",ui->SB_pricex->value());
-        query->bindValue(":pricePaid",ui->SB_priceAdvx->value());
+                query->exec();
 
-        query->exec();
+                connection.commit();
 
-        this->DBH.commit();
-        modelClient->select();
-        clearFormUpdate();
+                modelClient->select();
 
-        emit dataClientsChanged();
-        }else{
+                clearFormUpdate();
+                emit dataClientsChanged();
+
+                connection.close();
+            }
+        }
+        else
+        {
             Toast *mToast = new Toast(this);
             mToast->setMessage(tr("error value price paid more then total price "));
         }
-    }else{
+    }
+    else
+    {
         Toast *mToast = new Toast(this);
         mToast->setMessage(tr("select Client you want to update from the table"));
     }
-
 }
 
 void TabWidgetClients::restPrice()
 {
-    if(ui->SB_priceAdv->value() <= ui->SB_price->value())
+    if (ui->SB_priceAdv->value() <= ui->SB_price->value())
     {
-        ui->Lb_displayRestDZ->setText(tr("DZD")+"  "+
-                                      QString::number(ui->SB_price->value()-ui->SB_priceAdv->value()));
-        if(ui->SB_price->value()-ui->SB_priceAdv->value() == 0)
+        ui->Lb_displayRestDZ->setText(tr("DZD") + "  " +
+                                      QString::number(ui->SB_price->value() - ui->SB_priceAdv->value()));
+        if (ui->SB_price->value() - ui->SB_priceAdv->value() == 0)
             ui->CB_payementState->setCurrentIndex(1);
         else
             ui->CB_payementState->setCurrentIndex(0);
     }
-    else ui->Lb_displayRestDZ->setText(tr("DZD")+"  *  ");
+    else
+        ui->Lb_displayRestDZ->setText(tr("DZD") + "  *  ");
 }
 
 void TabWidgetClients::restPricex()
 {
-    if(ui->SB_priceAdvx->value() <= ui->SB_pricex->value())
+    if (ui->SB_priceAdvx->value() <= ui->SB_pricex->value())
     {
-        ui->Lb_priceRestDZx->setText(tr("DZD")+"  "+
-                                      QString::number(ui->SB_pricex->value()-ui->SB_priceAdvx->value()));
-        if(ui->SB_pricex->value()-ui->SB_priceAdvx->value() == 0)
+        ui->Lb_priceRestDZx->setText(tr("DZD") + "  " +
+                                     QString::number(ui->SB_pricex->value() - ui->SB_priceAdvx->value()));
+        if (ui->SB_pricex->value() - ui->SB_priceAdvx->value() == 0)
             ui->CB_paymentStatsx->setCurrentIndex(1);
         else
             ui->CB_paymentStatsx->setCurrentIndex(0);
     }
-    else ui->Lb_priceRestDZx->setText(tr("DZD")+"  *  ");
+    else
+        ui->Lb_priceRestDZx->setText(tr("DZD") + "  *  ");
 }
 
 TabWidgetClients::~TabWidgetClients()
@@ -225,26 +224,26 @@ TabWidgetClients::~TabWidgetClients()
 TabWidgetClients::clientData TabWidgetClients::getDatafromForm()
 {
     clientData mClientData;
-    mClientData.fullname    = ui->LE_fullnameClient->text();
-    mClientData.titleDoc    = ui->LE_titleDoc->text();
-    mClientData.totalPages  = QString::number(ui->SB_nbrPagesDoc->value());
+    mClientData.fullname = ui->LE_fullnameClient->text();
+    mClientData.titleDoc = ui->LE_titleDoc->text();
+    mClientData.totalPages = QString::number(ui->SB_nbrPagesDoc->value());
     mClientData.depositeDay = ui->DE_deposite->date().toString("yyyy-MM-dd");
     mClientData.deliveryDay = ui->DE_delivery->date().toString("yyyy-MM-dd");
-    mClientData.remarke    = ui->TE_remarke->toPlainText();
+    mClientData.remarke = ui->TE_remarke->toPlainText();
     mClientData.payement_state = ui->CB_payementState->currentText();
     mClientData.phoneNumber = ui->LE_phoneNumber->text();
-    mClientData.FirstEmail  = ui->LE_primaryEmail->text();
-    mClientData.isDeliveredByMail = "yes" ;
+    mClientData.FirstEmail = ui->LE_primaryEmail->text();
+    mClientData.isDeliveredByMail = "yes";
 
-    mClientData.fontFamily    = ui->CB_fontFamily->currentText();
-    mClientData.fontSize      = ui->CB_fontSize->currentText();
-    mClientData.typeDoc       = ui->CB_catDoc->currentText();
+    mClientData.fontFamily = ui->CB_fontFamily->currentText();
+    mClientData.fontSize = ui->CB_fontSize->currentText();
+    mClientData.typeDoc = ui->CB_catDoc->currentText();
     mClientData.printingColor = "BW";
 
-    mClientData.price         = QString::number(ui->SB_price->value());
-    mClientData.pricePaid     = QString::number(ui->SB_priceAdv->value());
-    mClientData.languageDoc   = ui->CB_langDoc->currentText();
-    mClientData.date_created  = QDateTime::currentDateTime().toTime_t();
+    mClientData.price = QString::number(ui->SB_price->value());
+    mClientData.pricePaid = QString::number(ui->SB_priceAdv->value());
+    mClientData.languageDoc = ui->CB_langDoc->currentText();
+    mClientData.date_created = QDateTime::currentDateTimeUtc().toTime_t();
     mClientData.date_modified = mClientData.date_created;
     return mClientData;
 }
@@ -254,7 +253,6 @@ void TabWidgetClients::initCalendar()
     ui->DE_deposite->setCalendarPopup(true);
     ui->DE_deposite->setMinimumDate(QDate::currentDate());
     ui->DE_deposite->setCalendarWidget(ui->datePicker1);
-
 
     ui->DE_delivery->setCalendarPopup(true);
     ui->DE_delivery->setMinimumDate(QDate::currentDate().addDays(1));
@@ -283,67 +281,84 @@ void TabWidgetClients::updateMinDeliveryDay(const QDate &date)
 
 bool TabWidgetClients::addClient(TabWidgetClients::clientData mClientData)
 {
-    this->DBH.open();
-    this->DBH.transaction();
+    QSqlDatabase connection = QSqlDatabase::database();
+    if (connection.open())
+    {
+        qInfo() << "Add new order: " << connection.isOpen();
+        connection.transaction();
+        //! [1] Save data into clients table.
+        QSqlQuery *query = new QSqlQuery(connection);
+        query->prepare("INSERT INTO clients (id,fullname,phoneNumber,firstEmail,"
+                       "remarke,payement_state,price,pricePaid,date_created,date_modified)"
+                       " VALUES (NULL,:fullname,:phoneNumber,:firstEmail,"
+                       ":remarke,:payement_state,:price,:pricePaid,:date_created,:date_modified)");
 
-    //! [1] Save data into clients table.
-    QSqlQuery *query = new QSqlQuery(this->DBH);
-    query->prepare("INSERT INTO clients (id,fullname,phoneNumber,firstEmail,"
-                   "remarke,payement_state,price,pricePaid,date_created,date_modified)"
-                   " VALUES (NULL,:fullname,:phoneNumber,:firstEmail,"
-                   ":remarke,:payement_state,:price,:pricePaid,:date_created,:date_modified)");
+        query->bindValue(":fullname", mClientData.fullname);
+        query->bindValue(":phoneNumber", mClientData.phoneNumber);
+        query->bindValue(":firstEmail", mClientData.FirstEmail);
 
-    query->bindValue(":fullname",mClientData.fullname);
-    query->bindValue(":phoneNumber",mClientData.phoneNumber);
-    query->bindValue(":firstEmail",mClientData.FirstEmail);
+        query->bindValue(":remarke", mClientData.remarke);
+        query->bindValue(":payement_state", mClientData.payement_state);
+        query->bindValue(":price", mClientData.price);
+        query->bindValue(":pricePaid", mClientData.pricePaid);
+        query->bindValue(":date_created", mClientData.date_created);
+        query->bindValue(":date_modified", mClientData.date_modified);
 
-    query->bindValue(":remarke", mClientData.remarke);
-    query->bindValue(":payement_state",mClientData.payement_state);
-    query->bindValue(":price",mClientData.price);
-    query->bindValue(":pricePaid",mClientData.pricePaid);
-    query->bindValue(":date_created",mClientData.date_created);
-    query->bindValue(":date_modified",mClientData.date_modified);
+        query->exec();
 
-    query->exec();
+        //! [2] Save data into *** documents table.
+        QVariant lastIDVar = query->lastInsertId();
+        const int lastID = lastIDVar.toInt();
+        query->clear();
+        query->prepare("INSERT INTO documents (id,idClient,titleDoc,languageDoc,"
+                       "totalPages,fontFamily,fontSize,typeDoc,printingColor,isPrinted,depositeDay,deliveryDay,dateStarted,dateFinished,"
+                       "date_created,date_modified) VALUES(NULL,:idClient,:titleDoc,:languageDoc,"
+                       ":totalPages,:fontFamily,:fontSize,:typeDoc,:printingColor,:isPrinted,:depositeDay,:deliveryDay,:dateStarted,:dateFinished,"
+                       ":date_created,:date_modified) ");
 
-    //! [2] Save data into *** documents table.
-    QVariant lastIDVar = query->lastInsertId();
-    int lastID = lastIDVar.toInt();
-    query->prepare("INSERT INTO documents (id,idClient,titleDoc,languageDoc,"
-                  "totalPages,fontFamily,fontSize,typeDoc,printingColor,isPrinted,depositeDay,deliveryDay,dateStarted,dateFinished,"
-                  "date_created,date_modified) VALUES(NULL,:idClient,:titleDoc,:languageDoc,"
-                  ":totalPages,:fontFamily,:fontSize,:typeDoc,:printingColor,:isPrinted,:depositeDay,:deliveryDay,:dateStarted,:dateFinished,"
-                  ":date_created,:date_modified) ");
+        query->bindValue(":idClient", QString::number(lastID));
+        query->bindValue(":titleDoc", mClientData.titleDoc);
+        query->bindValue(":fontFamily", mClientData.fontFamily);
+        query->bindValue(":fontSize", mClientData.fontSize);
+        query->bindValue(":typeDoc", mClientData.typeDoc);
+        query->bindValue(":printingColor", mClientData.printingColor);
+        query->bindValue(":isPrinted", tr("unprinted"));
+        query->bindValue(":languageDoc", mClientData.languageDoc);
+        query->bindValue(":totalPages", mClientData.totalPages);
+        query->bindValue(":depositeDay", mClientData.depositeDay);
+        query->bindValue(":deliveryDay", mClientData.deliveryDay);
+        query->bindValue(":dateStarted", "-1");
+        query->bindValue(":dateFinished", "-1");
+        query->bindValue(":date_created", mClientData.date_created);
+        query->bindValue(":date_modified", mClientData.date_modified);
+        query->exec();
 
-    query->bindValue(":idClient", QString::number(lastID));
-    query->bindValue(":titleDoc", mClientData.titleDoc);
-    query->bindValue(":fontFamily", mClientData.fontFamily);
-    query->bindValue(":fontSize", mClientData.fontSize);
-    query->bindValue(":typeDoc", mClientData.typeDoc);
-    query->bindValue(":printingColor", mClientData.printingColor);
-    query->bindValue(":isPrinted", tr("unprinted"));
-    query->bindValue(":languageDoc", mClientData.languageDoc);
-    query->bindValue(":totalPages", mClientData.totalPages);
-    query->bindValue(":depositeDay", mClientData.depositeDay);
-    query->bindValue(":deliveryDay", mClientData.deliveryDay);
-    query->bindValue(":dateStarted", "-1");
-    query->bindValue(":dateFinished", "-1");
-    query->bindValue(":date_created", mClientData.date_created);
-    query->bindValue(":date_modified", mClientData.date_modified);
-    query->exec();
+        connection.commit()
+            ? qInfo() << "New order committed to db."
+            : qDebug() << "Failed committing new order.";
 
-    this->DBH.commit();
-    modelClient->select();
-    emit dataClientsChanged();
-    return true;
+        modelClient->select()
+            ? qInfo() << "refresh selection of 'clients' table."
+            : qDebug() << "something is wrong";
 
+        ui->tableView->update();
+
+        emit dataClientsChanged();
+
+        connection.close();
+
+        return true;
+    }
+    return false;
 }
 
 bool TabWidgetClients::verificationSubmitedData(TabWidgetClients::clientData mClientData)
 {
     bool ver = true;
-    if(mClientData.fullname.isEmpty()) ver = false;
-    if(mClientData.titleDoc.isEmpty()) ver = false;
+    if (mClientData.fullname.isEmpty())
+        ver = false;
+    if (mClientData.titleDoc.isEmpty())
+        ver = false;
     return ver;
 }
 
@@ -378,17 +393,16 @@ void TabWidgetClients::saveDemande2DB()
 {
     clientData mClientData = getDatafromForm();
 
-    if(verificationSubmitedData(mClientData))
+    if (verificationSubmitedData(mClientData))
     {
         Dialog *D = new Dialog(ui->T_addClient);
-        D->setMessage(tr("sure, save this informations ?"),"question");
+        D->setMessage(tr("sure, save this informations ?"), "question");
         ui->GB_addClient->setDisabled(true);
-        if(D->exec()==1)
+        if (D->exec() == 1)
         {
             addClient(mClientData);
             clearForm();
             ui->BT_save->setEnabled(true);
-
         }
         ui->GB_addClient->setEnabled(true);
     }
@@ -400,11 +414,12 @@ void TabWidgetClients::saveDemande2DB()
     }
 }
 
-void TabWidgetClients::startMapper(){
+void TabWidgetClients::startMapper()
+{
 
     mapper->setModel(proxyModelClient);
 
-    mapper->addMapping(ui->SB_idClientx,modelClient->fieldIndex("id"));
+    mapper->addMapping(ui->SB_idClientx, modelClient->fieldIndex("id"));
     mapper->addMapping(ui->LE_fullNamex, modelClient->fieldIndex("fullName"));
     mapper->addMapping(ui->LE_phonex, modelClient->fieldIndex("phoneNumber"));
     mapper->addMapping(ui->LE_primeryEmlx, modelClient->fieldIndex("firstEmail"));
@@ -416,38 +431,51 @@ void TabWidgetClients::startMapper(){
 void TabWidgetClients::deleteClient()
 {
     int idClient = ui->SB_idClientx->value();
-    if(idClient != 0)
+    if (idClient != 0)
     {
-    Dialog *D = new Dialog(ui->T_updateClient);
-    D->setMessage(tr("sure, delete this client"),"question");
-    ui->GB_updateClient->setDisabled(true);
-    if(D->exec()==1)
-    {
+        Dialog *D = new Dialog(ui->T_updateClient);
+        D->setMessage(tr("sure, delete this client"), "question");
+        ui->GB_updateClient->setDisabled(true);
+        if (D->exec() == 1)
+        {
+            QSqlDatabase connection = QSqlDatabase::database();
+            if (connection.open())
+            {
+                connection.transaction();
+                int idDoc = 0;
+                int idWrkr = 0;
 
-        this->DBH.open();
-        this->DBH.transaction();
+                //! [1] Save data into workers table.
+                QSqlQuery *query = new QSqlQuery(connection);
+                query->prepare("SELECT id,idWorker FROM documents WHERE idClient='" + QString::number(idClient) + "' ");
+                query->exec();
+                while (query->next())
+                {
+                    idDoc = query->value(0).toInt();
+                    idWrkr = query->value(1).toInt();
+                }
+                query->clear();
+                query->exec("UPDATE workers SET currentDocID=0 WHERE id='" + QString::number(idWrkr) + "'");
+                query->clear();
+                query->exec("DELETE FROM documents WHERE id='" + QString::number(idDoc) + "'");
+                query->clear();
+                query->exec("DELETE FROM clients WHERE id='" + QString::number(idClient) + "'");
+                query->clear();
 
-        int idDoc = 0;
-        int idWrkr= 0;
+                connection.commit();
 
-        //! [1] Save data into workers table.
-        QSqlQuery *query = new QSqlQuery(this->DBH);
-        query->prepare("SELECT id,idWorker FROM documents WHERE idClient='"+QString::number(idClient)+"' ");
-        query->exec();
-        while (query->next()) {
-                idDoc  =  query->value(0).toInt();
-                idWrkr =  query->value(1).toInt();
+                modelClient->select();
+                ui->tableView->update();
+
+                clearFormUpdate();
+                emit dataClientsChanged();
+
+                connection.close();
             }
-        query->exec("UPDATE workers SET currentDocID=0 WHERE id='"+QString::number(idWrkr)+"'");
-        query->exec("DELETE FROM documents WHERE id='"+QString::number(idDoc)+"'");
-        query->exec("DELETE FROM clients WHERE id='"+QString::number(idClient)+"'");
-        this->DBH.commit();
-
-        modelClient->select();
-        clearFormUpdate();
-        emit dataClientsChanged();
+        }
     }
-    }else{
+    else
+    {
         Toast *mToast = new Toast(this);
         mToast->setMessage(tr("select Client you want to delete from the table"));
     }
@@ -457,60 +485,66 @@ void TabWidgetClients::deleteClient()
 void TabWidgetClients::printTicket()
 {
     int idClient = ui->SB_idClientx->value();
-    if(idClient != 0){
+    if (idClient != 0)
+    {
 
-    QString CName,CDocN,DateDP,DateDV,pages,lang,phoneN,AdressLocal;
+        QString CName, CDocN, DateDP, DateDV, pages, lang, phoneN, AdressLocal;
 
-    this->DBH.open();
-    this->DBH.transaction();
-    QSqlQuery *query = new QSqlQuery(this->DBH);
+        QSqlDatabase connection = QSqlDatabase::database();
+        if (connection.open())
+        {
+            connection.transaction();
+            QSqlQuery *query = new QSqlQuery(connection);
 
-    query->exec("SELECT fullname FROM clients WHERE id="+QString::number(idClient));
-    if(query->next())
-        CName = query->value(0).toString();
+            query->exec("SELECT fullname FROM clients WHERE id=" + QString::number(idClient));
+            if (query->next())
+                CName = query->value(0).toString();
 
-    query->exec("SELECT titleDoc,languageDoc,totalPages"
-                ",depositeDay,deliveryDay FROM documents "
-                "WHERE idClient="+QString::number(idClient));
-    if(query->next()){
-        CDocN  = query->value(0).toString();
-        lang   = query->value(1).toString();
-        pages  = query->value(2).toString();
-        DateDP = query->value(3).toString();
-        DateDV = query->value(4).toString();
-    }
+            query->exec("SELECT titleDoc,languageDoc,totalPages"
+                        ",depositeDay,deliveryDay FROM documents "
+                        "WHERE idClient=" +
+                        QString::number(idClient));
+            if (query->next())
+            {
+                CDocN = query->value(0).toString();
+                lang = query->value(1).toString();
+                pages = query->value(2).toString();
+                DateDP = query->value(3).toString();
+                DateDV = query->value(4).toString();
+            }
 
-    query->exec("SELECT phoneNumber,localAdress FROM admin WHERE app_name='yassin' ");
-    if(query->next()){
-        phoneN = query->value(0).toString();
-        AdressLocal = query->value(1).toString();
-    }
+            query->exec("SELECT phoneNumber,localAdress FROM admin WHERE app_name='yassin' ");
+            if (query->next())
+            {
+                phoneN = query->value(0).toString();
+                AdressLocal = query->value(1).toString();
+            }
 
-    this->DBH.commit();
-    this->DBH.close();
+            connection.commit();
+            connection.close();
+        }
 
-    QString Ticket = tr("N : ")+QString::number(idClient)+"\n"+
-            tr("Full Name : ")+CName+"\n"+
-            tr("Title : ")+CDocN+"\n"+
-            "\n"+
-            tr("Deposite day : ")+DateDP+"\n"+
-            tr("Delivery day : ")+DateDV+"\n"+
-            "\n\n";
+        QString Ticket = tr("N : ") + QString::number(idClient) + "\n" +
+                         tr("Full Name : ") + CName + "\n" +
+                         tr("Title : ") + CDocN + "\n" +
+                         "\n" +
+                         tr("Deposite day : ") + DateDP + "\n" +
+                         tr("Delivery day : ") + DateDV + "\n" +
+                         "\n\n";
 
-    QPrinter printer;
-    printer.setFullPage(true);
-    printer.setPaperSize(QPrinter::A7);
-    printer.setPageSize(QPrinter::A7);
-    printer.setOrientation(QPrinter::Landscape);
-    printer.setOutputFileName(QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch())+"Ticket_"+QString::number(idClient)+".oxps");
+        QPrinter printer;
+        printer.setFullPage(true);
+        printer.setPaperSize(QPrinter::A7);
+        printer.setPageSize(QPrinter::A7);
+        printer.setOrientation(QPrinter::Landscape);
+        printer.setOutputFileName(QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()) + "Ticket_" + QString::number(idClient) + ".oxps");
 
-
-    QPagedPaintDevice::Margins margs;
-    margs.top = 1.0;
-    margs.left = 2.0;
-    margs.right = 2.0;
-    margs.bottom=1.0;
-    printer.setMargins(margs);
+        QPagedPaintDevice::Margins margs;
+        margs.top = 1.0;
+        margs.left = 2.0;
+        margs.right = 2.0;
+        margs.bottom = 1.0;
+        printer.setMargins(margs);
 
         QPrintDialog *dialog = new QPrintDialog(&printer);
 
@@ -519,45 +553,46 @@ void TabWidgetClients::printTicket()
         if (dialog->exec() == QDialog::Accepted)
         {
             QPainter *painter = new QPainter();
-            if(painter->begin(&printer))
+            if (painter->begin(&printer))
             {
-            painter->drawPixmap(12,12,60,60,QPixmap(":Icons/ic_local_library_black_48dp.png"));
-            painter->setPen(Qt::black);
-            painter->setFont(QFont("Arial", 12));
-            painter->drawPixmap(345,210,22,22,QPixmap(":Icons/ic_domain_2x.png"));
-            painter->drawText(-63, 210, 385, 35,  Qt::AlignRight , AdressLocal);
-            painter->drawPixmap(345,235,22,22,QPixmap(":Icons/ic_call_2x.png"));
-            painter->drawText(-63, 235, 385, 35,  Qt::AlignRight , phoneN);
+                painter->drawPixmap(12, 12, 60, 60, QPixmap(":Icons/ic_local_library_black_48dp.png"));
+                painter->setPen(Qt::black);
+                painter->setFont(QFont("Arial", 12));
+                painter->drawPixmap(345, 210, 22, 22, QPixmap(":Icons/ic_domain_2x.png"));
+                painter->drawText(-63, 210, 385, 35, Qt::AlignRight, AdressLocal);
+                painter->drawPixmap(345, 235, 22, 22, QPixmap(":Icons/ic_call_2x.png"));
+                painter->drawText(-63, 235, 385, 35, Qt::AlignRight, phoneN);
 
-            painter->setPen(Qt::black);
-            painter->setFont(QFont("Arial", 17));
-            painter->drawText(150, 9, 385, 270,  Qt::AlignTop , tr("library yassine"));
+                painter->setPen(Qt::black);
+                painter->setFont(QFont("Arial", 17));
+                painter->drawText(150, 9, 385, 270, Qt::AlignTop, tr("library yassine"));
 
-            painter->drawLine(80,45,380,45);
-            painter->drawLine(80,46,380,46);
+                painter->drawLine(80, 45, 380, 45);
+                painter->drawLine(80, 46, 380, 46);
 
-            painter->drawLine(10,200,380,200);
-            painter->drawLine(10,201,380,201);
+                painter->drawLine(10, 200, 380, 200);
+                painter->drawLine(10, 201, 380, 201);
 
+                painter->setPen(Qt::black);
+                painter->setFont(QFont("Arial", 14));
 
-            painter->setPen(Qt::black);
-            painter->setFont(QFont("Arial", 14));
+                painter->drawRoundRect(0, 0, 385, 265);
+                painter->drawRoundRect(1, 1, 384, 264);
 
-            painter->drawRoundRect(0,0,385,265);
-            painter->drawRoundRect(1,1,384,264);
+                painter->drawText(-60, 48, 385, 265, Qt::AlignRight | Qt::AlignTop, Ticket);
 
-            painter->drawText(-60, 48, 385, 265, Qt::AlignRight|Qt::AlignTop , Ticket);
-
-            painter->end();
-            }else{
+                painter->end();
+            }
+            else
+            {
                 Toast *mToast = new Toast(this);
                 mToast->setMessage(tr("Error repeat printing ticket"));
             }
-
         }
-    }else{
+    }
+    else
+    {
         Toast *mToast = new Toast(this);
         mToast->setMessage(tr("select Client you want to print his ticket"));
     }
-
 }

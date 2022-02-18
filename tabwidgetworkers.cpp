@@ -3,9 +3,8 @@
 #include <QGraphicsDropShadowEffect>
 #include <QDir>
 
-TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
-    QTabWidget(parent),
-    ui(new Ui::TabWidgetWorkers)
+TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) : QTabWidget(parent),
+                                                      ui(new Ui::TabWidgetWorkers)
 {
     ui->setupUi(this);
 
@@ -21,31 +20,27 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
 
     QGraphicsDropShadowEffect *sh1 = new QGraphicsDropShadowEffect();
     sh1->setBlurRadius(8);
-    sh1->setOffset(2,2);
+    sh1->setOffset(2, 2);
     sh1->setColor(QColor(63, 63, 63, 180));
 
     QGraphicsDropShadowEffect *shBA = new QGraphicsDropShadowEffect();
     shBA->setBlurRadius(8);
-    shBA->setOffset(2,2);
+    shBA->setOffset(2, 2);
     shBA->setColor(QColor(63, 63, 63, 180));
 
     QGraphicsDropShadowEffect *shBD = new QGraphicsDropShadowEffect();
     shBD->setBlurRadius(8);
-    shBD->setOffset(2,2);
+    shBD->setOffset(2, 2);
     shBD->setColor(QColor(63, 63, 63, 180));
 
     mapper = new QDataWidgetMapper();
 
-
-    this->DBH = QSqlDatabase::addDatabase("QSQLITE","cnxnWorker");
-    this->DBH.setDatabaseName(QDir::homePath()+"/AppData/Roaming/bits/"+"BYASS.db");
-    this->DBH.setPassword("bitProjects");
-    this->DBH.setUserName("neverAsk@4Pass");
-    this->DBH.open();
-
-    modelWorker = new QSqlTableModel(this,this->DBH);
+    QSqlDatabase connection = QSqlDatabase::database();
+    qInfo() << "workers connection is open: " << connection.open();
+    modelWorker = new QSqlTableModel(this, connection);
     modelWorker->setTable("workers");
     modelWorker->select();
+
     ui->tableViewWorkers->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableViewWorkers->setSelectionBehavior(QAbstractItemView::SelectRows);
 
@@ -53,11 +48,11 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
     ui->tableViewWorkers->setSelectionMode(QAbstractItemView::SingleSelection);
 
     QStringList listHeader;
-    listHeader<<tr("Full name");
-    listHeader<<tr("Phone number");
-    listHeader<<tr("Email");
-    listHeader<<tr("Remarke");
-    listHeader<<tr("disponibility");
+    listHeader << tr("Full name");
+    listHeader << tr("Phone number");
+    listHeader << tr("Email");
+    listHeader << tr("Remarke");
+    listHeader << tr("disponibility");
 
     modelWorker->setHeaderData(0, Qt::Horizontal, tr("N#"));
     modelWorker->setHeaderData(1, Qt::Horizontal, listHeader.at(0));
@@ -70,7 +65,7 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
 
     proxyModelWorker->setSourceModel(modelWorker);
 
-    proxyModelWorker->setFilterRegExp(QRegExp("", Qt::CaseInsensitive,QRegExp::FixedString));
+    proxyModelWorker->setFilterRegExp(QRegExp("", Qt::CaseInsensitive, QRegExp::FixedString));
     proxyModelWorker->setFilterKeyColumn(1);
 
     ui->tableViewWorkers->setModel(proxyModelWorker);
@@ -79,14 +74,13 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
     ui->tableViewWorkers->resizeColumnsToContents();
     ui->tableViewWorkers->show();
 
-    ui->tableViewWorkers->setColumnHidden(6,true);
-    ui->tableViewWorkers->setColumnHidden(7,true);
-    ui->tableViewWorkers->setColumnHidden(8,true);
+    ui->tableViewWorkers->setColumnHidden(6, true);
+    ui->tableViewWorkers->setColumnHidden(7, true);
+    ui->tableViewWorkers->setColumnHidden(8, true);
 
     startMapper();
 
     ui->SB_idWorkerx->setVisible(false);
-
 
     ui->BT_cancelInfoW->setGraphicsEffect(sh);
     ui->BT_saveWorker->setGraphicsEffect(sh2);
@@ -97,75 +91,84 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
     mapper->setSubmitPolicy(mapper->ManualSubmit);
 
     // Actions.
-    connect(ui->BT_saveWorker,SIGNAL(clicked()),this,SLOT(saveDemande2DB()));
-    connect(ui->BT_saveWorker,SIGNAL(clicked(bool)),ui->BT_saveWorker,SLOT(setDisabled(bool)));
-    connect(ui->BT_cancelInfoW,SIGNAL(clicked()),this,SLOT(clearForm()));
-    connect(ui->LE_fullnameFiltre,SIGNAL(textChanged(QString)),proxyModelWorker,SLOT(setFilterRegExp(QString)));
-    connect(ui->tableViewWorkers->selectionModel(), SIGNAL(currentRowChanged(QModelIndex,QModelIndex)),
+    connect(ui->BT_saveWorker, SIGNAL(clicked()), this, SLOT(saveDemande2DB()));
+    connect(ui->BT_saveWorker, SIGNAL(clicked(bool)), ui->BT_saveWorker, SLOT(setDisabled(bool)));
+    connect(ui->BT_cancelInfoW, SIGNAL(clicked()), this, SLOT(clearForm()));
+    connect(ui->LE_fullnameFiltre, SIGNAL(textChanged(QString)), proxyModelWorker, SLOT(setFilterRegExp(QString)));
+    connect(ui->tableViewWorkers->selectionModel(), SIGNAL(currentRowChanged(QModelIndex, QModelIndex)),
             mapper, SLOT(setCurrentModelIndex(QModelIndex)));
-    connect(ui->BT_delete,SIGNAL(clicked()),this,SLOT(deleteWorker()));
+    connect(ui->BT_delete, SIGNAL(clicked()), this, SLOT(deleteWorker()));
 
-    connect(ui->BT_updateWorker,SIGNAL(clicked()),this,SLOT(updateWorker()));
-    connect(ui->CB_disponibility,SIGNAL(currentIndexChanged(int)),
-            this,SLOT(changeIconDisponibility()));
+    connect(ui->BT_updateWorker, SIGNAL(clicked()), this, SLOT(updateWorker()));
+    connect(ui->CB_disponibility, SIGNAL(currentIndexChanged(int)),
+            this, SLOT(changeIconDisponibility()));
 
-    connect(ui->SB_idWorkerx,SIGNAL(valueChanged(QString)),
-            ui->LB_displayIdWx,SLOT(setText(QString)));
+    connect(ui->SB_idWorkerx, SIGNAL(valueChanged(QString)),
+            ui->LB_displayIdWx, SLOT(setText(QString)));
 }
 
 void TabWidgetWorkers::updateWorker()
 {
     int idWorker = ui->SB_idWorkerx->value();
-    if(idWorker != 0)
+    if (idWorker != 0)
     {
-        this->DBH.open();
-        this->DBH.transaction();
+        QSqlDatabase connection = QSqlDatabase::database();
+        if (connection.open())
+        {
+            qInfo() << "update an existing employer: " << connection.isOpen();
+            connection.transaction();
 
-        //! [1] Save data into workers table.
-        QSqlQuery *query = new QSqlQuery(this->DBH);
+            QSqlQuery *query = new QSqlQuery(connection);
 
-        query->prepare("UPDATE workers SET "
-                      "fullName=:fullName,phoneNumber=:phoneNumber,email=:email,"
-                       "remarke=:remarke,isDisponible=:isDisponible WHERE "
-                      "id=:id");
+            query->prepare("UPDATE workers SET "
+                           "fullName=:fullName,phoneNumber=:phoneNumber,email=:email,"
+                           "remarke=:remarke,isDisponible=:isDisponible WHERE "
+                           "id=:id");
 
-        query->bindValue(":id",ui->SB_idWorkerx->value());
-        query->bindValue(":fullName",ui->LE_fullNamex->text());
-        query->bindValue(":phoneNumber",ui->LE_phonex->text());
-        query->bindValue(":email",ui->LE_primeryEmlx->text());
-        query->bindValue(":remarke", ui->TE_remarkex->toPlainText());
-        query->bindValue(":isDisponible", ui->CB_disponibility->currentText());
+            query->bindValue(":id", ui->SB_idWorkerx->value());
+            query->bindValue(":fullName", ui->LE_fullNamex->text());
+            query->bindValue(":phoneNumber", ui->LE_phonex->text());
+            query->bindValue(":email", ui->LE_primeryEmlx->text());
+            query->bindValue(":remarke", ui->TE_remarkex->toPlainText());
+            query->bindValue(":isDisponible", ui->CB_disponibility->currentText());
 
-        query->exec();
+            query->exec();
+            query->clear();
 
-        this->DBH.commit();
-        modelWorker->select();
-        clearFormUpdate();
+            connection.commit();
 
-        emit dataWorkersChanged();
+            modelWorker->select();
+            ui->tableViewWorkers->update();
 
-    }else{
+            clearFormUpdate();
+
+            emit dataWorkersChanged();
+
+            connection.close();
+        }
+    }
+    else
+    {
         Toast *mToast = new Toast(this);
         mToast->setMessage(tr("select Worker you want to update from the table"));
     }
-
 }
 
 TabWidgetWorkers::workerData TabWidgetWorkers::getDatafromForm()
 {
     workerData mWorkerData;
-    mWorkerData.fullName     = ui->LE_fullNameWorker->text();
-    mWorkerData.phoneNumber   = ui->LE_phoneWorker->text();
-    mWorkerData.email         = ui->LE_primeryEmailW->text();
-    mWorkerData.remarke       = ui->TE_remarke->toPlainText();
-    mWorkerData.date_created  = QDateTime::currentDateTime().toTime_t();
+    mWorkerData.fullName = ui->LE_fullNameWorker->text();
+    mWorkerData.phoneNumber = ui->LE_phoneWorker->text();
+    mWorkerData.email = ui->LE_primeryEmailW->text();
+    mWorkerData.remarke = ui->TE_remarke->toPlainText();
+    mWorkerData.date_created = QDateTime::currentDateTime().toTime_t();
     mWorkerData.date_modified = mWorkerData.date_created;
     return mWorkerData;
 }
 
 void TabWidgetWorkers::changeIconDisponibility()
 {
-    if(ui->CB_disponibility->currentIndex() == 0)
+    if (ui->CB_disponibility->currentIndex() == 0)
     {
         ui->LB_AvIcon->setStyleSheet("QLabel{background-color: #2196F3;}");
         ui->LB_AvIcon->setPixmap(QPixmap("://Icons/ic_done_white_24dp.png"));
@@ -175,45 +178,52 @@ void TabWidgetWorkers::changeIconDisponibility()
         ui->LB_AvIcon->setPixmap(QPixmap("://Icons/ic_clear_white_2x.png"));
         ui->LB_AvIcon->setStyleSheet("QLabel{background-color: #9aa1a6;}");
     }
-
 }
 
 bool TabWidgetWorkers::addWorker(TabWidgetWorkers::workerData mWorkerData)
 {
-    this->DBH.open();
-    this->DBH.transaction();
+    QSqlDatabase connection = QSqlDatabase::database();
+    if (connection.open())
+    {
+        qInfo() << "Add new worker: " << connection.isOpen();
+        connection.transaction();
 
-    //! [1] Save data into workers table.
-    QSqlQuery *query = new QSqlQuery(this->DBH);
-    query->prepare("INSERT INTO workers(id,fullName,phoneNumber,"
-                   "email ,remarke,isDisponible,date_created , date_modified) "
-                   "VALUES (NULL,:fullName,:phoneNumber,"
-                   ":email ,:remarke,:isDisponible,:date_created ,:date_modified)");
+        //! [1] Save data into workers table.
+        QSqlQuery *query = new QSqlQuery(connection);
+        query->prepare("INSERT INTO workers(id,fullName,phoneNumber,"
+                       "email ,remarke,isDisponible,date_created , date_modified) "
+                       "VALUES (NULL,:fullName,:phoneNumber,"
+                       ":email ,:remarke,:isDisponible,:date_created ,:date_modified)");
 
-    query->bindValue(":fullName",mWorkerData.fullName);
-    query->bindValue(":phoneNumber",mWorkerData.phoneNumber);
-    query->bindValue(":email", mWorkerData.email);
-    query->bindValue(":remarke", mWorkerData.remarke);
-    query->bindValue(":isDisponible", tr("worker disponible"));
-    query->bindValue(":date_created",mWorkerData.date_created);
-    query->bindValue(":date_modified",mWorkerData.date_modified);
+        query->bindValue(":fullName", mWorkerData.fullName);
+        query->bindValue(":phoneNumber", mWorkerData.phoneNumber);
+        query->bindValue(":email", mWorkerData.email);
+        query->bindValue(":remarke", mWorkerData.remarke);
+        query->bindValue(":isDisponible", tr("worker disponible"));
+        query->bindValue(":date_created", mWorkerData.date_created);
+        query->bindValue(":date_modified", mWorkerData.date_modified);
 
-    query->exec();
+        query->exec();
 
-    if(this->DBH.commit()){
+        connection.commit();
+
         modelWorker->select();
+        ui->tableViewWorkers->update();
+
         emit dataWorkersChanged();
+
+        connection.close();
+
         return true;
     }
-    else {
-        return false;
-    }
+    return false;
 }
 
 bool TabWidgetWorkers::verificationSubmitedData(TabWidgetWorkers::workerData mWorkerData)
 {
     bool ver = true;
-    if(mWorkerData.fullName.isEmpty()) ver = false;
+    if (mWorkerData.fullName.isEmpty())
+        ver = false;
     return ver;
 }
 
@@ -234,16 +244,16 @@ void TabWidgetWorkers::saveDemande2DB()
 {
     workerData mWorkerData = getDatafromForm();
 
-    if(verificationSubmitedData(mWorkerData))
+    if (verificationSubmitedData(mWorkerData))
     {
         Dialog *D = new Dialog(ui->T_addWorker);
-        D->setMessage(tr("sure, save this worker"),"question");
+        D->setMessage(tr("sure, save this worker"), "question");
         ui->GB_addWorker->setDisabled(true);
-        if(D->exec()==1)
+        if (D->exec() == 1)
         {
-        addWorker(mWorkerData);
-        clearForm();
-        ui->BT_saveWorker->setEnabled(true);
+            addWorker(mWorkerData);
+            clearForm();
+            ui->BT_saveWorker->setEnabled(true);
         }
         ui->GB_addWorker->setEnabled(true);
     }
@@ -255,11 +265,12 @@ void TabWidgetWorkers::saveDemande2DB()
     }
 }
 
-void TabWidgetWorkers::startMapper(){
+void TabWidgetWorkers::startMapper()
+{
 
     mapper->setModel(proxyModelWorker);
 
-    mapper->addMapping(ui->SB_idWorkerx,modelWorker->fieldIndex("id"));
+    mapper->addMapping(ui->SB_idWorkerx, modelWorker->fieldIndex("id"));
     mapper->addMapping(ui->LE_fullNamex, modelWorker->fieldIndex("fullName"));
     mapper->addMapping(ui->LE_phonex, modelWorker->fieldIndex("phoneNumber"));
     mapper->addMapping(ui->LE_primeryEmlx, modelWorker->fieldIndex("email"));
@@ -280,45 +291,58 @@ void TabWidgetWorkers::clearFormUpdate()
 
 void TabWidgetWorkers::deleteWorker()
 {
-    if(ui->SB_idWorkerx->value() != 0)
+    if (ui->SB_idWorkerx->value() != 0)
     {
-    Dialog *D = new Dialog(ui->T_updateWorker);
-    D->setMessage(tr("sure, delete this worker"),"question");
-    ui->GB_updateWorker->setDisabled(true);
-    if(D->exec()==1)
-    {
-        int idWorker = ui->SB_idWorkerx->value();
+        Dialog *D = new Dialog(ui->T_updateWorker);
+        D->setMessage(tr("sure, delete this worker"), "question");
+        ui->GB_updateWorker->setDisabled(true);
+        if (D->exec() == 1)
+        {
+            int idWorker = ui->SB_idWorkerx->value();
 
-        this->DBH.open();
-        this->DBH.transaction();
+            QSqlDatabase connection = QSqlDatabase::database();
+            if (connection.open())
+            {
+                qInfo() << "Delete a worker: " << connection.isOpen();
+                connection.transaction();
 
-        int currentDocID = 0;
+                int currentDocID = 0;
 
-        //! [1] Save data into workers table.
-        QSqlQuery *query = new QSqlQuery(this->DBH);
-        query->prepare("SELECT currentDocID FROM workers WHERE id='"+QString::number(idWorker)+"' ");
-        query->exec();
-        while (query->next()) {
-                currentDocID  =  query->value(0).toInt();
+                //! [1] Save data into workers table.
+                QSqlQuery *query = new QSqlQuery(connection);
+                query->prepare("SELECT currentDocID FROM workers WHERE id='" + QString::number(idWorker) + "' ");
+                query->exec();
+
+                while (query->next())
+                    currentDocID = query->value(0).toInt();
+
+                query->clear();
+                query->exec("UPDATE documents SET idWorker=-1 WHERE id='" + QString::number(currentDocID) + "'"
+                                                                                                            "AND totalPages<>pagesDone");
+
+                query->clear();
+                query->prepare("SELECT id FROM documents WHERE idWorker='" + QString::number(idWorker) + "' ");
+                query->exec();
+
+                (query->size() > 0)
+                    ? query->exec("UPDATE workers SET isDisponible='NO' WHERE id=" + QString::number(idWorker))
+                    : query->exec("DELETE FROM workers WHERE id='" + QString::number(idWorker) + "'");
+
+                query->clear();
+                connection.commit();
+
+                modelWorker->select();
+                ui->tableViewWorkers->update();
+
+                clearFormUpdate();
+                emit dataWorkersChanged();
+
+                connection.close();
             }
-        query->exec("UPDATE documents SET idWorker=-1 WHERE id='"+QString::number(currentDocID)+"'"
-                    "AND totalPages<>pagesDone");
-
-        query->prepare("SELECT id FROM documents WHERE idWorker='"+QString::number(idWorker)+"' ");
-        query->exec();
-
-        if(query->size()>0)
-            query->exec("UPDATE workers SET isDisponible='NO' WHERE id="+QString::number(idWorker));
-        else
-            query->exec("DELETE FROM workers WHERE id='"+QString::number(idWorker)+"'");
-
-        this->DBH.commit();
-
-        modelWorker->select();
-        clearFormUpdate();
-        emit dataWorkersChanged();
+        }
     }
-    }else{
+    else
+    {
         Toast *mToast = new Toast(this);
         mToast->setMessage(tr("select worker you want to delete from the table"));
     }

@@ -11,16 +11,12 @@
 #include <QDir>
 #include <QtSql>
 
-
 class DB : public QObject
 {
     Q_OBJECT
 private:
-      QSqlDatabase DBH;
-
 public:
     explicit DB(QObject *parent = 0);
-    bool createTable(const QString &nameTable,const QString &tableQueryStructure);
 };
 
 #endif // DB_H

@@ -11,14 +11,15 @@
 #include <simplecrypt.h>
 #include "toast.h"
 
-namespace Ui {
-class TabWidgetSettings;
+namespace Ui
+{
+    class TabWidgetSettings;
 }
 
 class TabWidgetSettings : public QTabWidget
 {
     Q_OBJECT
-    
+
 public:
     explicit TabWidgetSettings(QWidget *parent = 0);
     ~TabWidgetSettings();
@@ -31,9 +32,7 @@ public slots:
 
 private:
     Ui::TabWidgetSettings *ui;
-    QSqlDatabase DBH;
-    QSqlQuery    *query;
-    Toast        *mToast;
+    Toast *mToast;
 };
 
 #endif // TABWIDGETSETTINGS_H

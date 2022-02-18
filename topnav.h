@@ -4,20 +4,21 @@
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QPushButton>
 
-namespace Ui {
-class topNav;
+namespace Ui
+{
+    class topNav;
 }
 
 class topNav : public QWidget
 {
     Q_OBJECT
-    
+
 public:
     explicit topNav(QWidget *parent = 0);
-    QPushButton* getBTClient();
-    QPushButton* getBTWorker();
-    QPushButton* getBTDocs();
-    QPushButton* getBTHelp();
+    QPushButton *getBTClient();
+    QPushButton *getBTWorker();
+    QPushButton *getBTDocs();
+    QPushButton *getBTHelp();
     ~topNav();
 
     QPushButton *getBTLogOut();
@@ -26,6 +27,7 @@ public slots:
     void changeStyleClient();
     void changeStyleWorker();
     void changeStyleBooks();
+
 private:
     Ui::topNav *ui;
 };

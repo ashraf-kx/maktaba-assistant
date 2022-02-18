@@ -5,9 +5,8 @@
 #include <QDir>
 #include <QGraphicsDropShadowEffect>
 
-ActiveDoc::ActiveDoc(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::ActiveDoc)
+ActiveDoc::ActiveDoc(QWidget *parent) : QWidget(parent),
+                                        ui(new Ui::ActiveDoc)
 {
     ui->setupUi(this);
 
@@ -16,79 +15,78 @@ ActiveDoc::ActiveDoc(QWidget *parent) :
     sh->setOffset(2);
     sh->setColor(QColor(63, 63, 63, 180));
 
-    idDoc    = 0;
+    idDoc = 0;
     idWorker = 0;
-
-    this->DBH = QSqlDatabase::addDatabase("QSQLITE","cnxnDelete"+QString::number(QDateTime::currentMSecsSinceEpoch()));
-    this->DBH.setDatabaseName(QDir::homePath()+"/AppData/Roaming/bits/"+"BYASS.db");
-    this->DBH.setPassword("bitProjects");
-    this->DBH.setUserName("neverAsk@4Pass");
-    this->DBH.open();
 
     ui->frame->setGraphicsEffect(sh);
 
+    connect(ui->Bt_toArchive, SIGNAL(pressed()), this, SLOT(saveToArchive()));
+    connect(ui->Bt_toArchive, SIGNAL(released()), parent, SLOT(displayArchivedDocs()));
+    connect(ui->Bt_toArchive, SIGNAL(released()), this, SLOT(deleteLater()));
 
-    connect(ui->Bt_toArchive,SIGNAL(pressed()),this,SLOT(saveToArchive()));
-    connect(ui->Bt_toArchive,SIGNAL(released()),parent,SLOT(displayArchivedDocs()));
-    connect(ui->Bt_toArchive,SIGNAL(released()),this,SLOT(deleteLater()));
-
-    connect(ui->Bt_remove,SIGNAL(pressed()),this,SLOT(cancelAssociate()));
-    connect(ui->Bt_remove,SIGNAL(released()),parent,SLOT(updateLists()));
-    connect(ui->Bt_remove,SIGNAL(released()),parent,SLOT(currentActiveStats()));
+    connect(ui->Bt_remove, SIGNAL(pressed()), this, SLOT(cancelAssociate()));
+    connect(ui->Bt_remove, SIGNAL(released()), parent, SLOT(updateLists()));
+    connect(ui->Bt_remove, SIGNAL(released()), parent, SLOT(currentActiveStats()));
 }
 
-void ActiveDoc::_ActiveDoc(int idDoc,const QString &nameWorker,int idWorker,const QString &titleDoc, int totalPages, int pagesDone,QDate depositeDay,QDate deliveryDay)
+void ActiveDoc::_ActiveDoc(int idDoc, const QString &nameWorker, int idWorker, const QString &titleDoc, int totalPages, int pagesDone, QDate depositeDay, QDate deliveryDay)
 {
-    this->idDoc    = idDoc;
+    this->idDoc = idDoc;
     this->idWorker = idWorker;
     ui->L_nameWorker->setText(nameWorker);
-    ui->L_titleDoc->setText(" \" "+titleDoc+" \" ");
+    ui->L_titleDoc->setText(" \" " + titleDoc + " \" ");
 
     ui->PB_advance->setMaximum(totalPages);
-    ui->PB_advance->setValue(abs(pagesDone-totalPages));
-    ui->PB_advance->setFormat(tr("Pages Done ")+"( "+QString::number(pagesDone)+" ) ");
-
+    ui->PB_advance->setValue(abs(pagesDone - totalPages));
+    ui->PB_advance->setFormat(tr("Pages Done ") + "( " + QString::number(pagesDone) + " ) ");
 
     QDate now = QDate::currentDate();
 
     ui->PB_daysLeft->setMaximum(depositeDay.daysTo(deliveryDay));
     int daysLeft = now.daysTo(deliveryDay);
     ui->PB_daysLeft->setValue(daysLeft);
-    ui->PB_daysLeft->setFormat(tr("days left  ")+"( "+QString::number(daysLeft)+" )");
-
+    ui->PB_daysLeft->setFormat(tr("days left  ") + "( " + QString::number(daysLeft) + " )");
 }
 
 void ActiveDoc::cancelAssociate()
 {
-    int idDoc    = this->idDoc;
+    int idDoc = this->idDoc;
     int idWorker = this->idWorker;
 
-    this->DBH.open();
-    this->DBH.transaction();
+    QSqlDatabase connection = QSqlDatabase::database();
+    if (connection.open())
+    {
+        connection.transaction();
 
-    //! [1]
-    QSqlQuery *query = new QSqlQuery(this->DBH);
-    query->exec("UPDATE documents SET idWorker='-1',dateStarted='-1' WHERE id="+QString::number(idDoc)+" ");
+        QSqlQuery *query = new QSqlQuery(connection);
+        query->exec("UPDATE documents SET idWorker='-1',dateStarted='-1' WHERE id=" + QString::number(idDoc) + " ");
+        query->clear();
 
-    query->exec("UPDATE workers SET currentDocID='-1' WHERE id="+QString::number(idWorker)+" ");
+        query->exec("UPDATE workers SET currentDocID='-1' WHERE id=" + QString::number(idWorker) + " ");
+        query->clear();
 
-    this->DBH.commit();
-    // update ListDoc . but ListWorkers nothing changes.
+        connection.commit();
+        connection.close();
+    }
 }
-
 
 void ActiveDoc::saveToArchive()
 {
-    this->DBH.open();
-    this->DBH.transaction();
-    QSqlQuery *query = new QSqlQuery(this->DBH);
-    query->exec("UPDATE documents SET dateFinished='"+QDate::currentDate().toString("yyyy-MM-dd")+"' WHERE id="+QString::number(idDoc));
-    this->DBH.commit();
-    this->DBH.close();
+    QSqlDatabase connection = QSqlDatabase::database();
+    if (connection.open())
+    {
+        connection.transaction();
+
+        QSqlQuery *query = new QSqlQuery(connection);
+        query->exec("UPDATE documents SET dateFinished='" + QDate::currentDate().toString("yyyy-MM-dd") + "' WHERE id=" + QString::number(idDoc));
+        query->clear();
+
+        connection.commit();
+        connection.close();
+    }
 }
 
 ActiveDoc::~ActiveDoc()
 {
-    this->DBH.~QSqlDatabase();
     delete ui;
 }

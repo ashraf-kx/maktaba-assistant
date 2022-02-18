@@ -3,9 +3,8 @@
 #include "login.h"
 #include "dialog.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
+                                          ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -13,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowTitle(tr("Librery helper"));
     this->setWindowIcon(QIcon(":Icons/icon-evergreen-alt.ico"));
 
-    shadowWidget= new QGraphicsDropShadowEffect();
+    shadowWidget = new QGraphicsDropShadowEffect();
     shadowWidget->setBlurRadius(8);
     shadowWidget->setXOffset(0);
     shadowWidget->setOffset(2);
@@ -25,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
     configAction->setIcon(QIcon(":Icons/ic_settings_2x.png"));
     configAction->setDisabled(true);
 
-    connect(configAction,SIGNAL(triggered()),this,SLOT(displaySetting()));
+    connect(configAction, SIGNAL(triggered()), this, SLOT(displaySetting()));
 
     maximizeAction = new QAction(tr("Maximize"), this);
     maximizeAction->setIconVisibleInMenu(true);
@@ -59,34 +58,34 @@ MainWindow::MainWindow(QWidget *parent) :
     systemTray->setIcon(QIcon(QPixmap(":Icons/icon-evergreen-alt.ico")));
     systemTray->show();
 
-    systemTray->showMessage(tr("Librery YS"),tr("Develop everywhere."),QSystemTrayIcon::Information,1000);
+    systemTray->showMessage(tr("Librery YS"), tr("Develop everywhere."), QSystemTrayIcon::Information, 1000);
 
     mDB = new DB();
 
-    mTopNav            = new topNav(this);
-    mTabWidgetClient   = new TabWidgetClients(this);
-    mTabWidgetWorker   = new TabWidgetWorkers(this);
+    mTopNav = new topNav(this);
+    mTabWidgetClient = new TabWidgetClients(this);
+    mTabWidgetWorker = new TabWidgetWorkers(this);
     mTabWidgetDocument = new TabWidgetDocuments(this);
-    mLogin             = new Login();
+    mLogin = new Login();
 
     mTopNav->setGraphicsEffect(shadowWidget);
 
     ui->centralWidget->layout()->addWidget(mLogin);
     mLogin->setVisible(true);
 
-    connect(mTopNav->getBTClient(),SIGNAL(clicked()),this,SLOT(showTClient()));
-    connect(mTopNav->getBTWorker(),SIGNAL(clicked()),this,SLOT(showTWorker()));
-    connect(mTopNav->getBTDocs(),SIGNAL(clicked()),this,SLOT(showTDocument()));
+    connect(mTopNav->getBTClient(), SIGNAL(clicked()), this, SLOT(showTClient()));
+    connect(mTopNav->getBTWorker(), SIGNAL(clicked()), this, SLOT(showTWorker()));
+    connect(mTopNav->getBTDocs(), SIGNAL(clicked()), this, SLOT(showTDocument()));
 
-    connect(mTopNav->getBTLogOut(),SIGNAL(pressed()),this,SLOT(changeModeLogin()));
-   
-    connect(mLogin->getBtLogin(),SIGNAL(released()),this,SLOT(switchMode()));
+    connect(mTopNav->getBTLogOut(), SIGNAL(pressed()), this, SLOT(changeModeLogin()));
 
-    connect(mTabWidgetClient,SIGNAL(dataClientsChanged()),
-            mTabWidgetDocument,SLOT(globaleUpdate()));
+    connect(mLogin->getBtLogin(), SIGNAL(released()), this, SLOT(switchMode()));
 
-    connect(mTabWidgetWorker,SIGNAL(dataWorkersChanged()),
-            mTabWidgetDocument,SLOT(globaleUpdate()));
+    connect(mTabWidgetClient, SIGNAL(dataClientsChanged()),
+            mTabWidgetDocument, SLOT(globaleUpdate()));
+
+    connect(mTabWidgetWorker, SIGNAL(dataWorkersChanged()),
+            mTabWidgetDocument, SLOT(globaleUpdate()));
 }
 
 MainWindow::~MainWindow()
@@ -99,22 +98,22 @@ void MainWindow::changeModeLogin()
 {
 
     Dialog *mDialog = new Dialog(this);
-    mDialog->setMessage(tr("sure, logout ?"),"question");
+    mDialog->setMessage(tr("sure, logout ?"), "question");
     this->centralWidget()->setDisabled(true);
     logoutAction->setDisabled(true);
-    if(mDialog->exec()==1){
+    if (mDialog->exec() == 1)
+    {
 
         mLogin->setModeLogin(false);
         switchMode();
     }
     logoutAction->setEnabled(true);
     this->centralWidget()->setEnabled(true);
-
 }
 
 void MainWindow::switchMode()
 {
-    if(mLogin->getModelogin())
+    if (mLogin->getModelogin())
     {
         ui->centralWidget->layout()->removeWidget(mLogin);
         mLogin->setVisible(false);
@@ -153,7 +152,6 @@ void MainWindow::showTClient()
     ui->centralWidget->layout()->removeWidget(mTabWidgetDocument);
     mTabWidgetDocument->setVisible(false);
 
-
     ui->centralWidget->layout()->addWidget(mTabWidgetClient);
     mTabWidgetClient->setVisible(true);
 }
@@ -165,7 +163,6 @@ void MainWindow::showTWorker()
     mTabWidgetClient->setVisible(false);
     ui->centralWidget->layout()->removeWidget(mTabWidgetDocument);
     mTabWidgetDocument->setVisible(false);
-
 
     ui->centralWidget->layout()->addWidget(mTabWidgetWorker);
     mTabWidgetWorker->setVisible(true);
@@ -179,10 +176,8 @@ void MainWindow::showTDocument()
     ui->centralWidget->layout()->removeWidget(mTabWidgetWorker);
     mTabWidgetWorker->setVisible(false);
 
-
     ui->centralWidget->layout()->addWidget(mTabWidgetDocument);
     mTabWidgetDocument->setVisible(true);
-
 }
 
 void MainWindow::displaySetting()
@@ -193,5 +188,5 @@ void MainWindow::displaySetting()
 
 void MainWindow::displayMessage(const QString &msg)
 {
-    ui->statusBar->showMessage(msg,10000);
+    ui->statusBar->showMessage(msg, 10000);
 }

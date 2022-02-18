@@ -7,20 +7,19 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 
-
-namespace Ui {
-class ActiveDoc;
+namespace Ui
+{
+    class ActiveDoc;
 }
 
 class ActiveDoc : public QWidget
 {
     Q_OBJECT
-    
+
 public:
     explicit ActiveDoc(QWidget *parent = 0);
-    void _ActiveDoc(int idDoc,const QString &nameWorker,int idWorker,const QString &titleDoc, int totalPages, int pagesDone,QDate depositeDay,QDate deliveryDay);
+    void _ActiveDoc(int idDoc, const QString &nameWorker, int idWorker, const QString &titleDoc, int totalPages, int pagesDone, QDate depositeDay, QDate deliveryDay);
     ~ActiveDoc();
-
 
 public slots:
     void cancelAssociate();
@@ -28,9 +27,8 @@ public slots:
 
 private:
     Ui::ActiveDoc *ui;
-    QSqlDatabase DBH;
     int idWorker;
-    int idDoc;    
+    int idDoc;
 };
 
 #endif // ACTIVEDOC_H

@@ -19,24 +19,27 @@
 #include "activedoc.h"
 #include "toast.h"
 
-namespace Ui {
-class TabWidgetDocuments;
+namespace Ui
+{
+    class TabWidgetDocuments;
 }
 
 class TabWidgetDocuments : public QTabWidget
 {
     Q_OBJECT
-    struct Employer{
+    struct Employer
+    {
         QString fullName;
         int id;
     };
 
-    struct Document{
+    struct Document
+    {
         QString title;
         QString owner;
         int id;
     };
-    
+
 public:
     explicit TabWidgetDocuments(QWidget *parent = 0);
     QList<Document> getListDocsAvailable();
@@ -56,10 +59,10 @@ public slots:
 
     void calculatePagesRest();
     void displayNbrDoc(int val);
+
 private:
     Ui::TabWidgetDocuments *ui;
-    QSqlDatabase DBH;
-    QSqlTableModel    *modelDocs;
+    QSqlTableModel *modelDocs;
     QDataWidgetMapper *mapper;
     QSortFilterProxyModel *proxyModelDocs;
     QList<Document> listdocs;

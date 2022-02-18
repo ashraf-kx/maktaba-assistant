@@ -9,17 +9,20 @@
 #include <QSortFilterProxyModel>
 #include <QtWidgets/QDataWidgetMapper>
 #include <QDateTime>
+#include <QDebug>
 #include "dialog.h"
 #include "toast.h"
 
-namespace Ui {
-class TabWidgetWorkers;
+namespace Ui
+{
+    class TabWidgetWorkers;
 }
 
 class TabWidgetWorkers : public QTabWidget
 {
     Q_OBJECT
-    struct workerData {
+    struct workerData
+    {
         QString fullName;
         QString phoneNumber;
         QString email;
@@ -32,7 +35,7 @@ class TabWidgetWorkers : public QTabWidget
         uint date_created;
         uint date_modified;
     };
-    
+
 public:
     explicit TabWidgetWorkers(QWidget *parent = 0);
     workerData getDatafromForm();
@@ -55,12 +58,9 @@ signals:
 
 private:
     Ui::TabWidgetWorkers *ui;
-    QSqlDatabase          DBH;
-
-    QSqlTableModel        *modelWorker;
+    QSqlTableModel *modelWorker;
     QSortFilterProxyModel *proxyModelWorker;
-    QDataWidgetMapper     *mapper;
-
+    QDataWidgetMapper *mapper;
 };
 
 #endif // TABWIDGETWORKERS_H

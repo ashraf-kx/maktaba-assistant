@@ -18,20 +18,22 @@
 
 #include <QCalendarWidget>
 
-namespace Ui {
-class TabWidgetClients;
+namespace Ui
+{
+    class TabWidgetClients;
 }
 
 class TabWidgetClients : public QTabWidget
 {
     Q_OBJECT
-    struct clientData {
+    struct clientData
+    {
         QString idDocument;
         QString fullname;
         QString titleDoc;
         QString totalPages;
         QString languageDoc;
-        QString fontFamily,fontSize,typeDoc,printingColor;
+        QString fontFamily, fontSize, typeDoc, printingColor;
 
         QString depositeDay;
         QString deliveryDay;
@@ -47,6 +49,7 @@ class TabWidgetClients : public QTabWidget
         uint date_created;
         uint date_modified;
     };
+
 public:
     explicit TabWidgetClients(QWidget *parent = 0);
     clientData getDatafromForm();
@@ -56,7 +59,6 @@ public:
     ~TabWidgetClients();
     void displayOneRow();
     void clearFormUpdate();
-
 
 public slots:
     void clearForm();
@@ -75,9 +77,8 @@ signals:
 
 private:
     Ui::TabWidgetClients *ui;
-    QSqlDatabase DBH;
 
-    QSqlTableModel    *modelClient;
+    QSqlTableModel *modelClient;
     QDataWidgetMapper *mapper;
     QSortFilterProxyModel *proxyModelClient;
     QWidget *father;
