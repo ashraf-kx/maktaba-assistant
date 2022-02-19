@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>562</width>
-    <height>206</height>
+    <width>353</width>
+    <height>567</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>300</width>
+    <height>500</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -18,12 +24,27 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Minimum</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>60</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
-       <family>Arial</family>
-       <pointsize>22</pointsize>
-       <weight>75</weight>
+       <family>SFMono Nerd Font Mono</family>
+       <pointsize>18</pointsize>
        <italic>false</italic>
        <bold>true</bold>
       </font>
@@ -38,6 +59,22 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Minimum</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>50</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -79,10 +116,10 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
+         <family>SFMono Nerd Font Mono</family>
+         <pointsize>11</pointsize>
          <italic>false</italic>
-         <bold>true</bold>
+         <bold>false</bold>
         </font>
        </property>
        <property name="layoutDirection">
@@ -114,7 +151,7 @@ QLineEdit:hover
 }</string>
        </property>
        <property name="text">
-        <string>admin</string>
+        <string/>
        </property>
        <property name="maxLength">
         <number>30</number>
@@ -184,6 +221,22 @@ background-color: #2196F3;
     </layout>
    </item>
    <item>
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Minimum</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>15</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <property name="spacing">
       <number>0</number>
@@ -223,9 +276,9 @@ background-color: #2196F3;
        </property>
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <family>SFMono Nerd Font Mono</family>
+         <pointsize>11</pointsize>
+         <bold>false</bold>
         </font>
        </property>
        <property name="layoutDirection">
@@ -257,7 +310,7 @@ QLineEdit:hover
 }</string>
        </property>
        <property name="text">
-        <string>admin</string>
+        <string/>
        </property>
        <property name="maxLength">
         <number>30</number>
@@ -330,6 +383,19 @@ background-color: #2196F3;
     </layout>
    </item>
    <item>
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <spacer name="horizontalSpacer">
@@ -348,8 +414,8 @@ background-color: #2196F3;
       <widget class="QPushButton" name="BT_login">
        <property name="font">
         <font>
-         <family>Ubuntu</family>
-         <pointsize>-1</pointsize>
+         <family>SFMono Nerd Font Mono</family>
+         <pointsize>11</pointsize>
         </font>
        </property>
        <property name="cursor">
@@ -365,8 +431,6 @@ background-color: #2196F3;
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
     background-color: rgb(0, 163, 239);
@@ -428,8 +492,8 @@ color: #ffffff;
       <widget class="QPushButton" name="BT_cancel">
        <property name="font">
         <font>
-         <family>Ubuntu</family>
-         <pointsize>-1</pointsize>
+         <family>SFMono Nerd Font Mono</family>
+         <pointsize>11</pointsize>
         </font>
        </property>
        <property name="cursor">
@@ -445,8 +509,6 @@ color: #ffffff;
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
     background-color:#455A64;

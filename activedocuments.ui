@@ -133,8 +133,8 @@ color: #ffffff;
           </property>
           <property name="font">
            <font>
+            <family>SFMono Nerd Font Mono</family>
             <pointsize>10</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -280,8 +280,8 @@ color: #ffffff;
           </property>
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
-            <weight>75</weight>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>10</pointsize>
             <italic>true</italic>
             <bold>true</bold>
            </font>
@@ -342,8 +342,8 @@ color: #ffffff;
           </property>
           <property name="font">
            <font>
-            <pointsize>8</pointsize>
-            <weight>75</weight>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>10</pointsize>
             <bold>true</bold>
            </font>
           </property>
@@ -399,8 +399,8 @@ border-radius: 0px;
           </property>
           <property name="font">
            <font>
-            <pointsize>8</pointsize>
-            <weight>75</weight>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>10</pointsize>
             <bold>true</bold>
             <kerning>false</kerning>
            </font>

@@ -1,9 +1,9 @@
-#include "archiveddoc.h"
+#include "archiveddocuments.h"
 #include "ui_archiveddoc.h"
 #include <QDir>
 #include <QGraphicsDropShadowEffect>
 
-ArchivedDoc::ArchivedDoc(QWidget *parent) : QWidget(parent),
+ArchivedDocuments::ArchivedDocuments(QWidget *parent) : QWidget(parent),
                                             ui(new Ui::ArchivedDoc)
 {
     ui->setupUi(this);
@@ -15,19 +15,19 @@ ArchivedDoc::ArchivedDoc(QWidget *parent) : QWidget(parent),
 
     this->setGraphicsEffect(sho);
 
-    connect(ui->Bt_Cancel, SIGNAL(pressed()), this, SLOT(removeFromArchive()));
+    connect(ui->Bt_Cancel, SIGNAL(pressed()), this, SLOT(removeDocumentFromArchive()));
     connect(ui->Bt_Cancel, SIGNAL(pressed()), parent, SLOT(updateLists()));
     connect(ui->Bt_Cancel, SIGNAL(pressed()), parent, SLOT(currentActiveStats()));
 
     connect(ui->Bt_Cancel, SIGNAL(released()), this, SLOT(deleteLater()));
 }
 
-ArchivedDoc::~ArchivedDoc()
+ArchivedDocuments::~ArchivedDocuments()
 {
     delete ui;
 }
 
-void ArchivedDoc::removeFromArchive()
+void ArchivedDocuments::removeDocumentFromArchive()
 {
     QSqlDatabase connection = QSqlDatabase::database();
     if (connection.open())
@@ -35,7 +35,7 @@ void ArchivedDoc::removeFromArchive()
         connection.transaction();
 
         QSqlQuery *query = new QSqlQuery(connection);
-        query->exec("UPDATE documents SET dateFinished='-1' WHERE id=" + QString::number(this->idDoc));
+        query->exec("UPDATE documents SET dateFinished=-1 WHERE id=" + QString::number(this->idDocument));
         query->clear();
 
         connection.commit();
@@ -44,9 +44,9 @@ void ArchivedDoc::removeFromArchive()
     }
 }
 
-void ArchivedDoc::showArchivedDocs(int idDoc, const QString &nameClient, const QString &titleDoc, int pagesDone)
+void ArchivedDocuments::showArchivedDocuments(int idDoc, const QString &nameClient, const QString &titleDoc, int pagesDone)
 {
-    this->idDoc = idDoc;
+    this->idDocument = idDoc;
     QString mTitleDoc(tr("Empty")),
         mIsPrinted(tr("Empty")),
         mDateFinished(tr("Empty")),
@@ -78,6 +78,7 @@ void ArchivedDoc::showArchivedDocs(int idDoc, const QString &nameClient, const Q
         }
 
         query->clear();
+
         query->prepare("SELECT fullname,price,pricePaid FROM clients WHERE id='" + QString::number(mIdClient) + "' ");
         query->exec();
         while (query->next())
@@ -88,6 +89,7 @@ void ArchivedDoc::showArchivedDocs(int idDoc, const QString &nameClient, const Q
         }
 
         query->clear();
+
         connection.commit();
         connection.close();
     }

@@ -139,7 +139,7 @@ void TabWidgetDocuments::updateDoc()
     {
         if ((ui->SB_pagesWordx->value() + ui->SB_pagesHandx->value()) <= ui->SB_totalPagesx->value())
         {
-            QSqlDatabase connection = QSqlDatabase::database("mainConnection");
+            QSqlDatabase connection = QSqlDatabase::database();
             if (connection.open())
             {
                 connection.transaction();
@@ -164,6 +164,7 @@ void TabWidgetDocuments::updateDoc()
                 connection.commit();
 
                 modelDocs->select();
+                ui->tableView->update();
                 clearFormUpdate();
 
                 connection.close();
@@ -286,18 +287,17 @@ void TabWidgetDocuments::doAssociate()
     if (listdocs.size() > 0)
     {
         int indexWorker = 0;
-        int indexDoc = 0;
-        QString mTitleDoc = ui->CB_pickDoc->currentText();
-        QString mNameWorker = ui->CB_pickEmpl->currentText();
+        int indexDocument = 0;
+        QString titleDoc = ui->CB_pickDoc->currentText();
+        QString workerName = ui->CB_pickEmpl->currentText();
 
         QSqlDatabase connection = QSqlDatabase::database();
         if (connection.open())
         {
             connection.transaction();
-            //! look for indexDoc & indexWorker.
             QSqlQuery *query = new QSqlQuery(connection);
             query->prepare("SELECT id FROM workers WHERE fullName=:fullName ");
-            query->bindValue(":fullName", mNameWorker);
+            query->bindValue(":fullName", workerName);
             query->exec();
 
             while (query->next())
@@ -305,16 +305,26 @@ void TabWidgetDocuments::doAssociate()
 
             query->clear();
             query->prepare("SELECT id FROM documents WHERE titleDoc=:titleDoc");
-            query->bindValue(":titleDoc", mTitleDoc);
+            query->bindValue(":titleDoc", titleDoc);
             query->exec();
 
             while (query->next())
-                indexDoc = query->value(0).toInt();
+                indexDocument = query->value(0).toInt();
 
-            //! [1] update necessery data in table "workers/documents".
             query->clear();
-            query->exec("UPDATE documents SET pagesDone=0,dateStarted='" + QDate::currentDate().toString("yyyy-MM-dd") + "', idWorker='" + QString::number(indexWorker) + "' WHERE id=" + QString::number(indexDoc) + " ");
-            query->exec("UPDATE workers SET currentDocID='" + QString::number(indexDoc) + "' WHERE id=" + QString::number(indexWorker) + " ");
+
+            query->prepare("UPDATE documents SET dateStarted=:dateStarted, idWorker=:idWorker WHERE id=:id");
+            query->bindValue(":id", QString::number(indexDocument));
+            query->bindValue(":idWorker", QString::number(indexWorker));
+            query->bindValue(":dateStarted", QDate::currentDate().toString("yyyy-MM-dd"));
+            query->exec();
+            query->clear();
+
+            query->prepare("UPDATE workers SET currentDocID=:currentDocID WHERE id=:id ");
+            query->bindValue(":id", QString::number(indexWorker));
+            query->bindValue(":currentDocID", QString::number(indexDocument));
+            query->exec();
+            query->clear();
 
             connection.commit();
 
@@ -333,15 +343,14 @@ void TabWidgetDocuments::doAssociate()
 
 void TabWidgetDocuments::currentActiveStats()
 {
-    QSqlDatabase connection = QSqlDatabase::database("mainConnection");
+    QSqlDatabase connection = QSqlDatabase::database();
     if (connection.open())
     {
         connection.transaction();
 
-        foreach (ActiveDoc *form, ui->groupBox->findChildren<ActiveDoc *>())
+        foreach (ActiveDocuments *form, ui->groupBox->findChildren<ActiveDocuments *>())
             delete form;
 
-        //! [1] update necessery data in table "workers/documents".
         QSqlQuery *query = new QSqlQuery(connection);
         QSqlQuery *subQuery;
         query->prepare("SELECT id,idWorker,titleDoc,totalPages,pagesDone,depositeDay,deliveryDay FROM documents WHERE dateStarted<>-1 AND dateFinished=-1");
@@ -367,7 +376,7 @@ void TabWidgetDocuments::currentActiveStats()
             QDate depositeDay = QDate::fromString(query->value(5).toString(), "yyyy-MM-dd");
             QDate deliveryDay = QDate::fromString(query->value(6).toString(), "yyyy-MM-dd");
 
-            ActiveDoc *form = new ActiveDoc(this);
+            ActiveDocuments *form = new ActiveDocuments(this);
             form->_ActiveDoc(idDoc, nameWorker, idWorker, titleDoc, totalPages, pagesDone, depositeDay, deliveryDay);
 
             mGridLayout->addWidget(form, row, col);
@@ -399,7 +408,7 @@ void TabWidgetDocuments::displayArchivedDocs()
     {
         connection.transaction();
 
-        foreach (ArchivedDoc *form, ui->groupBox_->findChildren<ArchivedDoc *>())
+        foreach (ArchivedDocuments *form, ui->groupBox_->findChildren<ArchivedDocuments *>())
             delete form;
 
         QSqlQuery *query = new QSqlQuery(connection);
@@ -424,8 +433,8 @@ void TabWidgetDocuments::displayArchivedDocs()
             QString titleDoc = query->value(2).toString();
             int pagesDone = query->value(3).toInt();
 
-            ArchivedDoc *form = new ArchivedDoc(this);
-            form->showArchivedDocs(idDoc, nameClient, titleDoc, pagesDone);
+            ArchivedDocuments *form = new ArchivedDocuments(this);
+            form->showArchivedDocuments(idDoc, nameClient, titleDoc, pagesDone);
 
             mGridLayout2->addWidget(form, row, col);
             col++;

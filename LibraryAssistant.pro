@@ -10,6 +10,8 @@ TARGET = LibraryAssistant
 TEMPLATE = app
 
 SOURCES += main.cpp\
+    activedocuments.cpp \
+    archiveddocuments.cpp \
         mainwindow.cpp \
     db.cpp \
     tabwidgetclients.cpp \
@@ -17,35 +19,33 @@ SOURCES += main.cpp\
     tabwidgetdocuments.cpp \
     topnav.cpp \
     login.cpp \
-    archiveddoc.cpp \
-    activedoc.cpp \
     simplecrypt.cpp \
     tabwidgetsettings.cpp \
     dialog.cpp \
     toast.cpp
 
 HEADERS  += mainwindow.h \
+    activedocuments.h \
+    archiveddocuments.h \
     db.h \
     tabwidgetclients.h \
     tabwidgetworkers.h \
     tabwidgetdocuments.h \
     topnav.h \
     login.h \
-    archiveddoc.h \
-    activedoc.h \
     simplecrypt.h \
     tabwidgetsettings.h \
     dialog.h \
     toast.h
 
 FORMS    += mainwindow.ui \
+    activedocuments.ui \
+    archiveddocuments.ui \
     tabwidgetclients.ui \
     tabwidgetworkers.ui \
     tabwidgetdocuments.ui \
     topnav.ui \
     login.ui \
-    archiveddoc.ui \
-    activedoc.ui \
     tabwidgetsettings.ui \
     dialog.ui \
     toast.ui

@@ -332,6 +332,7 @@ bool TabWidgetClients::addClient(TabWidgetClients::clientData mClientData)
         query->bindValue(":date_created", mClientData.date_created);
         query->bindValue(":date_modified", mClientData.date_modified);
         query->exec();
+        query->clear();
 
         connection.commit()
             ? qInfo() << "New order committed to db."

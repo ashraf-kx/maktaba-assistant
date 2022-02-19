@@ -6,14 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>975</width>
-    <height>644</height>
+    <width>922</width>
+    <height>652</height>
    </rect>
   </property>
   <property name="font">
    <font>
     <pointsize>10</pointsize>
-    <weight>75</weight>
     <bold>true</bold>
     <stylestrategy>PreferAntialias</stylestrategy>
     <kerning>false</kerning>
@@ -45,7 +44,7 @@ border:0px solid white;
    <enum>QTabWidget::Triangular</enum>
   </property>
   <property name="currentIndex">
-   <number>1</number>
+   <number>0</number>
   </property>
   <property name="iconSize">
    <size>
@@ -89,10 +88,10 @@ border:0px solid white;
      <widget class="QGroupBox" name="GB_addWorker">
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <italic>true</italic>
-        <bold>true</bold>
+        <family>SFMono Nerd Font Mono</family>
+        <pointsize>12</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
         <underline>false</underline>
         <strikeout>false</strikeout>
         <kerning>false</kerning>
@@ -168,9 +167,10 @@ color: rgb(0, 163, 239);
            </property>
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="layoutDirection">
@@ -308,9 +308,10 @@ background-color: #2196F3;
            </property>
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="layoutDirection">
@@ -454,9 +455,10 @@ background-color: #2196F3;
            </property>
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="layoutDirection">
@@ -561,9 +563,10 @@ background-color: #2196F3;
         <widget class="QLabel" name="LB_seconderyEmailW">
          <property name="font">
           <font>
-           <pointsize>10</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
+           <family>SFMono Nerd Font Mono</family>
+           <pointsize>11</pointsize>
+           <italic>false</italic>
+           <bold>false</bold>
           </font>
          </property>
          <property name="styleSheet">
@@ -606,10 +609,10 @@ background-color: #2196F3;
            </property>
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <italic>true</italic>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="cursor" stdset="0">
@@ -691,8 +694,8 @@ QPlainTextEdit:hover
           <widget class="QPushButton" name="BT_saveWorker">
            <property name="font">
             <font>
-             <family>Ubuntu</family>
-             <pointsize>-1</pointsize>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
             </font>
            </property>
            <property name="cursor">
@@ -705,8 +708,6 @@ QPlainTextEdit:hover
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
     background-color: rgb(0, 163, 239);
@@ -765,8 +766,8 @@ color: #ffffff;
           <widget class="QPushButton" name="BT_cancelInfoW">
            <property name="font">
             <font>
-             <family>Ubuntu</family>
-             <pointsize>-1</pointsize>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
             </font>
            </property>
            <property name="cursor">
@@ -779,8 +780,6 @@ color: #ffffff;
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
     background-color:#455A64;
@@ -857,13 +856,9 @@ border:0px solid white;
      <widget class="QGroupBox" name="GB_updateWorker">
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <italic>true</italic>
+        <family>SFMono Nerd Font Mono</family>
+        <pointsize>12</pointsize>
         <bold>true</bold>
-        <underline>false</underline>
-        <strikeout>false</strikeout>
-        <kerning>false</kerning>
        </font>
       </property>
       <property name="layoutDirection">
@@ -936,9 +931,9 @@ color: rgb(0, 163, 239);
             <widget class="QLabel" name="label_5">
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
@@ -960,9 +955,9 @@ color: rgb(0, 163, 239);
             <widget class="QLabel" name="LB_displayIdWx">
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
@@ -1057,9 +1052,9 @@ background-color: #2196F3;
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="layoutDirection">
@@ -1162,9 +1157,9 @@ background-color: #2196F3;
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="layoutDirection">
@@ -1270,9 +1265,9 @@ background-color: #2196F3;
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="layoutDirection">
@@ -1320,9 +1315,9 @@ QLineEdit:hover
           <widget class="QLabel" name="label_25">
            <property name="font">
             <font>
-             <pointsize>9</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
@@ -1394,9 +1389,9 @@ background-color: #2196F3;
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="cursor">
@@ -1452,9 +1447,9 @@ QComboBox:hover
           <widget class="QLabel" name="label_24">
            <property name="font">
             <font>
-             <pointsize>9</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
@@ -1484,10 +1479,10 @@ QComboBox:hover
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
                <italic>true</italic>
-               <bold>true</bold>
+               <bold>false</bold>
               </font>
              </property>
              <property name="cursor" stdset="0">
@@ -1546,6 +1541,9 @@ QPlainTextEdit:hover
              </property>
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton
@@ -1607,6 +1605,9 @@ color: #ffffff;
              </property>
              <property name="cursor">
               <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton
@@ -1694,9 +1695,9 @@ color: #ffffff;
              <widget class="QLineEdit" name="LE_fullnameFiltre">
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>SFMono Nerd Font Mono</family>
+                <pointsize>11</pointsize>
+                <bold>false</bold>
                </font>
               </property>
               <property name="layoutDirection">
@@ -1788,10 +1789,9 @@ QLineEdit:hover
            </property>
            <property name="font">
             <font>
-             <family>Arial</family>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
              <kerning>false</kerning>
             </font>
            </property>

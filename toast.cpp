@@ -15,7 +15,7 @@ Toast::Toast(QWidget *parent) : QFrame(parent),
     this->setGraphicsEffect(sh);
 
     this->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
-    this->setWindowOpacity(0.9);
+    this->setWindowOpacity(1);
     this->setGeometry(5, 30, 300, 80);
     this->setVisible(true);
 
@@ -31,7 +31,7 @@ void Toast::fade()
 {
     if (colorA < 75)
         this->deleteLater();
-    mTimer->setInterval(500);
+    mTimer->setInterval(300);
     mTimer->start();
     colorA = colorA - 25;
     this->setStyleSheet("background-color: rgba(178, 6, 245," + QString::number(colorA) + ");"

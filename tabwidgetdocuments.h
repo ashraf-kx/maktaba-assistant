@@ -15,8 +15,8 @@
 #include <QtWidgets/QGraphicsDropShadowEffect>
 #include <QtWidgets/QGridLayout>
 
-#include "archiveddoc.h"
-#include "activedoc.h"
+#include "archiveddocuments.h"
+#include "activedocuments.h"
 #include "toast.h"
 
 namespace Ui

@@ -1,11 +1,11 @@
-#include "activedoc.h"
+#include "activedocuments.h"
 #include "ui_activedoc.h"
 #include <QDebug>
 #include <QTime>
 #include <QDir>
 #include <QGraphicsDropShadowEffect>
 
-ActiveDoc::ActiveDoc(QWidget *parent) : QWidget(parent),
+ActiveDocuments::ActiveDocuments(QWidget *parent) : QWidget(parent),
                                         ui(new Ui::ActiveDoc)
 {
     ui->setupUi(this);
@@ -15,7 +15,7 @@ ActiveDoc::ActiveDoc(QWidget *parent) : QWidget(parent),
     sh->setOffset(2);
     sh->setColor(QColor(63, 63, 63, 180));
 
-    idDoc = 0;
+    idDocument = 0;
     idWorker = 0;
 
     ui->frame->setGraphicsEffect(sh);
@@ -29,9 +29,9 @@ ActiveDoc::ActiveDoc(QWidget *parent) : QWidget(parent),
     connect(ui->Bt_remove, SIGNAL(released()), parent, SLOT(currentActiveStats()));
 }
 
-void ActiveDoc::_ActiveDoc(int idDoc, const QString &nameWorker, int idWorker, const QString &titleDoc, int totalPages, int pagesDone, QDate depositeDay, QDate deliveryDay)
+void ActiveDocuments::_ActiveDoc(int idDoc, const QString &nameWorker, int idWorker, const QString &titleDoc, int totalPages, int pagesDone, QDate depositeDay, QDate deliveryDay)
 {
-    this->idDoc = idDoc;
+    this->idDocument = idDoc;
     this->idWorker = idWorker;
     ui->L_nameWorker->setText(nameWorker);
     ui->L_titleDoc->setText(" \" " + titleDoc + " \" ");
@@ -48,9 +48,9 @@ void ActiveDoc::_ActiveDoc(int idDoc, const QString &nameWorker, int idWorker, c
     ui->PB_daysLeft->setFormat(tr("days left  ") + "( " + QString::number(daysLeft) + " )");
 }
 
-void ActiveDoc::cancelAssociate()
+void ActiveDocuments::cancelAssociate()
 {
-    int idDoc = this->idDoc;
+    int idDoc = this->idDocument;
     int idWorker = this->idWorker;
 
     QSqlDatabase connection = QSqlDatabase::database();
@@ -59,10 +59,10 @@ void ActiveDoc::cancelAssociate()
         connection.transaction();
 
         QSqlQuery *query = new QSqlQuery(connection);
-        query->exec("UPDATE documents SET idWorker='-1',dateStarted='-1' WHERE id=" + QString::number(idDoc) + " ");
+        query->exec("UPDATE documents SET idWorker=-1,dateStarted=-1 WHERE id=" + QString::number(idDoc) + " ");
         query->clear();
 
-        query->exec("UPDATE workers SET currentDocID='-1' WHERE id=" + QString::number(idWorker) + " ");
+        query->exec("UPDATE workers SET currentDocID=-1 WHERE id=" + QString::number(idWorker) + " ");
         query->clear();
 
         connection.commit();
@@ -70,7 +70,7 @@ void ActiveDoc::cancelAssociate()
     }
 }
 
-void ActiveDoc::saveToArchive()
+void ActiveDocuments::saveToArchive()
 {
     QSqlDatabase connection = QSqlDatabase::database();
     if (connection.open())
@@ -78,7 +78,7 @@ void ActiveDoc::saveToArchive()
         connection.transaction();
 
         QSqlQuery *query = new QSqlQuery(connection);
-        query->exec("UPDATE documents SET dateFinished='" + QDate::currentDate().toString("yyyy-MM-dd") + "' WHERE id=" + QString::number(idDoc));
+        query->exec("UPDATE documents SET dateFinished='" + QDate::currentDate().toString("yyyy-MM-dd") + "' WHERE id=" + QString::number(idDocument));
         query->clear();
 
         connection.commit();
@@ -86,7 +86,7 @@ void ActiveDoc::saveToArchive()
     }
 }
 
-ActiveDoc::~ActiveDoc()
+ActiveDocuments::~ActiveDocuments()
 {
     delete ui;
 }

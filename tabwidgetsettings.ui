@@ -9,14 +9,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>911</width>
-    <height>510</height>
+    <width>720</width>
+    <height>573</height>
    </rect>
   </property>
   <property name="font">
    <font>
     <pointsize>9</pointsize>
-    <weight>75</weight>
     <bold>true</bold>
     <kerning>false</kerning>
    </font>
@@ -46,6 +45,14 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="2">
      <widget class="QGroupBox" name="groupBox_2">
+      <property name="font">
+       <font>
+        <family>SFMono Nerd Font Mono</family>
+        <pointsize>12</pointsize>
+        <bold>false</bold>
+        <kerning>false</kerning>
+       </font>
+      </property>
       <property name="title">
        <string>تحديث معلومات المستخدم </string>
       </property>
@@ -96,9 +103,10 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+             <kerning>false</kerning>
             </font>
            </property>
            <property name="layoutDirection">
@@ -156,7 +164,10 @@ QLineEdit:hover
            </property>
            <property name="font">
             <font>
+             <pointsize>9</pointsize>
+             <bold>true</bold>
              <strikeout>false</strikeout>
+             <kerning>false</kerning>
             </font>
            </property>
            <property name="layoutDirection">
@@ -213,6 +224,14 @@ background-color: #2196F3;
          </item>
          <item>
           <widget class="QPushButton" name="BT_saveAdminNameX">
+           <property name="font">
+            <font>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+             <kerning>true</kerning>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton
 {
@@ -220,8 +239,7 @@ background-color: #2196F3;
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
+
     color: #ffffff;
     white-space: nowrap;
     background-color: rgb(0, 163, 239);
@@ -278,6 +296,14 @@ color: #ffffff;
          </item>
          <item>
           <widget class="QPushButton" name="BT_cancelAdminnX">
+           <property name="font">
+            <font>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+             <kerning>true</kerning>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton
 {
@@ -285,8 +311,6 @@ color: #ffffff;
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
     background-color:#455A64;
@@ -396,9 +420,10 @@ color: #ffffff;
            </property>
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+             <kerning>false</kerning>
             </font>
            </property>
            <property name="layoutDirection">
@@ -462,7 +487,10 @@ QLineEdit:hover
            </property>
            <property name="font">
             <font>
+             <pointsize>9</pointsize>
+             <bold>true</bold>
              <strikeout>false</strikeout>
+             <kerning>false</kerning>
             </font>
            </property>
            <property name="layoutDirection">
@@ -542,9 +570,10 @@ background-color: #2196F3;
            </property>
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+             <kerning>false</kerning>
             </font>
            </property>
            <property name="layoutDirection">
@@ -605,7 +634,10 @@ QLineEdit:hover
            </property>
            <property name="font">
             <font>
+             <pointsize>9</pointsize>
+             <bold>true</bold>
              <strikeout>false</strikeout>
+             <kerning>false</kerning>
             </font>
            </property>
            <property name="layoutDirection">
@@ -662,6 +694,14 @@ background-color: #2196F3;
          </item>
          <item>
           <widget class="QPushButton" name="BT_savePass">
+           <property name="font">
+            <font>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+             <kerning>true</kerning>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton
 {
@@ -669,8 +709,6 @@ background-color: #2196F3;
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
     background-color: rgb(0, 163, 239);
@@ -727,6 +765,14 @@ color: #ffffff;
          </item>
          <item>
           <widget class="QPushButton" name="BT_cancelPass">
+           <property name="font">
+            <font>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+             <kerning>true</kerning>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton
 {
@@ -734,8 +780,6 @@ color: #ffffff;
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
     background-color:#455A64;
@@ -797,6 +841,14 @@ color: #ffffff;
     </item>
     <item row="0" column="1">
      <widget class="QGroupBox" name="groupBox_4">
+      <property name="font">
+       <font>
+        <family>SFMono Nerd Font Mono</family>
+        <pointsize>12</pointsize>
+        <bold>false</bold>
+        <kerning>false</kerning>
+       </font>
+      </property>
       <property name="title">
        <string>تحديد معلومات التذكرة</string>
       </property>
@@ -850,9 +902,10 @@ color: #ffffff;
            </property>
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+             <kerning>false</kerning>
             </font>
            </property>
            <property name="layoutDirection">
@@ -916,7 +969,10 @@ QLineEdit:hover
            </property>
            <property name="font">
             <font>
+             <pointsize>9</pointsize>
+             <bold>true</bold>
              <strikeout>false</strikeout>
+             <kerning>false</kerning>
             </font>
            </property>
            <property name="layoutDirection">
@@ -973,6 +1029,14 @@ background-color: #2196F3;
          </item>
          <item>
           <widget class="QPushButton" name="BT_savePhone">
+           <property name="font">
+            <font>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+             <kerning>true</kerning>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton
 {
@@ -980,8 +1044,6 @@ background-color: #2196F3;
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
     background-color: rgb(0, 163, 239);
@@ -1038,6 +1100,14 @@ color: #ffffff;
          </item>
          <item>
           <widget class="QPushButton" name="BT_cancelPhone">
+           <property name="font">
+            <font>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+             <kerning>true</kerning>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton
 {
@@ -1045,8 +1115,6 @@ color: #ffffff;
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
     background-color:#455A64;
@@ -1156,9 +1224,10 @@ color: #ffffff;
            </property>
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+             <kerning>false</kerning>
             </font>
            </property>
            <property name="layoutDirection">
@@ -1222,7 +1291,10 @@ QLineEdit:hover
            </property>
            <property name="font">
             <font>
+             <pointsize>9</pointsize>
+             <bold>true</bold>
              <strikeout>false</strikeout>
+             <kerning>false</kerning>
             </font>
            </property>
            <property name="layoutDirection">
@@ -1279,6 +1351,14 @@ background-color: #2196F3;
          </item>
          <item>
           <widget class="QPushButton" name="BT_saveAddress">
+           <property name="font">
+            <font>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+             <kerning>true</kerning>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton
 {
@@ -1286,8 +1366,7 @@ background-color: #2196F3;
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
+
     color: #ffffff;
     white-space: nowrap;
     background-color: rgb(0, 163, 239);
@@ -1344,6 +1423,14 @@ color: #ffffff;
          </item>
          <item>
           <widget class="QPushButton" name="BT_cancelAddress">
+           <property name="font">
+            <font>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
+             <kerning>true</kerning>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton
 {
@@ -1351,8 +1438,6 @@ color: #ffffff;
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
     background-color:#455A64;

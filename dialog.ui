@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>526</width>
-    <height>208</height>
+    <width>460</width>
+    <height>186</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -107,9 +107,9 @@
           </property>
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>12</pointsize>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -150,10 +150,10 @@
           </property>
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>11</pointsize>
             <italic>false</italic>
-            <bold>true</bold>
+            <bold>false</bold>
             <kerning>false</kerning>
            </font>
           </property>
@@ -192,9 +192,9 @@ QPushButton:hover
           </property>
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>11</pointsize>
+            <bold>false</bold>
             <kerning>false</kerning>
            </font>
           </property>

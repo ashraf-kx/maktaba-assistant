@@ -90,7 +90,9 @@ border:2px solid #b3d4fc;
       <widget class="QLabel" name="label">
        <property name="font">
         <font>
+         <family>SFMono Nerd Font Mono</family>
          <pointsize>-1</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="mouseTracking">
@@ -107,7 +109,7 @@ margin:0px 0px 0px 0px;
 }</string>
        </property>
        <property name="text">
-        <string>مكتبة الراشدين</string>
+        <string>مكتبة و وراقة</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -164,6 +166,7 @@ border:2px solid #b3d4fc;
         <font>
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="cursor">
@@ -223,6 +226,7 @@ border-bottom: 2px solid #FF4081;
         <font>
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="cursor">
@@ -282,6 +286,7 @@ border-bottom: 2px solid #FF4081;
         <font>
          <family>Ubuntu</family>
          <pointsize>-1</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="cursor">

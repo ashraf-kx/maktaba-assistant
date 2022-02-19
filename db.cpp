@@ -9,7 +9,7 @@ DB::DB(QObject *parent) : QObject(parent)
                                   "languageName VARCHAR(20),"
                                   "abbrev VARCHAR(4))";
 
-    const static QString T_Workers = "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
+    const static QString workersTable = "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
                                      "fullName VARCHAR(50),"
                                      "phoneNumber VARCHAR(10),"
                                      "email varchar(100),"
@@ -19,7 +19,7 @@ DB::DB(QObject *parent) : QObject(parent)
                                      "date_created TIMESTAMP,"
                                      "date_modified TIMESTAMP)";
 
-    const static QString T_Documents = "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
+    const static QString documentsTable = "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
                                        "idClient INTEGER,"
                                        "idWorker INTEGER,"
                                        "titleDoc VARCHAR(250),"
@@ -40,7 +40,7 @@ DB::DB(QObject *parent) : QObject(parent)
                                        "date_created TIMESTAMP,"
                                        "date_modified TIMESTAMP)";
 
-    const static QString T_Admin = "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
+    const static QString adminTable = "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
                                    "app_name VARCHAR(50),"
                                    "username VARCHAR(30),"
                                    "password VARCHAR(40),"
@@ -53,7 +53,7 @@ DB::DB(QObject *parent) : QObject(parent)
                                    "date_created TIMESTAMP,"
                                    "date_modified TIMESTAMP)";
 
-    const static QString T_Clients = "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
+    const static QString clientsTable = "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
                                      "fullname VARCHAR(100),"
                                      "phoneNumber VARCHAR(14),"
                                      "firstEmail varchar(100),"
@@ -69,6 +69,7 @@ DB::DB(QObject *parent) : QObject(parent)
 #ifdef Q_OS_LINUX
     connection.setDatabaseName(QDir::homePath() + "/" + "libraryAssistant.db");
 #else
+    connection.setDatabaseName(QDir::homePath()+"/AppData/Roaming/km2/"+"libraryAssistant.db");
 #endif
 
     qInfo() << "Driver used: " << connection.driverName() << Qt::endl
@@ -83,7 +84,7 @@ DB::DB(QObject *parent) : QObject(parent)
 
         if (!dbTables.contains("workers"))
         {
-            query->exec("CREATE TABLE IF NOT EXISTS 'workers' " % T_Workers) ? qInfo() << "Table 'workers' created." << Qt::endl
+            query->exec("CREATE TABLE IF NOT EXISTS 'workers' " % workersTable) ? qInfo() << "Table 'workers' created." << Qt::endl
                                                                              : qDebug() << "Creation of table 'workers' failed.";
             query->clear();
         }
@@ -92,7 +93,7 @@ DB::DB(QObject *parent) : QObject(parent)
 
         if (!dbTables.contains("admin"))
         {
-            if (query->exec("CREATE TABLE IF NOT EXISTS 'admin' " % T_Admin))
+            if (query->exec("CREATE TABLE IF NOT EXISTS 'admin' " % adminTable))
             {
                 qInfo() << "Table 'admin' created." << Qt::endl;
                 SimpleCrypt crypto(Q_UINT64_C(0x16af28db99bbca1f));
@@ -125,7 +126,7 @@ DB::DB(QObject *parent) : QObject(parent)
 
         if (!dbTables.contains("documents"))
         {
-            query->exec("CREATE TABLE IF NOT EXISTS 'documents' " % T_Documents) ? qInfo() << "Table 'documents' created." << Qt::endl
+            query->exec("CREATE TABLE IF NOT EXISTS 'documents' " % documentsTable) ? qInfo() << "Table 'documents' created." << Qt::endl
                                                                                  : qDebug() << "Creation of table 'documents' failed." << Qt::endl;
             query->clear();
         }
@@ -134,7 +135,7 @@ DB::DB(QObject *parent) : QObject(parent)
 
         if (!dbTables.contains("clients"))
         {
-            query->exec("CREATE TABLE IF NOT EXISTS 'clients' " % T_Clients) ? qInfo() << "Table 'clients' created."
+            query->exec("CREATE TABLE IF NOT EXISTS 'clients' " % clientsTable) ? qInfo() << "Table 'clients' created."
                                                                              : qDebug() << "Creation of table 'clients' failed.";
             query->clear();
         }

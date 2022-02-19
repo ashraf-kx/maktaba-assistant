@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>820</width>
-    <height>517</height>
+    <width>897</width>
+    <height>642</height>
    </rect>
   </property>
   <property name="font">
    <font>
-    <pointsize>10</pointsize>
-    <weight>75</weight>
-    <bold>true</bold>
+    <family>SFMono Nerd Font Mono</family>
+    <pointsize>11</pointsize>
+    <bold>false</bold>
    </font>
   </property>
   <property name="windowTitle">
@@ -49,7 +49,7 @@
   </property>
   <widget class="QWidget" name="T_taskDistro">
    <attribute name="icon">
-    <iconset resource="../../Library Assistant/Icons.qrc">
+    <iconset resource="Icons.qrc">
      <normaloff>:/Icons/ic_insert_link_2x.png</normaloff>:/Icons/ic_insert_link_2x.png</iconset>
    </attribute>
    <attribute name="title">
@@ -64,9 +64,9 @@
          <widget class="QLabel" name="label_2">
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>11</pointsize>
+            <bold>false</bold>
             <kerning>false</kerning>
            </font>
           </property>
@@ -97,9 +97,9 @@
           </property>
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>11</pointsize>
+            <bold>false</bold>
            </font>
           </property>
           <property name="cursor">
@@ -124,7 +124,8 @@
          <widget class="QLabel" name="label_3">
           <property name="font">
            <font>
-            <weight>75</weight>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>11</pointsize>
             <bold>true</bold>
             <kerning>false</kerning>
            </font>
@@ -147,8 +148,9 @@
           </property>
           <property name="font">
            <font>
-            <family>Ubuntu</family>
-            <pointsize>-1</pointsize>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
            </font>
           </property>
           <property name="cursor">
@@ -164,8 +166,6 @@
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
     background-color: rgb(0, 163, 239);
@@ -193,7 +193,7 @@ color: #ffffff;
            <string>تعيين</string>
           </property>
           <property name="icon">
-           <iconset resource="../../Library Assistant/Icons.qrc">
+           <iconset resource="Icons.qrc">
             <normaloff>:/Icons/ic_insert_link_white_2x.png</normaloff>:/Icons/ic_insert_link_white_2x.png</iconset>
           </property>
           <property name="iconSize">
@@ -212,9 +212,9 @@ color: #ffffff;
          <widget class="QLabel" name="label">
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>11</pointsize>
+            <bold>false</bold>
             <kerning>false</kerning>
            </font>
           </property>
@@ -242,9 +242,9 @@ color: #ffffff;
           </property>
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>11</pointsize>
+            <bold>false</bold>
            </font>
           </property>
           <property name="cursor">
@@ -288,8 +288,8 @@ border:0px solid white;</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>796</width>
-         <height>395</height>
+         <width>875</width>
+         <height>511</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -303,9 +303,9 @@ border:0px solid white;</string>
           </property>
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>11</pointsize>
+            <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
@@ -340,7 +340,7 @@ border:0px solid white;</string>
   </widget>
   <widget class="QWidget" name="tab">
    <attribute name="icon">
-    <iconset resource="../../Library Assistant/Icons.qrc">
+    <iconset resource="Icons.qrc">
      <normaloff>:/Icons/ic_update_2x.png</normaloff>:/Icons/ic_update_2x.png</iconset>
    </attribute>
    <attribute name="title">
@@ -351,10 +351,10 @@ border:0px solid white;</string>
      <widget class="QGroupBox" name="GB_updateClient">
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <italic>true</italic>
-        <bold>true</bold>
+        <family>SFMono Nerd Font Mono</family>
+        <pointsize>12</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
         <underline>false</underline>
         <strikeout>false</strikeout>
         <kerning>false</kerning>
@@ -430,7 +430,7 @@ border-top:1px solid #FF165A;
                <string/>
               </property>
               <property name="pixmap">
-               <pixmap resource="../../Library Assistant/Icons.qrc">:/Icons/ic_search_white_2x.png</pixmap>
+               <pixmap resource="Icons.qrc">:/Icons/ic_search_white_2x.png</pixmap>
               </property>
               <property name="scaledContents">
                <bool>true</bool>
@@ -444,9 +444,9 @@ border-top:1px solid #FF165A;
              <widget class="QLineEdit" name="LE_fullnameFiltre">
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>SFMono Nerd Font Mono</family>
+                <pointsize>11</pointsize>
+                <bold>false</bold>
                </font>
               </property>
               <property name="layoutDirection">
@@ -504,10 +504,9 @@ QLineEdit:hover
            </property>
            <property name="font">
             <font>
-             <family>Arial</family>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
              <kerning>false</kerning>
             </font>
            </property>
@@ -619,9 +618,9 @@ QTableView:hover
             <widget class="QLabel" name="LB_idDocx">
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
@@ -643,9 +642,9 @@ QTableView:hover
             <widget class="QLabel" name="labexc">
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
                <kerning>false</kerning>
               </font>
              </property>
@@ -683,9 +682,9 @@ QTableView:hover
           <widget class="QLabel" name="label_4">
            <property name="font">
             <font>
-             <pointsize>9</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
              <kerning>false</kerning>
             </font>
            </property>
@@ -719,9 +718,9 @@ QTableView:hover
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
                <kerning>false</kerning>
               </font>
              </property>
@@ -791,7 +790,7 @@ background-color: #2196F3;
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap resource="../../Library Assistant/Icons.qrc">:/Icons/ic_date_range_white_2x.png</pixmap>
+              <pixmap resource="Icons.qrc">:/Icons/ic_date_range_white_2x.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -827,9 +826,9 @@ background-color: #2196F3;
           <widget class="QLabel" name="label_25">
            <property name="font">
             <font>
-             <pointsize>9</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
@@ -868,9 +867,9 @@ background-color: #2196F3;
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
@@ -933,7 +932,7 @@ background-color: #2196F3;
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap resource="../../Library Assistant/Icons.qrc">:/Icons/ic_library_books_white_2x.png</pixmap>
+              <pixmap resource="Icons.qrc">:/Icons/ic_library_books_white_2x.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -966,9 +965,9 @@ background-color: #2196F3;
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
@@ -1025,7 +1024,7 @@ background-color: #2196F3;
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap resource="../../Library Assistant/Icons.qrc">:/Icons/ic_pan_tool_white_2x.png</pixmap>
+              <pixmap resource="Icons.qrc">:/Icons/ic_pan_tool_white_2x.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -1076,9 +1075,9 @@ background-color: #2196F3;
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
@@ -1121,7 +1120,6 @@ QSpinBox:hover
              <property name="font">
               <font>
                <pointsize>12</pointsize>
-               <weight>75</weight>
                <italic>false</italic>
                <bold>true</bold>
                <strikeout>false</strikeout>
@@ -1156,9 +1154,9 @@ color:white;
           <widget class="QLabel" name="label_24">
            <property name="font">
             <font>
-             <pointsize>9</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
             </font>
            </property>
            <property name="styleSheet">
@@ -1197,9 +1195,9 @@ color:white;
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
@@ -1262,7 +1260,7 @@ background-color: #2196F3;
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap resource="../../Library Assistant/Icons.qrc">:/Icons/ic_library_books_white_2x.png</pixmap>
+              <pixmap resource="Icons.qrc">:/Icons/ic_library_books_white_2x.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -1281,7 +1279,6 @@ background-color: #2196F3;
              <property name="font">
               <font>
                <pointsize>9</pointsize>
-               <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
@@ -1304,9 +1301,9 @@ background-color: #2196F3;
             <widget class="QLabel" name="label_26">
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
@@ -1340,8 +1337,9 @@ background-color: #2196F3;
           <widget class="QLabel" name="label_6">
            <property name="font">
             <font>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>false</bold>
              <kerning>false</kerning>
             </font>
            </property>
@@ -1381,9 +1379,9 @@ background-color: #2196F3;
              </property>
              <property name="font">
               <font>
-               <pointsize>9</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
+               <family>SFMono Nerd Font Mono</family>
+               <pointsize>11</pointsize>
+               <bold>false</bold>
               </font>
              </property>
              <property name="cursor">
@@ -1459,7 +1457,7 @@ background-color: #2196F3;
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap resource="../../Library Assistant/Icons.qrc">:/Icons/ic_local_printshop_white_2x.png</pixmap>
+              <pixmap resource="Icons.qrc">:/Icons/ic_local_printshop_white_2x.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -1488,8 +1486,9 @@ background-color: #2196F3;
           <widget class="QPushButton" name="BT_updateDoc">
            <property name="font">
             <font>
-             <family>Ubuntu</family>
-             <pointsize>-1</pointsize>
+             <family>SFMono Nerd Font Mono</family>
+             <pointsize>11</pointsize>
+             <bold>true</bold>
             </font>
            </property>
            <property name="cursor">
@@ -1502,8 +1501,6 @@ background-color: #2196F3;
     padding: 7px 12px;
         padding-top: 7px;
         padding-bottom: 7px;
-    font-size: 15px;
-    font-family: Ubuntu;
     color: #ffffff;
     white-space: nowrap;
     background-color: rgb(0, 163, 239);
@@ -1531,7 +1528,7 @@ color: #ffffff;
             <string>حفظ</string>
            </property>
            <property name="icon">
-            <iconset resource="../../Library Assistant/Icons.qrc">
+            <iconset resource="Icons.qrc">
              <normaloff>:/Icons/ic_save_white_2x.png</normaloff>:/Icons/ic_save_white_2x.png</iconset>
            </property>
            <property name="iconSize">
@@ -1554,7 +1551,7 @@ color: #ffffff;
   </widget>
   <widget class="QWidget" name="T_progressLevels">
    <attribute name="icon">
-    <iconset resource="../../Library Assistant/Icons.qrc">
+    <iconset resource="Icons.qrc">
      <normaloff>:/Icons/ic_archive_2x.png</normaloff>:/Icons/ic_archive_2x.png</iconset>
    </attribute>
    <attribute name="title">
@@ -1575,8 +1572,8 @@ border:0px solid white;</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>796</width>
-         <height>462</height>
+         <width>875</width>
+         <height>580</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -1584,9 +1581,9 @@ border:0px solid white;</string>
          <widget class="QGroupBox" name="groupBox_">
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
+            <family>SFMono Nerd Font Mono</family>
+            <pointsize>12</pointsize>
+            <bold>false</bold>
             <kerning>false</kerning>
            </font>
           </property>
@@ -1618,6 +1615,8 @@ border:0px solid white;</string>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Icons.qrc"/>
+ </resources>
  <connections/>
 </ui>
