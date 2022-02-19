@@ -1,10 +1,12 @@
-Library Assistant V 0.1.1
+Library assistant (Maktaba desktop app)
+- Qt 5.x
+
+This application is for stores that provide processing and printing of texts and books. It helps the business owner in saving and distributing tasks to his workers and always staying informed about the progress levels of each document or book in progress or completed.
 
 #  _Features!_
-
-- Register a client documents and assign it to one of your employees.
-- Edit the progress of each active task of your clients (Basic Solution).
-- Print a ticket for the submitted order.
+- Register a customer documents and assign it to one of your employees. 
+- Edit the progress of each active task of your clients. 
+- Print a receipt for the submitted customer order.
   
 ##1. Login : <br>
 ![alt text](https://github.com/ashraf-kx/Library-Assistant/blob/sqlite_based_solution/screenshots/login.png) <br>
