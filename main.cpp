@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
         QMessageBox msg;
         msg.setWindowIcon(QIcon(":Icons/icon-evergreen-alt.ico"));
         msg.setWindowTitle(QObject::tr("Product Not Activated"));
-        msg.setText("this product is on trailer mode :" % QString::number(QDate::currentDate().daysTo(mDateExpire)) % " days left.");
+        msg.setText("this product is on trailer mode :" % QString::number(QDate::currentDate().daysTo(mDateExpire)) % " days left. <br>default username/password: admin/admin");
         msg.setIcon(QMessageBox::Information);
         msg.exec();
 
