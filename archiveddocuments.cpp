@@ -1,5 +1,5 @@
 #include "archiveddocuments.h"
-#include "ui_archiveddoc.h"
+#include "ui_archiveddocuments.h"
 #include <QDir>
 #include <QGraphicsDropShadowEffect>
 

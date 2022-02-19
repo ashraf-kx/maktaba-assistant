@@ -61,7 +61,7 @@ bool Login::tryLogin()
             connection.close();
         }
         else
-            qDebug() << __FILE__ << " : Couldn't open connection to databse.";
+            qDebug() <<"Couldn't open connection to databse.";
 
         if (username == ui->LE_loginName->text() && password == ui->LE_passwordLogin->text())
         {

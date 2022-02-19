@@ -1,5 +1,5 @@
 #include "activedocuments.h"
-#include "ui_activedoc.h"
+#include "ui_activedocuments.h"
 #include <QDebug>
 #include <QTime>
 #include <QDir>
