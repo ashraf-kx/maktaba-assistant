@@ -15,7 +15,7 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    DB               = new DBH("_clients_");
+    DB               = new DBH();
 
     mapper           = new QDataWidgetMapper();
     queryModelClient = new QSqlQueryModel();
@@ -23,7 +23,7 @@ TabWidgetClients::TabWidgetClients(QWidget *parent) :
     queryModelClient->setQuery("SELECT id,fullname,phoneNumber,"
                                "firstEmail,isDeliveredByMail,remarke,"
                                "payement_state,price,pricePaid,"
-                               "date_created,date_modified FROM clients ",DB->getCnx());
+                               "date_created,date_modified FROM clients ",DB->getConnection());
 
     TA.clear();
     TA["id"]            = 0;
@@ -152,7 +152,7 @@ void TabWidgetClients::updateClient()
             queryModelClient->setQuery("SELECT id,fullname,phoneNumber,"
                                        "firstEmail,isDeliveredByMail,remarke,"
                                        "payement_state,price,pricePaid,date_created,"
-                                       "date_modified FROM clients ",DB->getCnx());
+                                       "date_modified FROM clients ",DB->getConnection());
 
             clearFormUpdate();
 
@@ -270,7 +270,7 @@ bool TabWidgetClients::addClient(Client* data)
     DB->addDocument(idClient,data->getDocument());
 
     queryModelClient->setQuery("SELECT id,fullname,phoneNumber,firstEmail,isDeliveredByMail,"
-                               " remarke,payement_state,price,pricePaid,date_created,date_modified FROM clients ",DB->getCnx());
+                               " remarke,payement_state,price,pricePaid,date_created,date_modified FROM clients ",DB->getConnection());
     emit dataClientsChanged();
     return true;
 }
@@ -362,7 +362,7 @@ void TabWidgetClients::deleteClient()
             DB->deleteClientByID(idClient);
 
             queryModelClient->setQuery("SELECT id, fullname, phoneNumber, firstEmail, isDeliveredByMail,"
-                                       " remarke, payement_state, price, pricePaid, date_created, date_modified FROM clients ",DB->getCnx());
+                                       " remarke, payement_state, price, pricePaid, date_created, date_modified FROM clients ",DB->getConnection());
 
             clearFormUpdate();
             emit dataClientsChanged();

@@ -12,14 +12,14 @@ TabWidgetDocuments::TabWidgetDocuments(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    DB             = new DBH("_documents_");
+    DB             = new DBH();
 
     mapper         = new QDataWidgetMapper();
     queryModelDocs = new QSqlQueryModel();
     queryModelDocs->setQuery("SELECT id,titleDoc,typeDoc,"
                              "fontFamily,fontSize,printingColor,"
                              "isPrinted,languageDoc,totalPages,pagesDone,"
-                             "pagesHand,pagesWord,deliveryDay FROM documents",DB->getCnx());
+                             "pagesHand,pagesWord,deliveryDay FROM documents",DB->getConnection());
 
     TA.clear();
     TA["id"]            = 0;
@@ -142,7 +142,7 @@ void TabWidgetDocuments::updateDoc()
             queryModelDocs->setQuery("SELECT id,titleDoc,typeDoc,"
                                      "fontFamily,fontSize,printingColor,"
                                      "isPrinted,languageDoc,totalPages,pagesDone,"
-                                     "pagesHand,pagesWord,deliveryDay FROM documents",DB->getCnx());
+                                     "pagesHand,pagesWord,deliveryDay FROM documents",DB->getConnection());
             clearFormUpdate();
         }else
         {
@@ -198,7 +198,7 @@ void TabWidgetDocuments::doAssociate()
         queryModelDocs->setQuery("SELECT id,titleDoc,typeDoc,"
                                  "fontFamily,fontSize,printingColor,"
                                  "isPrinted,languageDoc,totalPages,pagesDone,"
-                                 "pagesHand,pagesWord,deliveryDay FROM documents",DB->getCnx()); // TODO : Change Me ASSHOLE.
+                                 "pagesHand,pagesWord,deliveryDay FROM documents",DB->getConnection()); // TODO : Change Me ASSHOLE.
         // update ListDoc . but ListWorkers nothing changes.
         updateLists();
         currentActiveStats();
@@ -237,7 +237,7 @@ void TabWidgetDocuments::currentActiveStats()
     queryModelDocs->setQuery("SELECT id,titleDoc,typeDoc,"
                              "fontFamily,fontSize,printingColor,"
                              "isPrinted,languageDoc,totalPages,pagesDone,"
-                             "pagesHand,pagesWord,deliveryDay FROM documents",DB->getCnx());
+                             "pagesHand,pagesWord,deliveryDay FROM documents",DB->getConnection());
 }
 
 void TabWidgetDocuments::displayArchivedDocs()
@@ -265,7 +265,7 @@ void TabWidgetDocuments::displayArchivedDocs()
     queryModelDocs->setQuery("SELECT id,titleDoc,typeDoc,"
                              "fontFamily,fontSize,printingColor,"
                              "isPrinted,languageDoc,totalPages,pagesDone,"
-                             "pagesHand,pagesWord,deliveryDay FROM documents",DB->getCnx());
+                             "pagesHand,pagesWord,deliveryDay FROM documents",DB->getConnection());
 }
 
 void TabWidgetDocuments::createMapper()

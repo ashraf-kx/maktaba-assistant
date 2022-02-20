@@ -327,7 +327,7 @@ public:
         QFile mFile(":"+name);
 
         if (!mFile.open(QIODevice::ReadOnly)) {
-            qCritical()<<"Couldn't open file : "<<name;
+            qDebug()<<"Couldn't open file : "<<name;
             return NULL;
         }
 
@@ -336,7 +336,7 @@ public:
         QJsonParseError error;
         QJsonDocument *loadDoc = new QJsonDocument(QJsonDocument::fromJson(dataJson,&error));
 
-        qInfo()<<"in File : "<<name<<" >"<<error.errorString();
+        qInfo()<<"file : "<<name<<" opened.";
 
         mFile.close();
         return loadDoc;

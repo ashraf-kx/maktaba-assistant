@@ -13,7 +13,6 @@
   <property name="font">
    <font>
     <pointsize>10</pointsize>
-    <weight>75</weight>
     <bold>true</bold>
     <stylestrategy>PreferAntialias</stylestrategy>
     <kerning>false</kerning>
@@ -46,7 +45,7 @@ border:0px solid white;
    <enum>QTabWidget::Rounded</enum>
   </property>
   <property name="currentIndex">
-   <number>1</number>
+   <number>0</number>
   </property>
   <property name="iconSize">
    <size>
@@ -92,7 +91,6 @@ border:0px solid white;
       <property name="font">
        <font>
         <pointsize>10</pointsize>
-        <weight>75</weight>
         <italic>true</italic>
         <bold>true</bold>
         <underline>false</underline>
@@ -171,7 +169,6 @@ color: rgb(0, 163, 239);
            <property name="font">
             <font>
              <pointsize>10</pointsize>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -311,7 +308,6 @@ background-color: #2196F3;
            <property name="font">
             <font>
              <pointsize>10</pointsize>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -457,7 +453,6 @@ background-color: #2196F3;
            <property name="font">
             <font>
              <pointsize>10</pointsize>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -564,7 +559,6 @@ background-color: #2196F3;
          <property name="font">
           <font>
            <pointsize>10</pointsize>
-           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -609,7 +603,6 @@ background-color: #2196F3;
            <property name="font">
             <font>
              <pointsize>10</pointsize>
-             <weight>75</weight>
              <italic>true</italic>
              <bold>true</bold>
             </font>
@@ -693,7 +686,6 @@ QPlainTextEdit:hover
           <widget class="QPushButton" name="BT_saveWorker">
            <property name="font">
             <font>
-             <family>Ubuntu</family>
              <pointsize>-1</pointsize>
             </font>
            </property>
@@ -767,7 +759,6 @@ color: #ffffff;
           <widget class="QPushButton" name="BT_cancelInfoW">
            <property name="font">
             <font>
-             <family>Ubuntu</family>
              <pointsize>-1</pointsize>
             </font>
            </property>
@@ -861,7 +852,6 @@ border:0px solid white;
       <property name="font">
        <font>
         <pointsize>10</pointsize>
-        <weight>75</weight>
         <italic>true</italic>
         <bold>true</bold>
         <underline>false</underline>
@@ -940,7 +930,6 @@ color: rgb(0, 163, 239);
                 <property name="font">
                  <font>
                   <pointsize>10</pointsize>
-                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -1042,9 +1031,7 @@ QLineEdit:hover
            </property>
            <property name="font">
             <font>
-             <family>Titillium Web</family>
              <pointsize>10</pointsize>
-             <weight>50</weight>
              <bold>false</bold>
              <kerning>false</kerning>
             </font>
@@ -1171,7 +1158,6 @@ QTableView:hover
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1195,7 +1181,6 @@ QTableView:hover
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1292,7 +1277,6 @@ background-color: #2196F3;
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1397,7 +1381,6 @@ background-color: #2196F3;
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1505,7 +1488,6 @@ background-color: #2196F3;
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1555,7 +1537,6 @@ QLineEdit:hover
             <property name="font">
              <font>
               <pointsize>9</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1629,7 +1610,6 @@ background-color: #2196F3;
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1687,7 +1667,6 @@ QComboBox:hover
             <property name="font">
              <font>
               <pointsize>9</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1719,7 +1698,6 @@ QComboBox:hover
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <italic>true</italic>
                 <bold>true</bold>
                </font>
@@ -1774,7 +1752,6 @@ QPlainTextEdit:hover
              <widget class="QPushButton" name="BT_updateWorker">
               <property name="font">
                <font>
-                <family>Ubuntu</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>
@@ -1835,7 +1812,6 @@ color: #ffffff;
              <widget class="QPushButton" name="BT_delete">
               <property name="font">
                <font>
-                <family>Ubuntu</family>
                 <pointsize>-1</pointsize>
                </font>
               </property>

@@ -2,7 +2,7 @@
 	"driver" : "QPSQL",
 	"host": "localhost",
 	"port": 5432,
-	"db_name": "libdz",
+        "db_name": "maktaba",
 	"username": "postgres",
-	"password" : "achraf"
+        "password" : "postgres"
 }

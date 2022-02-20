@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql printsupport  quickwidgets webenginewidgets
+QT       += core gui sql printsupport  quickwidgets
 CONFIG   += c++11
 TARGET   = LibraryManager
 TEMPLATE = app

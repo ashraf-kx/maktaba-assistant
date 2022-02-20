@@ -9,7 +9,7 @@ TabWidgetSettings::TabWidgetSettings(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    DB = new DBH("_settings_");
+    DB = new DBH();
 
     connect(ui->BT_saveAdminNameX,SIGNAL(clicked()),this,SLOT(updateAdminName()));
     connect(ui->BT_cancelAdminnX,SIGNAL(clicked()),ui->LE_nameAdmin,SLOT(clear()));

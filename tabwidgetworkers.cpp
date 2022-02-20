@@ -13,12 +13,12 @@ TabWidgetWorkers::TabWidgetWorkers(QWidget *parent) :
 
     mapper = new QDataWidgetMapper();
 
-    DB = new DBH("_workers_");
+    DB = new DBH();
 
     queryModelWorker = new QSqlQueryModel();
     queryModelWorker->setQuery("SELECT id,fullName,phoneNumber,"
                                "email,remarke,isDisponible,"
-                               "date_created FROM workers ",DB->getCnx());
+                               "date_created FROM workers ",DB->getConnection());
 
     TA.clear();
     TA["id"]          = 0;
@@ -115,7 +115,7 @@ void TabWidgetWorkers::updateWorker()
 
         queryModelWorker->setQuery("SELECT id,fullName,phoneNumber,"
                                    "email,remarke,isDisponible,"
-                                   "date_created FROM workers ",DB->getCnx());
+                                   "date_created FROM workers ",DB->getConnection());
         clearFormUpdate();
         emit dataWorkersChanged();
 
@@ -159,7 +159,7 @@ bool TabWidgetWorkers::addWorker(Worker *data)
 
     queryModelWorker->setQuery("SELECT id,fullName,phoneNumber,"
                                "email,remarke,isDisponible,"
-                               "date_created FROM workers ",DB->getCnx());
+                               "date_created FROM workers ",DB->getConnection());
     emit dataWorkersChanged();
 
     if(idWorker > -1)
@@ -249,7 +249,7 @@ void TabWidgetWorkers::deleteWorker()
 
         queryModelWorker->setQuery("SELECT id,fullName,phoneNumber,"
                                    "email,remarke,isDisponible,"
-                                   "date_created FROM workers ",DB->getCnx());
+                                   "date_created FROM workers ",DB->getConnection());
         clearFormUpdate();
         emit dataWorkersChanged();
     }

@@ -63,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     systemTray->showMessage(tr("Librery YS"),tr("Develop everywhere."),QSystemTrayIcon::Information,1000);
 
-    mDB = new DBH("_dashboard_");
+    mDB = new DBH();
     mDB->createEmptyDB();
 
     mTopNav            = new topNav(this);

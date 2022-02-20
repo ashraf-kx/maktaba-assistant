@@ -13,7 +13,6 @@
   <property name="font">
    <font>
     <pointsize>10</pointsize>
-    <weight>75</weight>
     <bold>true</bold>
    </font>
   </property>
@@ -36,7 +35,7 @@
    <enum>QTabWidget::Rounded</enum>
   </property>
   <property name="currentIndex">
-   <number>1</number>
+   <number>0</number>
   </property>
   <property name="iconSize">
    <size>
@@ -68,7 +67,6 @@
           <property name="font">
            <font>
             <pointsize>10</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
             <kerning>false</kerning>
            </font>
@@ -101,7 +99,6 @@
           <property name="font">
            <font>
             <pointsize>10</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -127,7 +124,6 @@
          <widget class="QLabel" name="label_3">
           <property name="font">
            <font>
-            <weight>75</weight>
             <bold>true</bold>
             <kerning>false</kerning>
            </font>
@@ -150,7 +146,6 @@
           </property>
           <property name="font">
            <font>
-            <family>Ubuntu</family>
             <pointsize>-1</pointsize>
            </font>
           </property>
@@ -216,7 +211,6 @@ color: #ffffff;
           <property name="font">
            <font>
             <pointsize>10</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
             <kerning>false</kerning>
            </font>
@@ -246,7 +240,6 @@ color: #ffffff;
           <property name="font">
            <font>
             <pointsize>10</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -292,7 +285,7 @@ border:0px solid white;</string>
          <x>0</x>
          <y>0</y>
          <width>850</width>
-         <height>485</height>
+         <height>484</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -307,7 +300,6 @@ border:0px solid white;</string>
           <property name="font">
            <font>
             <pointsize>10</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -358,7 +350,6 @@ border:0px solid white;</string>
       <property name="font">
        <font>
         <pointsize>10</pointsize>
-        <weight>75</weight>
         <italic>true</italic>
         <bold>true</bold>
         <underline>false</underline>
@@ -465,7 +456,6 @@ border-top:1px solid #FF165A;
                 <property name="font">
                  <font>
                   <pointsize>10</pointsize>
-                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -533,9 +523,7 @@ QLineEdit:hover
            </property>
            <property name="font">
             <font>
-             <family>Titillium Web</family>
              <pointsize>10</pointsize>
-             <weight>50</weight>
              <bold>false</bold>
              <kerning>false</kerning>
             </font>
@@ -563,11 +551,11 @@ QTableView:hover
            <property name="gridStyle">
             <enum>Qt::CustomDashLine</enum>
            </property>
-           <attribute name="horizontalHeaderDefaultSectionSize">
-            <number>60</number>
-           </attribute>
            <attribute name="horizontalHeaderMinimumSectionSize">
             <number>20</number>
+           </attribute>
+           <attribute name="horizontalHeaderDefaultSectionSize">
+            <number>60</number>
            </attribute>
            <attribute name="horizontalHeaderStretchLastSection">
             <bool>true</bool>
@@ -707,7 +695,6 @@ QTableView:hover
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -731,7 +718,6 @@ QTableView:hover
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                 <kerning>false</kerning>
                </font>
@@ -771,7 +757,6 @@ QTableView:hover
             <property name="font">
              <font>
               <pointsize>9</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
               <kerning>false</kerning>
              </font>
@@ -807,7 +792,6 @@ QTableView:hover
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                 <kerning>false</kerning>
                </font>
@@ -915,7 +899,6 @@ background-color: #2196F3;
             <property name="font">
              <font>
               <pointsize>9</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -956,7 +939,6 @@ background-color: #2196F3;
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1054,7 +1036,6 @@ background-color: #2196F3;
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1164,7 +1145,6 @@ background-color: #2196F3;
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1208,7 +1188,6 @@ QSpinBox:hover
               <property name="font">
                <font>
                 <pointsize>12</pointsize>
-                <weight>75</weight>
                 <italic>false</italic>
                 <bold>true</bold>
                 <strikeout>false</strikeout>
@@ -1244,7 +1223,6 @@ color:white;
             <property name="font">
              <font>
               <pointsize>9</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1285,7 +1263,6 @@ color:white;
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1368,7 +1345,6 @@ background-color: #2196F3;
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1392,7 +1368,6 @@ background-color: #2196F3;
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1427,7 +1402,6 @@ background-color: #2196F3;
            <widget class="QLabel" name="label_6">
             <property name="font">
              <font>
-              <weight>75</weight>
               <bold>true</bold>
               <kerning>false</kerning>
              </font>
@@ -1469,7 +1443,6 @@ background-color: #2196F3;
               <property name="font">
                <font>
                 <pointsize>9</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1575,7 +1548,6 @@ background-color: #2196F3;
            <widget class="QPushButton" name="BT_updateDoc">
             <property name="font">
              <font>
-              <family>Ubuntu</family>
               <pointsize>-1</pointsize>
              </font>
             </property>
@@ -1676,7 +1648,6 @@ border:0px solid white;</string>
           <property name="font">
            <font>
             <pointsize>10</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
             <kerning>false</kerning>
            </font>

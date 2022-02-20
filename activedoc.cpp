@@ -14,7 +14,7 @@ ActiveDoc::ActiveDoc(QWidget *parent) :
     idDoc    = 0;
     idWorker = 0;
 
-    DB = new DBH("_ACTIVEDOC_");
+    DB = new DBH();
 
     frame->setGraphicsEffect(Style::shadow());
 

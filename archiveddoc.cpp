@@ -8,7 +8,7 @@ ArchivedDoc::ArchivedDoc(QWidget *parent) :
 {
     setupUi(this);
 
-    DB = new DBH("_Archive_");
+    DB = new DBH();
 
     this->setGraphicsEffect(Style::shadow());
 

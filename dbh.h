@@ -5,23 +5,14 @@
 #include <QObject>
 Q_DECLARE_LOGGING_CATEGORY(DDB)
 
-class DBH : public QSqlDatabase
+class DBH
 {
-    // Q_OBJECT
 private:
-    QString    connectionName;
     QSqlQuery *query;
-
 public:
     DBH();
-    DBH(const QString& name);
 
-    QSqlDatabase getCnx();
-    void mTransaction();
-    void mCommit();
-    void mRemoveDatabase(const QString& connectionName);
-    int  createTable(const QString &nameTable, const QString &tableQueryStructure);
-
+    QSqlDatabase getConnection();
     void createEmptyDB();
     bool attemptLogin(const QString &username, const QString &password);
 
