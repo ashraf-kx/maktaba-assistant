@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>656</width>
-    <height>463</height>
+    <width>526</width>
+    <height>515</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,9 +21,8 @@
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
-       <family>Titillium Web</family>
-       <pointsize>12</pointsize>
-       <weight>75</weight>
+       <family>SFMono Nerd Font Mono</family>
+       <pointsize>14</pointsize>
        <italic>false</italic>
        <bold>true</bold>
       </font>
@@ -32,7 +31,7 @@
       <string notr="true"/>
      </property>
      <property name="text">
-      <string>مكتبة ياسين</string>
+      <string>مكتبة</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -48,7 +47,6 @@
       <spacer name="horizontalSpacer_8">
        <property name="font">
         <font>
-         <family>Titillium Web</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -85,9 +83,7 @@
        </property>
        <property name="font">
         <font>
-         <family>Titillium Web</family>
          <pointsize>12</pointsize>
-         <weight>75</weight>
          <italic>false</italic>
          <bold>true</bold>
         </font>
@@ -150,7 +146,6 @@ QLineEdit:hover
        </property>
        <property name="font">
         <font>
-         <family>Titillium Web</family>
          <pointsize>12</pointsize>
          <strikeout>false</strikeout>
         </font>
@@ -181,7 +176,6 @@ background-color: #2196F3;
       <spacer name="horizontalSpacer_10">
        <property name="font">
         <font>
-         <family>Titillium Web</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -207,7 +201,6 @@ background-color: #2196F3;
       <spacer name="horizontalSpacer_9">
        <property name="font">
         <font>
-         <family>Titillium Web</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -244,9 +237,7 @@ background-color: #2196F3;
        </property>
        <property name="font">
         <font>
-         <family>Titillium Web</family>
          <pointsize>12</pointsize>
-         <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
@@ -311,7 +302,6 @@ QLineEdit:hover
        </property>
        <property name="font">
         <font>
-         <family>Titillium Web</family>
          <pointsize>12</pointsize>
          <strikeout>false</strikeout>
         </font>
@@ -342,7 +332,6 @@ background-color: #2196F3;
       <spacer name="horizontalSpacer_11">
        <property name="font">
         <font>
-         <family>Titillium Web</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -365,7 +354,6 @@ background-color: #2196F3;
       <spacer name="horizontalSpacer">
        <property name="font">
         <font>
-         <family>Titillium Web</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -384,7 +372,6 @@ background-color: #2196F3;
       <widget class="QPushButton" name="BT_login">
        <property name="font">
         <font>
-         <family>Ubuntu</family>
          <pointsize>-1</pointsize>
         </font>
        </property>
@@ -451,7 +438,6 @@ color: #ffffff;
       <spacer name="horizontalSpacer_2">
        <property name="font">
         <font>
-         <family>Titillium Web</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -470,7 +456,6 @@ color: #ffffff;
       <widget class="QPushButton" name="BT_cancel">
        <property name="font">
         <font>
-         <family>Ubuntu</family>
          <pointsize>-1</pointsize>
         </font>
        </property>
@@ -535,7 +520,6 @@ color: #ffffff;
       <spacer name="horizontalSpacer_3">
        <property name="font">
         <font>
-         <family>Titillium Web</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -556,7 +540,6 @@ color: #ffffff;
     <widget class="QLabel" name="LB_msg">
      <property name="font">
       <font>
-       <family>Titillium Web</family>
        <pointsize>12</pointsize>
       </font>
      </property>
@@ -565,22 +548,8 @@ color: #ffffff;
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QQuickWidget" name="quickWidget">
-     <property name="resizeMode">
-      <enum>QQuickWidget::SizeRootObjectToView</enum>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QQuickWidget</class>
-   <extends>QWidget</extends>
-   <header>QtQuickWidgets/QQuickWidget</header>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="Icons.qrc"/>
  </resources>

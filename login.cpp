@@ -1,8 +1,6 @@
 #include "login.h"
 #include "ui_login.h"
 
-#include <QQuickWidget>
-
 Q_LOGGING_CATEGORY(LGN,"LOGIN")
 
 Login::Login(QWidget *parent) :

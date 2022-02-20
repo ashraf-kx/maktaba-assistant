@@ -10,24 +10,24 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::Popup);
-    this->setModal(true);
+    this->setModal(true);   
 
-    this->resize(310,148);
-
-    // Aniamtion Section
+    // Animation Section
     animSlideOut = new QPropertyAnimation(this, "size");
 
     animSlideOut->setDuration(500);
     animSlideOut->setStartValue(QSize(size().width(),0));
     animSlideOut->setEndValue(QSize(size().width(), size().height()));
     animSlideOut->setEasingCurve(QEasingCurve::OutSine);
-    // FIXME : Aniamtion does not Work. ?? Fuck Fuck
+    // FIXME : Animation does not Work. ?? Fuck Fuck
 
     QGraphicsDropShadowEffect * sh = new QGraphicsDropShadowEffect();
     sh->setBlurRadius(8);
     sh->setOffset(3);
     sh->setColor(QColor(64, 64, 64, 180));
     this->setGraphicsEffect(sh);
+
+    this->resize(310,148);
 
     connect(ui->Bt_yes,SIGNAL(clicked()),this,SLOT(accept()));
     connect(ui->Bt_no,SIGNAL(clicked()),this,SLOT(reject()));
